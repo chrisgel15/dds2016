@@ -1,0 +1,8 @@
+/.settings/
+/.settings
+.settings/
+/bin/
+/target/
+generated*
+*.classpath
+*.project
