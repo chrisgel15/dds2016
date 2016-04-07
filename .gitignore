@@ -6,3 +6,5 @@
 generated*
 *.classpath
 *.project
+/target
+target/
