@@ -3,6 +3,7 @@ package poi
 import org.uqbar.geodds.Point
 import java.util.List
 import java.util.ArrayList
+import org.joda.time.DateTime
 
 class Poi {
 
@@ -11,6 +12,7 @@ class Poi {
 	// Direccion direccion
 	IUbicable estrategia
 	List<String> etiquetas
+	Servicio servicio
 
 	// region Getters y Setters	
 	def getLocacionPropia() {
@@ -90,6 +92,9 @@ class Poi {
 		string1.toLowerCase().contains(string2.toLowerCase()) ||
 			string2.toLowerCase().contains(string1.toLowerCase())
 	}
-
+	
+	def boolean servicioEstaDisponible(DateTime horario){
+		this.servicio.estaDisponible(horario)
+	}
 // endregion Methods
 }

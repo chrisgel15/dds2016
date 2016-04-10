@@ -1,10 +1,16 @@
 package poi
 
+import org.joda.time.DateTime
+
 class KioscoDiarios extends LocalComercial {
 
 	static double DISTANCIA_KIOSCO_DIARIOS = 0.2
+	
+	new(DateTime dispDesde, DateTime dispHasta) {
+		super(dispDesde, dispHasta)
+	}
 
-	override ConsultaDisponibilidad() {
+	override boolean ConsultaDisponibilidad(Poi poi, DateTime horario) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 

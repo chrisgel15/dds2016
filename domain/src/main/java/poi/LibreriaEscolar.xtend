@@ -1,10 +1,16 @@
 package poi
 
+import org.joda.time.DateTime
+
 class LibreriaEscolar extends LocalComercial {
 
 	static double DISTANCIA_LIBRERIA_ESCOLAR = 0.5
+	
+	new(DateTime dispDesde, DateTime dispHasta) {
+		super(dispDesde, dispHasta)
+	}
 
-	override ConsultaDisponibilidad() {
+	override boolean ConsultaDisponibilidad(Poi poi, DateTime horario) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 

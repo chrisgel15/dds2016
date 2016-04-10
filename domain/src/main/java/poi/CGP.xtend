@@ -1,5 +1,7 @@
 package poi
 
+import org.joda.time.DateTime
+
 class CGP extends GenericPoi {
 
 	Comuna comuna
@@ -9,8 +11,11 @@ class CGP extends GenericPoi {
 		this.comuna = comuna
 	}
 
-	override ConsultaDisponibilidad() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	override ConsultaDisponibilidad(Poi poi, DateTime horario) {
+		if(esFinDeSemana(horario))	{
+		return poi.servicioEstaDisponible(horario)
+		}
+		return false
 	}
 
 	// Para saber si un CGP esta cerca, debe chequear que esté en la misma comuna que el origen.
