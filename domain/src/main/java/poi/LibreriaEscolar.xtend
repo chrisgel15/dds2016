@@ -1,11 +1,14 @@
 package poi
 
+import org.uqbar.geodds.Point
+
 class LibreriaEscolar extends LocalComercial {
 
 	static double DISTANCIA_LIBRERIA_ESCOLAR = 0.5
 	
-	new (String rubro)
+	new (Point p, String nombre, String rubro)
 	{
+		super(p, nombre)
 		this.rubro = rubro
 	}
 
@@ -13,19 +16,12 @@ class LibreriaEscolar extends LocalComercial {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 
-	override boolean ConsultaCercania(Poi origen, Poi destino) {
-		origen.DistanciaAOtroPoiMenorA(destino, DISTANCIA_LIBRERIA_ESCOLAR)
+	override BusquedaPorTexto(String texto) {
+		super.BusquedaPorTexto(texto)
 	}
-
-	override BusquedaPorTexto(Poi poi, String texto) {
-		var Poi auxPoi = null
-		auxPoi = this.BusquedaPorEtiqueta(poi, texto)
-		if (auxPoi == null)
-			auxPoi = this.BusquedaPorNombre(poi, texto)
-		if (auxPoi == null)
-			auxPoi = this.BusquedaPorRubro(poi, texto)
-
-		return auxPoi
+	
+	override ConsultaCercania(Poi origen) {
+		this.DistanciaAOtroPoiMenorA(origen, DISTANCIA_LIBRERIA_ESCOLAR)
 	}
 
 }

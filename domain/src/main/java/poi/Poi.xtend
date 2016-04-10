@@ -4,21 +4,16 @@ import org.uqbar.geodds.Point
 import java.util.List
 import java.util.ArrayList
 
-class Poi {
+abstract class Poi implements IUbicable {
 
 	Point localizacionPropia
 	String nombre
 	// Direccion direccion
-	IUbicable estrategia
 	List<String> etiquetas
 
 	// region Getters y Setters	
 	def getLocacionPropia() {
 		localizacionPropia
-	}
-
-	def DefinirTipoDePoi(IUbicable tipoPoi) {
-		this.estrategia = tipoPoi
 	}
 
 	def getEtiquetas() {
@@ -51,16 +46,7 @@ class Poi {
 	def EsValido() {
 		!(localizacionPropia == null && nombre.isNullOrEmpty())
 	}
-
-	def ConsultaCercania(Poi origen) {
-		// origen, destino
-		this.estrategia.ConsultaCercania(origen, this)
-	}
-
-	def BusquedaPorTexto(String texto) {
-		this.estrategia.BusquedaPorTexto(this, texto)
-	}
-
+	
 	def BusquedaEtiqueta(String etiqueta) {
 		if (ContieneEtiqueta(etiqueta))
 			this
@@ -91,5 +77,12 @@ class Poi {
 			string2.toLowerCase().contains(string1.toLowerCase())
 	}
 
+	def Poi BusquedaPorEtiqueta(Poi poi, String etiqueta) {
+		poi.BusquedaEtiqueta(etiqueta)
+	}
+	
+	def Poi BusquedaPorNombre(Poi poi, String nombre) {
+		poi.BusquedaNombre(nombre)
+	}
 // endregion Methods
 }

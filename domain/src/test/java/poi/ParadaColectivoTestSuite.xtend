@@ -15,12 +15,10 @@ class ParadaColectivoTestSuite {
 
 	@Before
 	def void init() {
-		origen = new Poi(new Point(-34.644997, -58.564860), "Ubicacion Touch.Me")
-		destinoCercano = new Poi(new Point(-34.644997, -58.565000), "Parada del 28 cercana")
-		destinoCercano.DefinirTipoDePoi(new ParadaColectivo())
+		origen = new ParadaColectivo(new Point(-34.644997, -58.564860), "Ubicacion Touch.Me")
+		destinoCercano = new ParadaColectivo(new Point(-34.644997, -58.565000), "Parada del 28 cercana")
 
-		destinoLejano = new Poi(new Point(-34.644997, -58.574860), "Parada del 28 lejana")
-		destinoLejano.DefinirTipoDePoi(new ParadaColectivo())
+		destinoLejano = new ParadaColectivo(new Point(-34.644997, -58.574860), "Parada del 28 lejana")
 	}
 
 	@Test

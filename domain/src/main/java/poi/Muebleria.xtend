@@ -1,24 +1,24 @@
 package poi
 
+import org.uqbar.geodds.Point
+
 class Muebleria extends LocalComercial {	
 
-	new (String rubro)
+	new (Point p, String nombre, String rubro)
 	{
+		super(p, nombre)
 		this.rubro = rubro
 	}
 
-	override BusquedaPorTexto(Poi poi, String texto) {
-		var Poi auxPoi = null
-		auxPoi = this.BusquedaPorEtiqueta(poi, texto)
-		if (auxPoi == null)
-			auxPoi = this.BusquedaPorNombre(poi, texto)
-		if (auxPoi == null)
-			auxPoi = this.BusquedaPorRubro(poi, texto)
-
-		return auxPoi
+	override BusquedaPorTexto(String texto) {
+		super.BusquedaPorTexto(texto)
 	}
 	
 	override ConsultaDisponibilidad() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	override ConsultaCercania(Poi origen) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 

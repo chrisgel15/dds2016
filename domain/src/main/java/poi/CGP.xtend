@@ -1,11 +1,14 @@
 package poi
 
-class CGP extends GenericPoi {
+import org.uqbar.geodds.Point
+
+class CGP extends Poi {
 
 	Comuna comuna
 
 	// Un CGP tiene una referencia a su comuna
-	new(Comuna comuna) {
+	new(Point p, String nombre, Comuna comuna) {
+		super(p, nombre)
 		this.comuna = comuna
 	}
 
@@ -13,19 +16,19 @@ class CGP extends GenericPoi {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 
-	// Para saber si un CGP esta cerca, debe chequear que esté en la misma comuna que el origen.
-	override ConsultaCercania(Poi origenTouchMe, Poi destinoCGP) {
-		this.comuna.AmbosPuntosPertenecen(origenTouchMe.locacionPropia, destinoCGP.locacionPropia)
-	}
-
 	// TODO: Ver de mejorar esto
-	override BusquedaPorTexto(Poi poi, String texto) {
+	override BusquedaPorTexto(String texto) {
 		var Poi auxPoi = null
-		auxPoi = this.BusquedaPorEtiqueta(poi, texto)
+		auxPoi = this.BusquedaPorEtiqueta(this, texto)
 		if (auxPoi == null)
-			auxPoi = this.BusquedaPorNombre(poi, texto)
+			auxPoi = this.BusquedaPorNombre(this, texto)
 
 		return auxPoi
+	}
+
+	// Para saber si un CGP esta cerca, debe chequear que esté en la misma comuna que el origen.
+	override ConsultaCercania(Poi origenTouchMe) {
+		this.comuna.AmbosPuntosPertenecen(origenTouchMe.locacionPropia, this.locacionPropia)
 	}
 
 }

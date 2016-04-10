@@ -12,12 +12,10 @@ class BusquedaPorTextoLibreTestSuite {
 
 	@Before
 	def void init() {
-		paradaColectivo = new Poi(new Point(1, 1), "Parada del 114")
-		paradaColectivo.DefinirTipoDePoi(new ParadaColectivo())
+		paradaColectivo = new ParadaColectivo(new Point(1, 1), "Parada del 114")		
 		paradaColectivo.etiqueta = "Bondi"
 
-		libreriaEscolar = new Poi(new Point(1, 1), "Cuspide")
-		libreriaEscolar.DefinirTipoDePoi(new LibreriaEscolar("rubro Libreria"))
+		libreriaEscolar = new LibreriaEscolar(new Point(1, 1), "Cuspide", "rubro Libreria")		
 	}
 
 	@Test

@@ -11,7 +11,7 @@ class PoiTestSuite {
 
 	@Before
 	def void init() {
-		punto = new Poi(new Point(1, 2), "Punto 1")
+		punto = new ParadaColectivo(new Point(1, 2), "Punto 1")
 	}
 
 	@Test

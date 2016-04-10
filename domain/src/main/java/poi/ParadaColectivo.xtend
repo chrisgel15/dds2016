@@ -1,25 +1,33 @@
 package poi
 
-class ParadaColectivo extends GenericPoi {
+import org.uqbar.geodds.Point
+
+class ParadaColectivo extends Poi {
 
 	// Referencia una cuadra (0.1 kilometros)
 	static double DISTANCIA_PARADA_COLECTIVO = 0.1
+	
+	new(Point p, String nom) {
+		super(p, nom)
+	}
 
 	override ConsultaDisponibilidad() {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 
-	override ConsultaCercania(Poi origen, Poi destino) {
-		origen.DistanciaAOtroPoiMenorA(destino, DISTANCIA_PARADA_COLECTIVO)
+	override ConsultaCercania(Poi destino) {
+		this.DistanciaAOtroPoiMenorA(destino, DISTANCIA_PARADA_COLECTIVO)
 	}
 
-	override BusquedaPorTexto(Poi poi, String texto) {
+	override BusquedaPorTexto(String texto) {
 		var Poi auxPoi = null
-		auxPoi = this.BusquedaPorEtiqueta(poi, texto)
+		auxPoi = this.BusquedaPorEtiqueta(this, texto)
 		if (auxPoi == null)
-			auxPoi = this.BusquedaPorNombre(poi, texto)
+			auxPoi = this.BusquedaPorNombre(this, texto)
 
 		return auxPoi
 	}
+	
+	
 
 }

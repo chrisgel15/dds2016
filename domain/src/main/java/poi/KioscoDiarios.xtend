@@ -1,19 +1,25 @@
 package poi
 
+import org.uqbar.geodds.Point
+
 class KioscoDiarios extends LocalComercial {
 
 	static double DISTANCIA_KIOSCO_DIARIOS = 0.2
+
+	new(Point p, String nom) {
+		super(p, nom)
+	}
 
 	override ConsultaDisponibilidad() {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 
-	override boolean ConsultaCercania(Poi origen, Poi destino) {
-		origen.DistanciaAOtroPoiMenorA(destino, DISTANCIA_KIOSCO_DIARIOS)
+	override boolean ConsultaCercania(Poi destino) {
+		this.DistanciaAOtroPoiMenorA(destino, DISTANCIA_KIOSCO_DIARIOS)
 	}
 
-	override BusquedaPorTexto(Poi poi, String texto) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	override BusquedaPorTexto(String texto) {
+		super.BusquedaPorTexto(texto)
 	}
 
 }
