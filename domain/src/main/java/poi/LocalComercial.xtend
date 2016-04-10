@@ -6,6 +6,7 @@ import org.joda.time.Interval
 abstract class LocalComercial extends GenericPoi {
 
 	// TODO: Metodos y configuraciones comunes a los Locales Comerciales
+
 	DateTime inicio
 	DateTime fin
 	Interval intervalo
@@ -20,4 +21,14 @@ abstract class LocalComercial extends GenericPoi {
 			intervalo.contains(horario)
 	}
 	
+	protected String rubro
+	
+	def Poi BusquedaPorRubro(Poi poi, String texto)
+	{
+		if (poi.ComparaStrings(this.rubro , texto))
+			return poi
+		else
+			return null
+	}
+
 }

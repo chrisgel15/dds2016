@@ -6,8 +6,9 @@ class LibreriaEscolar extends LocalComercial {
 
 	static double DISTANCIA_LIBRERIA_ESCOLAR = 0.5
 	
-	new(DateTime dispDesde, DateTime dispHasta) {
+	new(DateTime dispDesde, DateTime dispHasta, String rubro) {
 		super(dispDesde, dispHasta)
+		this.rubro = rubro
 	}
 
 	override boolean ConsultaDisponibilidad(Poi poi, DateTime horario) {
@@ -19,7 +20,14 @@ class LibreriaEscolar extends LocalComercial {
 	}
 
 	override BusquedaPorTexto(Poi poi, String texto) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		var Poi auxPoi = null
+		auxPoi = this.BusquedaPorEtiqueta(poi, texto)
+		if (auxPoi == null)
+			auxPoi = this.BusquedaPorNombre(poi, texto)
+		if (auxPoi == null)
+			auxPoi = this.BusquedaPorRubro(poi, texto)
+
+		return auxPoi
 	}
 
 }
