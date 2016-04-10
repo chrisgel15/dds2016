@@ -6,11 +6,11 @@ class Banco extends GenericPoi {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 
-	override BusquedaPorCriterio() {
+	override ConsultaCercania(Poi poi, Poi poi2) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 
-	override ConsultaCercania(Poi poi, Poi poi2) {
+	override BusquedaPorTexto(Poi poi, String texto) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 

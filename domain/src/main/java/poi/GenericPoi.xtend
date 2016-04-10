@@ -9,4 +9,14 @@ abstract class GenericPoi implements IUbicable {
 		origen.DistanciaAOtroPoiMenorA(destino, DISTANCIA_GENERAL)
 	}
 	
+	def Poi BusquedaPorNombre(Poi poi , String nombre)
+	{
+		poi.BusquedaNombre(nombre)
+	}
+	
+	def Poi BusquedaPorEtiqueta(Poi poi, String etiqueta)
+	{
+		poi.BusquedaEtiqueta(etiqueta)
+	}
+	
 }

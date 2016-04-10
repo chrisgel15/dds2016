@@ -13,13 +13,19 @@ class CGP extends GenericPoi {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 
-	override BusquedaPorCriterio() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-
 	// Para saber si un CGP esta cerca, debe chequear que esté en la misma comuna que el origen.
 	override ConsultaCercania(Poi origenTouchMe, Poi destinoCGP) {
 		this.comuna.AmbosPuntosPertenecen(origenTouchMe.locacionPropia, destinoCGP.locacionPropia)
+	}
+
+	// TODO: Ver de mejorar esto
+	override BusquedaPorTexto(Poi poi, String texto) {
+		var Poi auxPoi = null
+		auxPoi = this.BusquedaPorEtiqueta(poi, texto)
+		if (auxPoi == null)
+			auxPoi = this.BusquedaPorNombre(poi, texto)
+
+		return auxPoi
 	}
 
 }
