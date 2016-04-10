@@ -2,7 +2,7 @@ package poi
 
 class KioscoDiarios extends LocalComercial {
 
-	static double DISTANCIA_KIOSCO_DIARIOS = 0.5
+	static double DISTANCIA_KIOSCO_DIARIOS = 0.2
 
 	override ConsultaDisponibilidad() {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
