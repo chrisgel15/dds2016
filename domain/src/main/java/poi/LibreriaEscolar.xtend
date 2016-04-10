@@ -1,6 +1,8 @@
 package poi
 
-class Banco extends GenericPoi {
+class LibreriaEscolar extends LocalComercial {
+
+	static double DISTANCIA_LIBRERIA_ESCOLAR = 0.5
 
 	override ConsultaDisponibilidad() {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
@@ -10,8 +12,8 @@ class Banco extends GenericPoi {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 
-	override ConsultaCercania(Poi poi, Poi poi2) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	override boolean ConsultaCercania(Poi origen, Poi destino) {
+		origen.DistanciaAOtroPoiMenorA(destino, DISTANCIA_LIBRERIA_ESCOLAR)
 	}
 
 }

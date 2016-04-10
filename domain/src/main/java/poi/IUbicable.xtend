@@ -3,7 +3,7 @@ package poi
 interface IUbicable {
 
 	// TODO: definir parametros
-	def boolean ConsultaCercania()
+	def boolean ConsultaCercania(Poi origen, Poi destino)
 	
 	// TODO: definir parametros
 	def boolean ConsultaDisponibilidad()
