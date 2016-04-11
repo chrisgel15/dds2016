@@ -3,6 +3,7 @@ package poi
 import org.uqbar.geodds.Point
 import java.util.List
 import java.util.ArrayList
+import org.joda.time.DateTime
 
 abstract class Poi implements IUbicable {
 
@@ -10,6 +11,7 @@ abstract class Poi implements IUbicable {
 	String nombre
 	// Direccion direccion
 	List<String> etiquetas
+	Servicio servicio
 
 	// region Getters y Setters	
 	def getLocacionPropia() {
@@ -46,7 +48,7 @@ abstract class Poi implements IUbicable {
 	def EsValido() {
 		!(localizacionPropia == null && nombre.isNullOrEmpty())
 	}
-	
+
 	def BusquedaEtiqueta(String etiqueta) {
 		if (ContieneEtiqueta(etiqueta))
 			this
@@ -56,7 +58,7 @@ abstract class Poi implements IUbicable {
 
 	def private ContieneEtiqueta(String etiqueta) {
 		this.etiquetas.exists [ element |
-			this.ComparaStrings(element , etiqueta)
+			this.ComparaStrings(element, etiqueta)
 		]
 	}
 
@@ -68,21 +70,23 @@ abstract class Poi implements IUbicable {
 	}
 
 	def private ContieneNombre(String nombre) {
-		this.ComparaStrings(this.nombre , nombre)
+		this.ComparaStrings(this.nombre, nombre)
 	}
-	
-	def ComparaStrings(String string1, String string2)
-	{
-		string1.toLowerCase().contains(string2.toLowerCase()) ||
-			string2.toLowerCase().contains(string1.toLowerCase())
+
+	def ComparaStrings(String string1, String string2) {
+		string1.toLowerCase().contains(string2.toLowerCase()) || string2.toLowerCase().contains(string1.toLowerCase())
 	}
 
 	def Poi BusquedaPorEtiqueta(Poi poi, String etiqueta) {
 		poi.BusquedaEtiqueta(etiqueta)
 	}
-	
+
 	def Poi BusquedaPorNombre(Poi poi, String nombre) {
 		poi.BusquedaNombre(nombre)
+	}
+
+	def boolean servicioEstaDisponible(DateTime horario) {
+		this.servicio.estaDisponible(horario)
 	}
 // endregion Methods
 }

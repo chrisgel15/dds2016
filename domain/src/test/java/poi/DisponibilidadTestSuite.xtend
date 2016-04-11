@@ -1,0 +1,5 @@
+package poi
+
+class DisponibilidadTestSuite {
+	
+}

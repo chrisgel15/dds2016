@@ -4,18 +4,22 @@ import org.junit.Before
 import org.junit.Test
 import org.uqbar.geodds.Point
 import org.junit.Assert
+import org.joda.time.DateTime
 
 class BusquedaPorTextoLibreTestSuite {
 
 	Poi paradaColectivo
 	Poi libreriaEscolar
-
+	DateTime inicio
+	DateTime fin 
 	@Before
 	def void init() {
 		paradaColectivo = new ParadaColectivo(new Point(1, 1), "Parada del 114")		
 		paradaColectivo.etiqueta = "Bondi"
-
-		libreriaEscolar = new LibreriaEscolar(new Point(1, 1), "Cuspide", "rubro Libreria")		
+		libreriaEscolar = new LibreriaEscolar(new Point(1, 1), "Cuspide", "rubro Libreria")	
+		inicio = new DateTime (2010, 1, 1, 0, 0, 0, 0) 
+		fin= new DateTime (2010, 1, 1, 0, 0, 0, 0) 
+		
 	}
 
 	@Test

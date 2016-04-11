@@ -1,6 +1,7 @@
 package poi
 
 import org.uqbar.geodds.Point
+import org.joda.time.DateTime
 
 class ParadaColectivo extends Poi {
 
@@ -11,8 +12,8 @@ class ParadaColectivo extends Poi {
 		super(p, nom)
 	}
 
-	override ConsultaDisponibilidad() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	override boolean ConsultaDisponibilidad(Poi poi, DateTime horario) {
+		poi.servicioEstaDisponible(horario)
 	}
 
 	override ConsultaCercania(Poi destino) {

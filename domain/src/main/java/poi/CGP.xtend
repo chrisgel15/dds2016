@@ -1,19 +1,28 @@
 package poi
 
 import org.uqbar.geodds.Point
+import org.joda.time.DateTime
 
 class CGP extends Poi {
-
 	Comuna comuna
 
-	// Un CGP tiene una referencia a su comuna
+// Un CGP tiene una referencia a su comuna
 	new(Point p, String nombre, Comuna comuna) {
 		super(p, nombre)
 		this.comuna = comuna
 	}
 
-	override ConsultaDisponibilidad() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	override ConsultaDisponibilidad(Poi poi, DateTime horario) {
+		if (esFinDeSemana(horario)) {
+			return poi.servicioEstaDisponible(horario)
+		}
+		return false
+	}
+
+	def boolean esFinDeSemana(DateTime fecha) {
+		var int diaDeLaSemana
+		diaDeLaSemana = fecha.getDayOfWeek()
+		return (diaDeLaSemana != 6 && diaDeLaSemana != 7)
 	}
 
 	// TODO: Ver de mejorar esto

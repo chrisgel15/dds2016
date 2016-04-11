@@ -1,3 +1,4 @@
+
 //package poi
 //
 //abstract class GenericPoi implements IUbicable {
@@ -20,3 +21,23 @@
 //	}
 //	
 //}
+
+// Esto es lo de Juan
+
+//package poi
+//
+//import org.joda.time.DateTime
+//
+//abstract class GenericPoi implements IUbicable {
+//	
+//	override boolean ConsultaDisponibilidad(Poi poi, DateTime horario){
+//		poi.servicioEstaDisponible(horario)
+//	}
+//	
+//	def boolean esFinDeSemana(DateTime fecha){
+//		var int diaDeLaSemana
+//		diaDeLaSemana = fecha.getDayOfWeek()
+//		return (diaDeLaSemana != 6 && diaDeLaSemana !=7)
+//	}
+//}
+
