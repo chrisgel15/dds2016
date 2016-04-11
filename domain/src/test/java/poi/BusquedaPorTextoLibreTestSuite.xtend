@@ -11,15 +11,18 @@ class BusquedaPorTextoLibreTestSuite {
 	Poi paradaColectivo
 	Poi libreriaEscolar
 	DateTime inicio
-	DateTime fin 
+	DateTime fin
+	HorarioDeAtencion horario
+
 	@Before
 	def void init() {
-		paradaColectivo = new ParadaColectivo(new Point(1, 1), "Parada del 114")		
+		paradaColectivo = new ParadaColectivo(new Point(1, 1), "Parada del 114")
 		paradaColectivo.etiqueta = "Bondi"
-		libreriaEscolar = new LibreriaEscolar(new Point(1, 1), "Cuspide", "rubro Libreria")	
-		inicio = new DateTime (2010, 1, 1, 0, 0, 0, 0) 
-		fin= new DateTime (2010, 1, 1, 0, 0, 0, 0) 
-		
+		horario = new HorarioDeAtencion(1, 9, 18)
+		libreriaEscolar = new LibreriaEscolar(new Point(1, 1), "Cuspide", horario, "rubro Libreria")
+		inicio = new DateTime(2010, 1, 1, 0, 0, 0, 0)
+		fin = new DateTime(2010, 1, 1, 0, 0, 0, 0)
+
 	}
 
 	@Test

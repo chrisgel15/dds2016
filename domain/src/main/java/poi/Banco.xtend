@@ -2,35 +2,37 @@ package poi
 
 import org.uqbar.geodds.Point
 import org.joda.time.DateTime
+import java.util.List
+import java.util.ArrayList
 
 class Banco extends Poi {
+	List<Servicio> servicios
 
 	new(Point p, String nom) {
 		super(p, nom)
+		this.servicios = new ArrayList<Servicio>()
+	}
+	
+	def void AgregaServicio(Servicio s)
+	{
+		this.servicios.add(s)
 	}
 
-	override ConsultaDisponibilidad(Poi poi, DateTime horario) {
-		var int horaDelDia
-		if (esFinDeSemana(horario)) {
-			horaDelDia = horario.getHourOfDay()
-			return (horaDelDia > 10 || horaDelDia < 15)
-		}
-		return false
-
-	}
-
-	def boolean esFinDeSemana(DateTime fecha) {
-		var int diaDeLaSemana
-		diaDeLaSemana = fecha.getDayOfWeek()
-		return (diaDeLaSemana != 6 && diaDeLaSemana != 7)
-	}
+	override ConsultaDisponibilidad(DateTime horario) {
+		this.servicios.get(0).EstaDisponible(horario)
+	}	
 
 	override ConsultaCercania(Poi origen) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		super.ConsultaCercania(origen)
 	}
 
 	override BusquedaPorTexto(String texto) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		var Poi auxPoi = null
+		auxPoi = BusquedaEtiqueta(texto)
+		if (auxPoi == null)
+			auxPoi = BusquedaNombre(texto)
+
+		return auxPoi
 	}
 
 }

@@ -1,47 +1,44 @@
 package poi
 
+import java.util.ArrayList
 import org.joda.time.DateTime
-import org.joda.time.Interval
 import org.uqbar.geodds.Point
+import java.util.List
 
 abstract class LocalComercial extends Poi {
 
-	// TODO: Metodos y configuraciones comunes a los Locales Comerciales
-	DateTime inicio
-	DateTime fin
-	Interval intervalo
-
-	new(Point p, String nom, DateTime dispDesde, DateTime dispHasta) {
-		super(p, nom)
-		this.inicio = dispDesde
-		this.fin = dispHasta
-		intervalo = new Interval(inicio, fin);
-	}
-
-	override boolean ConsultaDisponibilidad(Poi poi, DateTime horario) {
-		intervalo.contains(horario)
-	}
-
+	protected List<HorarioDeAtencion> horarios
 	protected String rubro
 
-	new(Point p, String nom) {
+	new(Point p, String nom, HorarioDeAtencion horario, String rubro) {
 		super(p, nom)
+		this.rubro = rubro
+		horarios = new ArrayList<HorarioDeAtencion>()
+		horarios.add(horario)
+	}
+	
+	def void AgregarHorario(int dia, int horaInicio, int horaFin) {
+		horarios.add(new HorarioDeAtencion(dia, horaInicio, horaFin))
 	}
 
-	def Poi BusquedaPorRubro(Poi poi, String texto) {
-		if (poi.ComparaStrings(this.rubro, texto))
-			return poi
+	override boolean ConsultaDisponibilidad(DateTime horario) {
+		this.horarios.exists[ element | element.EstaDisponible(horario) ]
+	}
+
+	def Poi BusquedaRubro(String texto) {
+		if (StringHelper.ComparaStrings(this.rubro, texto))
+			return this
 		else
 			return null
 	}
 
 	override BusquedaPorTexto(String texto) {
 		var Poi auxPoi = null
-		auxPoi = this.BusquedaPorEtiqueta(this, texto)
+		auxPoi = BusquedaEtiqueta(texto)
 		if (auxPoi == null)
-			auxPoi = this.BusquedaPorNombre(this, texto)
+			auxPoi = BusquedaNombre(texto)
 		if (auxPoi == null)
-			auxPoi = this.BusquedaPorRubro(this, texto)
+			auxPoi = BusquedaRubro(texto)
 
 		return auxPoi
 	}

@@ -12,8 +12,9 @@ class ParadaColectivo extends Poi {
 		super(p, nom)
 	}
 
-	override boolean ConsultaDisponibilidad(Poi poi, DateTime horario) {
-		poi.servicioEstaDisponible(horario)
+// El servicio de colectivos siempre esta disponible
+	override boolean ConsultaDisponibilidad(DateTime horario) {
+		return true
 	}
 
 	override ConsultaCercania(Poi destino) {
@@ -22,9 +23,9 @@ class ParadaColectivo extends Poi {
 
 	override BusquedaPorTexto(String texto) {
 		var Poi auxPoi = null
-		auxPoi = this.BusquedaPorEtiqueta(this, texto)
+		auxPoi = BusquedaEtiqueta(texto)
 		if (auxPoi == null)
-			auxPoi = this.BusquedaPorNombre(this, texto)
+			auxPoi = BusquedaNombre(texto)
 
 		return auxPoi
 	}

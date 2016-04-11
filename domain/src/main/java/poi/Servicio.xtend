@@ -1,26 +1,26 @@
 package poi
 
+import java.util.ArrayList
+import java.util.List
 import org.joda.time.DateTime
-import org.joda.time.Interval
 
 class Servicio {
-	String nombre
-	DateTime inicio
-	DateTime fin
-	Interval intervalo
-	
-	new(String nom, DateTime dispDesde, DateTime dispHasta) {
+
+	public String nombre
+	List<HorarioDeAtencion> horarios
+
+	new(String nom, int dia, int horaInicio, int horaFin) {
 		this.nombre = nom
-		this.inicio = dispDesde
-		this.fin = dispHasta
-		intervalo = new Interval(inicio, fin);
+		horarios = new ArrayList<HorarioDeAtencion>()
+		this.AgregarHorario(dia, horaInicio, horaFin)
+	}
+
+	def void AgregarHorario(int dia, int horaInicio, int horaFin) {
+		horarios.add(new HorarioDeAtencion(dia, horaInicio, horaFin))
 	}
 	
-	new() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-	
-	def boolean estaDisponible (DateTime horario){
-		intervalo.contains(horario)
+	def boolean EstaDisponible(DateTime horario)
+	{
+		this.horarios.exists[ h | h.EstaDisponible(horario)]
 	}
 }

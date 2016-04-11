@@ -8,7 +8,7 @@ interface IUbicable {
 	def boolean ConsultaCercania(Poi origen)
 
 	// TODO: definir parametros
-	def boolean ConsultaDisponibilidad(Poi poi, DateTime horario)
+	def boolean ConsultaDisponibilidad(DateTime horario)
 
 	// TODO: definir parametros
 	def Poi BusquedaPorTexto(String texto)
