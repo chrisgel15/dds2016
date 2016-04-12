@@ -17,10 +17,21 @@ abstract class LocalComercial extends Poi {
 		horarios.add(horario)
 	}
 	
-	def void AgregarHorario(int dia, int horaInicio, int horaFin) {
+/* 	def void AgregarHorario(int dia, int horaInicio, int horaFin) {
 		horarios.add(new HorarioDeAtencion(dia, horaInicio, horaFin))
 	}
-
+*/
+	def void AgregarHorario(HorarioDeAtencion horario) {
+		horarios.add(horario)
+	}
+	
+	def void AgregarHorarios(int diaInicial, int diaFinal, int horaInicio, int horaFin){
+		var int i = diaInicial
+		while(i<=diaFinal){
+			horarios.add(new HorarioDeAtencion(i++,horaInicio,horaFin))
+		}
+		
+	}
 	override boolean ConsultaDisponibilidad(DateTime horario) {
 		this.horarios.exists[ element | element.EstaDisponible(horario) ]
 	}
