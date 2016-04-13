@@ -10,8 +10,8 @@ class KioscoDiarios extends LocalComercial {
 		super(p, nom, horario, rubro)
 	}
 
-	override boolean ConsultaCercania(Poi destino) {
-		this.DistanciaAOtroPoiMenorA(destino, DISTANCIA_KIOSCO_DIARIOS)
+	override boolean ConsultaCercania(PoiBase destino) {
+		this.DistanciaEsMenorA(destino, DISTANCIA_KIOSCO_DIARIOS)
 	}
 
 }

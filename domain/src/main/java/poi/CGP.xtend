@@ -67,7 +67,7 @@ class CGP extends Poi {
 // Region Consulta Disponibilidad
 
 	// Para saber si un CGP esta cerca, debe chequear que esté en la misma comuna que el origen.
-	override ConsultaCercania(Poi origenTouchMe) {
+	override ConsultaCercania(PoiBase origenTouchMe) {
 		this.comuna.AmbosPuntosPertenecen(origenTouchMe.locacionPropia, this.locacionPropia)
 	}
 

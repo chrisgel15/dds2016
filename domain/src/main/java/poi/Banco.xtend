@@ -22,8 +22,8 @@ class Banco extends Poi {
 		this.servicios.get(0).EstaDisponible(horario)
 	}	
 
-	override ConsultaCercania(Poi origen) {
-		super.ConsultaCercania(origen)
+	override ConsultaCercania(PoiBase touchMe) {
+		super.ConsultaCercania(touchMe)
 	}
 
 	override BusquedaPorTexto(String texto) {

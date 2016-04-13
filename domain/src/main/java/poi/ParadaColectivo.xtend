@@ -17,8 +17,8 @@ class ParadaColectivo extends Poi {
 		return true
 	}
 
-	override ConsultaCercania(Poi destino) {
-		this.DistanciaAOtroPoiMenorA(destino, DISTANCIA_PARADA_COLECTIVO)
+	override ConsultaCercania(PoiBase destino) {
+		this.DistanciaEsMenorA(destino, DISTANCIA_PARADA_COLECTIVO)
 	}
 
 	override BusquedaPorTexto(String texto) {

@@ -10,8 +10,8 @@ class LibreriaEscolar extends LocalComercial {
 		super(p, nom, horario, rubro)
 	}
 
-	override ConsultaCercania(Poi origen) {
-		this.DistanciaAOtroPoiMenorA(origen, DISTANCIA_LIBRERIA_ESCOLAR)
+	override ConsultaCercania(PoiBase touchMe) {
+		this.DistanciaEsMenorA(touchMe, DISTANCIA_LIBRERIA_ESCOLAR)
 	}
 
 }

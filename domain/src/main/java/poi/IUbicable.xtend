@@ -5,7 +5,7 @@ import org.joda.time.DateTime
 interface IUbicable {
 
 	// TODO: definir parametros
-	def boolean ConsultaCercania(Poi origen)
+	def boolean ConsultaCercania(PoiBase origen)
 
 	// TODO: definir parametros
 	def boolean ConsultaDisponibilidad(DateTime horario)
