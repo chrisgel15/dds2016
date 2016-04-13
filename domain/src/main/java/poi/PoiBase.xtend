@@ -2,7 +2,7 @@ package poi
 
 import org.uqbar.geodds.Point
 
-class PoiBase {
+abstract class PoiBase {
 	public Point localizacionPropia
 	public String nombre
 	
