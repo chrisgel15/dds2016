@@ -12,27 +12,21 @@ class Banco extends Poi {
 		super(p, nom)
 		this.servicios = new ArrayList<Servicio>()
 	}
-	
-	def void AgregaServicio(Servicio s)
-	{
+
+	def void AgregaServicio(Servicio s) {
 		this.servicios.add(s)
 	}
 
 	override ConsultaDisponibilidad(DateTime horario) {
 		this.servicios.get(0).EstaDisponible(horario)
-	}	
+	}
 
 	override ConsultaCercania(PoiBase touchMe) {
 		super.ConsultaCercania(touchMe)
 	}
 
 	override BusquedaPorTexto(String texto) {
-		var Poi auxPoi = null
-		auxPoi = BusquedaEtiqueta(texto)
-		if (auxPoi == null)
-			auxPoi = BusquedaNombre(texto)
-
-		return auxPoi
+		BusquedaEtiqueta(texto) || BusquedaNombre(texto)
 	}
 
 }

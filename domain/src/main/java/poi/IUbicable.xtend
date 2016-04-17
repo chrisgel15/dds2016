@@ -11,6 +11,6 @@ interface IUbicable {
 	def boolean ConsultaDisponibilidad(DateTime horario)
 
 	// TODO: definir parametros
-	def Poi BusquedaPorTexto(String texto)
+	def boolean BusquedaPorTexto(String texto)
 
 }

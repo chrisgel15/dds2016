@@ -17,37 +17,37 @@ class BusquedaPorTextoLibreTestSuite {
 	HorarioDeAtencion horario
 	Point punto1
 	Comuna comuna_almagro
-	
+
 	@Before
 	def void init() {
 		paradaColectivo = new ParadaColectivo(new Point(1, 1), "Parada del 114")
 		paradaColectivo.etiqueta = "Bondi"
 		horario = new HorarioDeAtencion(1, 9, 18)
 		libreriaEscolar = new LibreriaEscolar(new Point(1, 1), "Cuspide", horario, "rubro Libreria")
-		libreriaEscolar.etiqueta = "Libro" 
+		libreriaEscolar.etiqueta = "Libro"
 		inicio = new DateTime(2010, 1, 1, 0, 0, 0, 0)
 		fin = new DateTime(2010, 1, 1, 0, 0, 0, 0)
-		punto1 = new Point(1,2)
-		comuna_almagro = new Comuna("comuna_almagro",punto1,punto1,punto1)
-		CGP = new CGP(punto1,"almagro",comuna_almagro)
+		punto1 = new Point(1, 2)
+		comuna_almagro = new Comuna("comuna_almagro", punto1, punto1, punto1)
+		CGP = new CGP(punto1, "almagro", comuna_almagro)
 		CGP.etiqueta = "Gestion"
-		banco_nacion = new Banco(punto1,"banco_nacion")
-		banco_nacion.etiqueta = "Banco" 
+		banco_nacion = new Banco(punto1, "banco_nacion")
+		banco_nacion.etiqueta = "Banco"
 	}
 
 	@Test
 	def void testEncuentraParadaPorTexto() {
 		var textoLibre = "bondi"
 
-		Assert.assertTrue(paradaColectivo.BusquedaPorTexto(textoLibre) == paradaColectivo)
+		Assert.assertTrue(paradaColectivo.BusquedaPorTexto(textoLibre))
 
 		textoLibre = "114"
 
-		Assert.assertTrue(paradaColectivo.BusquedaPorTexto(textoLibre) == paradaColectivo)
+		Assert.assertTrue(paradaColectivo.BusquedaPorTexto(textoLibre))
 
 		textoLibre = "blabla"
 
-		Assert.assertFalse(paradaColectivo.BusquedaPorTexto(textoLibre) == paradaColectivo)
+		Assert.assertFalse(paradaColectivo.BusquedaPorTexto(textoLibre))
 
 	}
 
@@ -55,42 +55,42 @@ class BusquedaPorTextoLibreTestSuite {
 	def void testEncuentraLocalPorRubro() {
 		var textoLibre = "busco por rubro libreria"
 
-		Assert.assertTrue(libreriaEscolar.BusquedaPorTexto(textoLibre) == libreriaEscolar)
+		Assert.assertTrue(libreriaEscolar.BusquedaPorTexto(textoLibre))
 
 		textoLibre = "busco por otra cosa"
 
-		Assert.assertFalse(libreriaEscolar.BusquedaPorTexto(textoLibre) == libreriaEscolar)
+		Assert.assertFalse(libreriaEscolar.BusquedaPorTexto(textoLibre))
 	}
-	
+
 	@Test
-	def void testEncuentraCGPPorTexto(){
+	def void testEncuentraCGPPorTexto() {
 		var textoLibre = "comuna_almagro"
-		
-		Assert.assertTrue(CGP.BusquedaPorTexto(textoLibre) == CGP)
-		
+
+		Assert.assertTrue(CGP.BusquedaPorTexto(textoLibre))
+
 		textoLibre = "comuna_caballito"
-		
-		Assert.assertFalse(CGP.BusquedaPorTexto(textoLibre) == CGP)
+
+		Assert.assertFalse(CGP.BusquedaPorTexto(textoLibre))
 	}
-	
+
 	@Test
-	def void testEncuentraBancoPorTexto(){
+	def void testEncuentraBancoPorTexto() {
 		var textoLibre = "banco_nacion"
-		
-		Assert.assertTrue(banco_nacion.BusquedaPorTexto(textoLibre) == banco_nacion)
-		
+
+		Assert.assertTrue(banco_nacion.BusquedaPorTexto(textoLibre))
+
 		textoLibre = "provincia"
-		
-		Assert.assertFalse(banco_nacion.BusquedaPorTexto(textoLibre) == banco_nacion)
+
+		Assert.assertFalse(banco_nacion.BusquedaPorTexto(textoLibre))
 	}
-	
+
 	@Test
-	def void testEncuentraPorclave(){
+	def void testEncuentraPorclave() {
 		var clave = "Bondi"
-		
-		Assert.assertTrue(paradaColectivo.BusquedaEtiqueta(clave) == paradaColectivo)
-		Assert.assertFalse(libreriaEscolar.BusquedaEtiqueta(clave) == libreriaEscolar)
-		Assert.assertFalse(CGP.BusquedaEtiqueta(clave) == CGP)
-		Assert.assertFalse(banco_nacion.BusquedaEtiqueta(clave) == banco_nacion)
+
+		Assert.assertTrue(paradaColectivo.BusquedaEtiqueta(clave))
+		Assert.assertFalse(libreriaEscolar.BusquedaEtiqueta(clave))
+		Assert.assertFalse(CGP.BusquedaEtiqueta(clave))
+		Assert.assertFalse(banco_nacion.BusquedaEtiqueta(clave))
 	}
 }

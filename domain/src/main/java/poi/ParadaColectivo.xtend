@@ -22,12 +22,7 @@ class ParadaColectivo extends Poi {
 	}
 
 	override BusquedaPorTexto(String texto) {
-		var Poi auxPoi = null
-		auxPoi = BusquedaEtiqueta(texto)
-		if (auxPoi == null)
-			auxPoi = BusquedaNombre(texto)
-
-		return auxPoi
+		BusquedaEtiqueta(texto) || BusquedaNombre(texto)
 	}
 	
 	
