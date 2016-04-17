@@ -7,7 +7,16 @@ import org.junit.Test
 import org.uqbar.geodds.Point
 
 class DisponibilidadTestSuite {
-
+	
+	//Dias de la semana
+	int lunes = 1
+	int martes = 2
+	int miercoles = 3
+	int jueves = 4
+	int viernes = 5 
+	int sabado = 6
+	int domingo = 7
+	
 	Point p1
 	Point p2
 	Point p3
@@ -60,23 +69,23 @@ class DisponibilidadTestSuite {
 		
 		cgp1 = new CGP(new Point(0, 0), "CGP 1", new Comuna("Comuna 1", p1, p2, p3))
 
-		lunesMañana = new HorarioDeAtencion(1, 10, 13)
+		lunesMañana = new HorarioDeAtencion(lunes, 10, 13)
 		
-		servicioSocial = new Servicio("Servicio Social",1, 9, 18)
+		servicioSocial = new Servicio("Servicio Social",lunes, 9, 18)
 		
-		servicioDeColectivos = new Servicio("Colectivos", 1, 0, 24)
-		servicioDeColectivos.AgregarHorario(2, 0, 24)
-		servicioDeColectivos.AgregarHorario(3, 0, 24)
-		servicioDeColectivos.AgregarHorario(4, 0, 24)
-		servicioDeColectivos.AgregarHorario(5, 0, 24)
-		servicioDeColectivos.AgregarHorario(6, 0, 24)
-		servicioDeColectivos.AgregarHorario(7, 0, 24)
+		servicioDeColectivos = new Servicio("Colectivos", lunes, 0, 24)
+		servicioDeColectivos.AgregarHorario(martes, 0, 24)
+		servicioDeColectivos.AgregarHorario(miercoles, 0, 24)
+		servicioDeColectivos.AgregarHorario(jueves, 0, 24)
+		servicioDeColectivos.AgregarHorario(viernes, 0, 24)
+		servicioDeColectivos.AgregarHorario(sabado, 0, 24)
+		servicioDeColectivos.AgregarHorario(domingo, 0, 24)
 		
-		servicioBancario = new Servicio("Bancario", 1, 10, 15)
-		servicioBancario.AgregarHorario(2,10, 15)
-		servicioBancario.AgregarHorario(3,10, 15)
-		servicioBancario.AgregarHorario(4,10, 15)
-		servicioBancario.AgregarHorario(5,10, 15)
+		servicioBancario = new Servicio("Bancario", lunes, 10, 15)
+		servicioBancario.AgregarHorario(martes,10, 15)
+		servicioBancario.AgregarHorario(miercoles,10, 15)
+		servicioBancario.AgregarHorario(jueves,10, 15)
+		servicioBancario.AgregarHorario(sabado,10, 15)
 		
 		cgp1.AgregaServicio(servicioSocial)
 		
@@ -86,11 +95,11 @@ class DisponibilidadTestSuite {
 		galicia.AgregaServicio(servicioBancario)
 		
 		libreria = new LibreriaEscolar(p6,"LibreriaEscolar",lunesMañana,"Comercial")
-		libreria.AgregarHorarios(2,6,10,13) //De Martes a Sábado de 10hs a 13hs
-		libreria.AgregarHorarios(1,6,17,20) //De Lunes a Sábado de 15hs a 20hs
+		libreria.AgregarHorarios(martes,sabado,10,13) //De Martes a Sábado de 10hs a 13hs
+		libreria.AgregarHorarios(lunes,sabado,17,20) //De Lunes a Sábado de 15hs a 20hs
 		kioscoDeLaEsquina = new KioscoDiarios(p7, "Kiosco de la esquina", lunesMañana,"Comercial") 
-		kioscoDeLaEsquina.AgregarHorarios(2,7,10,13) //De Martes a Domingo de 10hs a 13hs
-		kioscoDeLaEsquina.AgregarHorarios(1,7,17,20)//De Lunes a Domingo de 15hs a 20hs
+		kioscoDeLaEsquina.AgregarHorarios(martes,domingo,10,13) //De Martes a Domingo de 10hs a 13hs
+		kioscoDeLaEsquina.AgregarHorarios(lunes,domingo,17,20)//De Lunes a Domingo de 15hs a 20hs
 		parada114 = new ParadaColectivo(p8, "Parada Colectivo 114")
 	}
 
