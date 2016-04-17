@@ -1,7 +1,6 @@
 package poi
 
 import org.uqbar.geodds.Point
-import org.joda.time.DateTime
 
 class ParadaColectivo extends Poi {
 
@@ -13,7 +12,7 @@ class ParadaColectivo extends Poi {
 	}
 
 // El servicio de colectivos siempre esta disponible
-	override boolean ConsultaDisponibilidad(DateTime horario) {
+	override boolean ConsultaDisponibilidad(ServicioYHorario servicioYHorario) {
 		return true
 	}
 

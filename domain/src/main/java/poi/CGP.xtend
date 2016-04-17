@@ -23,8 +23,8 @@ class CGP extends Poi {
 
 //Ingreso un horario sin un valor X, entonces considero que al menos un servicio esta disponible,
 // y por ende retorno True, que el CGP esta disponible.	
-	override ConsultaDisponibilidad(DateTime horario) {
-		return true
+	override ConsultaDisponibilidad(ServicioYHorario servicioYHorario) {
+		return ConsultaDisponibilidadServicio(servicioYHorario.getServicio(),servicioYHorario.getHorario())
 	}
 	
 /// Region Consulta de Disponibilidad

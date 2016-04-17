@@ -29,6 +29,22 @@ class DisponibilidadTestSuite {
 	KioscoDiarios kioscoDeLaEsquina
 	ParadaColectivo parada114
 	
+	ServicioYHorario consultaHorarioServicioSocial = new ServicioYHorario("Servicio Social", new DateTime(2016,4,11,10,30)) 	
+	ServicioYHorario consultaHorarioServicio1 = new ServicioYHorario("Servicio 1", new DateTime(2016,4,12,10,30))
+	ServicioYHorario consultaHorarioServicio2 = new ServicioYHorario("Servicio 2", new DateTime(2016,4,11,10,30))
+	
+	ServicioYHorario consultaHorarioServicioBancarioLunes11hs = new ServicioYHorario ("Bancario",new DateTime(2016,4,11,11,00)) //Lunes a las 11hs
+	ServicioYHorario consultaHorarioServicioBancarioLunes9hs = new ServicioYHorario ("Bancario",new DateTime(2016,4,11,9,00))
+	ServicioYHorario consultaHorarioServicioBancarioLunes18hs = new ServicioYHorario ("Bancario",new DateTime(2016,4,11,18,00))
+	ServicioYHorario consultaHorarioServicioBancarioDomingo11hs = new ServicioYHorario ("Bancario",new DateTime(2016,4,17,11,00))
+	ServicioYHorario consultaHorarioServicioColectivosMiercoles13hs = new ServicioYHorario ("Colectivo",new DateTime(2016,4,13,13,00))
+	ServicioYHorario consultaHorarioServicioColectivosDomingo2355hs = new ServicioYHorario ("Colectivo",new DateTime(2016,4,17,23,55))
+	
+	ServicioYHorario consultaHorarioServicioComercialMiercoles14hs = new ServicioYHorario ("Comercial",new DateTime(2016,4,13,14,00))	
+	ServicioYHorario consultaHorarioServicioComercialMiercoles22hs = new ServicioYHorario ("Comercial",new DateTime(2016,4,13,22,00))
+	ServicioYHorario consultaHorarioServicioComercialDomingo14hs = new ServicioYHorario ("Comercial",new DateTime(2016,4,17,14,00))
+	ServicioYHorario consultaHorarioServicioComercialMiercoles1245hs = new ServicioYHorario ("Comercial",new DateTime(2016,4,13,12,35))
+	ServicioYHorario consultaHorarioServicioComercialJeves1835hs = new ServicioYHorario ("Comercial", new DateTime(2016,4,14,18,35))
 	
 	@Before
 	def void init() {
@@ -46,7 +62,7 @@ class DisponibilidadTestSuite {
 
 		lunesMañana = new HorarioDeAtencion(1, 10, 13)
 		
-		servicioSocial = new Servicio("Servicio Social", 1, 9, 18)
+		servicioSocial = new Servicio("Servicio Social",1, 9, 18)
 		
 		servicioDeColectivos = new Servicio("Colectivos", 1, 0, 24)
 		servicioDeColectivos.AgregarHorario(2, 0, 24)
@@ -80,46 +96,47 @@ class DisponibilidadTestSuite {
 
 	@Test
 	def void testDisponibilidadServicioCGP() {
-		Assert.assertTrue(this.cgp1.ConsultaDisponibilidadServicio("Servicio Social", new DateTime(2016,4,11,10,30)))
-		Assert.assertFalse(this.cgp1.ConsultaDisponibilidadServicio("Servicio 1", new DateTime(2016,4,12,10,30)))
-		Assert.assertFalse(this.cgp1.ConsultaDisponibilidadServicio("Servicio 2", new DateTime(2016,4,11,10,30)))
+		Assert.assertTrue(this.cgp1.ConsultaDisponibilidad(consultaHorarioServicioSocial))
+		Assert.assertFalse(this.cgp1.ConsultaDisponibilidad(consultaHorarioServicio1))
+		Assert.assertFalse(this.cgp1.ConsultaDisponibilidad(consultaHorarioServicio2))
 	}
 	
 	@Test
 	def void testDisponibilidadBanco(){
 		//Disponibilidad del banco el lunes a las 11hs.
-		Assert.assertTrue(this.santanderRio.ConsultaDisponibilidad(new DateTime(2016,4,11,11,00)))
+		Assert.assertTrue(this.santanderRio.ConsultaDisponibilidad(consultaHorarioServicioBancarioLunes11hs))
 		//Disponibilidad del banco el lunes a las 9hs.
-		Assert.assertFalse(this.santanderRio.ConsultaDisponibilidad(new DateTime(2016,4,11,9,00)))
+		Assert.assertFalse(this.santanderRio.ConsultaDisponibilidad(consultaHorarioServicioBancarioLunes9hs))
 		//Disponibilidad del banco el lunes a las 18hs.
-		Assert.assertFalse(this.santanderRio.ConsultaDisponibilidad(new DateTime(2016,4,11,18,00)))
+		Assert.assertFalse(this.santanderRio.ConsultaDisponibilidad(consultaHorarioServicioBancarioLunes18hs))
 		//Disponibilidad del banco el domingo a las 11hs 
-		Assert.assertFalse(this.santanderRio.ConsultaDisponibilidad(new DateTime(2016,4,17,11,00)))
+		Assert.assertFalse(this.santanderRio.ConsultaDisponibilidad(consultaHorarioServicioBancarioDomingo11hs))
 	}
 	
 	@Test
 	def void testDisponibilidadParadaDeColectivo(){
 		//Disponibilidad el miercoles a las 13hs
-		Assert.assertTrue(this.parada114.ConsultaDisponibilidad(new DateTime(2016,4,13,13,00)))
-		//Disponibilidad el domingo a las 24:55hs
-		Assert.assertTrue(this.parada114.ConsultaDisponibilidad(new DateTime(2016,4,17,23,55)))
+		Assert.assertTrue(this.parada114.ConsultaDisponibilidad(consultaHorarioServicioColectivosMiercoles13hs))
+		//Disponibilidad el domingo a las 23:55hs
+		Assert.assertTrue(this.parada114.ConsultaDisponibilidad(consultaHorarioServicioColectivosDomingo2355hs))
 	}
 	@Test
 	def void testDisponibilidadLocalesComerciales(){
 		//Disponibilidad el miercoles a las 14hs
-		Assert.assertFalse(this.libreria.ConsultaDisponibilidad(new DateTime(2016,4,13,14,00)))
+		Assert.assertFalse(this.libreria.ConsultaDisponibilidad(consultaHorarioServicioComercialMiercoles14hs))
 		//Disponibilidad el miercoles a las 22hs
-		Assert.assertFalse(this.libreria.ConsultaDisponibilidad(new DateTime(2016,4,13,22,00)))
+		Assert.assertFalse(this.libreria.ConsultaDisponibilidad(consultaHorarioServicioComercialMiercoles22hs))
 		//Disponibilidad el domingo a las 14hs
-		Assert.assertFalse(this.libreria.ConsultaDisponibilidad(new DateTime(2016,4,17,14,00)))
+		Assert.assertFalse(this.libreria.ConsultaDisponibilidad(consultaHorarioServicioComercialDomingo14hs))
 		//Disponibilidad el miercoles a las 12:35hs
-		Assert.assertTrue(this.libreria.ConsultaDisponibilidad(new DateTime(2016,4,13,12,35)))
+		Assert.assertTrue(this.libreria.ConsultaDisponibilidad(consultaHorarioServicioComercialMiercoles1245hs))
 		//Disponibilidad el jueves a las 18:35hs
-		Assert.assertTrue(this.libreria.ConsultaDisponibilidad(new DateTime(2016,4,14,18,35)))
+		Assert.assertTrue(this.libreria.ConsultaDisponibilidad(consultaHorarioServicioComercialJeves1835hs))
 		//Disponibilidad el domingo a las 14hs
-		Assert.assertFalse(this.kioscoDeLaEsquina.ConsultaDisponibilidad(new DateTime(2016,4,17,14,00)))
-		//Disponibilidad el domingo a las 11:15hs
-		Assert.assertTrue(this.kioscoDeLaEsquina.ConsultaDisponibilidad(new DateTime(2016,4,17,11,15)))
+		Assert.assertFalse(this.kioscoDeLaEsquina.ConsultaDisponibilidad(consultaHorarioServicioComercialDomingo14hs))
+		//Disponibilidad el miercoles a las 12:45hs
+		Assert.assertTrue(this.kioscoDeLaEsquina.ConsultaDisponibilidad(consultaHorarioServicioComercialMiercoles1245hs))
 	}
+	
 	
 }
