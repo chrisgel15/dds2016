@@ -1,9 +1,8 @@
 package poi
 
-import org.uqbar.geodds.Point
-import org.joda.time.DateTime
-import java.util.List
 import java.util.ArrayList
+import java.util.List
+import org.uqbar.geodds.Point
 
 class Banco extends Poi {
 	List<Servicio> servicios
@@ -17,8 +16,8 @@ class Banco extends Poi {
 		this.servicios.add(s)
 	}
 
-	override ConsultaDisponibilidad(DateTime horario) {
-		this.servicios.get(0).EstaDisponible(horario)
+	override ConsultaDisponibilidad(ServicioYHorario servicioYHorario) {
+		this.servicios.get(0).EstaDisponible(servicioYHorario.getHorario())
 	}
 
 	override ConsultaCercania(PoiBase touchMe) {

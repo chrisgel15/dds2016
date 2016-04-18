@@ -1,9 +1,8 @@
 package poi
 
 import java.util.ArrayList
-import org.joda.time.DateTime
-import org.uqbar.geodds.Point
 import java.util.List
+import org.uqbar.geodds.Point
 
 abstract class LocalComercial extends Poi {
 
@@ -28,8 +27,8 @@ abstract class LocalComercial extends Poi {
 		}
 		
 	}
-	override boolean ConsultaDisponibilidad(DateTime horario) {
-		this.horarios.exists[ element | element.EstaDisponible(horario) ]
+	override boolean ConsultaDisponibilidad(ServicioYHorario servicioYHorario) {
+		this.horarios.exists[ element | element.EstaDisponible(servicioYHorario.getHorario()) ]
 	}
 
 	def boolean BusquedaRubro(String texto) {

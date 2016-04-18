@@ -23,8 +23,8 @@ class CGP extends Poi {
 
 //Ingreso un horario sin un valor X, entonces considero que al menos un servicio esta disponible,
 // y por ende retorno True, que el CGP esta disponible.	
-	override ConsultaDisponibilidad(DateTime horario) {
-		return true
+	override ConsultaDisponibilidad(ServicioYHorario servicioYHorario) {
+		return ConsultaDisponibilidadServicio(servicioYHorario.getServicio(),servicioYHorario.getHorario())
 	}
 	
 /// Region Consulta de Disponibilidad
@@ -55,13 +55,17 @@ class CGP extends Poi {
 // EndRegion Busqueda por Texto
 
 
-// Region Consulta Disponibilidad
+// Region Consulta Cercania
 
-	// Para saber si un CGP esta cerca, debe chequear que esté en la misma comuna que el origen.
+	/*  Para saber si un CGP esta cerca, debe chequear que esté en la misma comuna que el origen(Dispositivo Touch.Me).
+		Asumimos que el punto de interés CGP -SIEMPRE- está dentro de la comuna correspondiente
+		Sólo interesa saber si el dispositivo TouchMe tambíen está dentro de los límites de la comuna.
+	*/
+	
 	override ConsultaCercania(PoiBase origenTouchMe) {
-		this.comuna.AmbosPuntosPertenecen(origenTouchMe.locacionPropia, this.locacionPropia)
+		this.comuna.PertenecePoint(origenTouchMe.locacionPropia)
 	}
 
-// EndRegion Consulta Disponibilidad
+// EndRegion Consulta Cercania
 
 }
