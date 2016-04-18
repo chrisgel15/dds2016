@@ -62,7 +62,7 @@ class CGP extends Poi {
 		Sólo interesa saber si el dispositivo TouchMe tambíen está dentro de los límites de la comuna.
 	*/
 	
-	override ConsultaCercania(PoiBase origenTouchMe) {
+	override ConsultaCercania(PuntoBase origenTouchMe) {
 		this.comuna.PertenecePoint(origenTouchMe.locacionPropia)
 	}
 

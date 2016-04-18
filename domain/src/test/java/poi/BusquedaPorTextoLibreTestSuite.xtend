@@ -43,15 +43,21 @@ class BusquedaPorTextoLibreTestSuite {
 
 		textoLibre = "114"
 
+<<<<<<< HEAD
 
 		
 
+=======
+>>>>>>> 7c550f447ab8b9d14b1b92739ffbe94fafbed151
 		Assert.assertTrue(paradaColectivo.BusquedaPorTexto(textoLibre))
 
 		textoLibre = "blabla"
 
 		Assert.assertFalse(paradaColectivo.BusquedaPorTexto(textoLibre))
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7c550f447ab8b9d14b1b92739ffbe94fafbed151
 
 	}
 

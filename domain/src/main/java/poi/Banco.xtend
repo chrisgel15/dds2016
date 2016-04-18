@@ -20,7 +20,7 @@ class Banco extends Poi {
 		this.servicios.get(0).EstaDisponible(servicioYHorario.getHorario())
 	}
 
-	override ConsultaCercania(PoiBase touchMe) {
+	override ConsultaCercania(PuntoBase touchMe) {
 		super.ConsultaCercania(touchMe)
 	}
 
