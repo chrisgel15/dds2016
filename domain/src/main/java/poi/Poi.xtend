@@ -3,7 +3,6 @@ package poi
 import java.util.ArrayList
 import java.util.List
 import org.uqbar.geodds.Point
-import org.joda.time.DateTime
 
 abstract class Poi extends PoiBase {
 
@@ -58,7 +57,7 @@ abstract class Poi extends PoiBase {
 		StringHelper.ComparaStrings(this.nombre, nombre)
 	}
 	
-	def boolean ConsultaDisponibilidad(DateTime horario) {
+	def boolean ConsultaDisponibilidad(ServicioYHorario servicioYHorario) {
 		throw new UnsupportedOperationException("No implementado en la clase base. Debe redefinirse")
 	}
 	
