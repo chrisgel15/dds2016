@@ -24,15 +24,15 @@ abstract class Poi extends PuntoBase {
 		this.etiquetas = new ArrayList()
 	}
 
-	def ConsultaCercania(PoiBase destino) {
+	def ConsultaCercania(PuntoBase destino) {
 		this.DistanciaEsMenorA(destino, DISTANCIA_MINIMA_GENERAL)
 	}
 
-	def DistanciaEsMenorA(PoiBase destino, double distancia) {
+	def DistanciaEsMenorA(PuntoBase destino, double distancia) {
 		DistanciaEntrePuntos(destino) < distancia
 	}
 
-	def private DistanciaEntrePuntos(PoiBase destino) {
+	def private DistanciaEntrePuntos(PuntoBase destino) {
 		Haversine.distance(this.localizacionPropia.latitude, this.localizacionPropia.longitude,
 			destino.localizacionPropia.latitude, destino.localizacionPropia.longitude)
 	}
