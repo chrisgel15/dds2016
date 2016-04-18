@@ -39,11 +39,8 @@ class LocalComercial extends Poi {
 		BusquedaEtiqueta(texto) || BusquedaNombre(texto) || BusquedaRubro(texto)
 	}
 	
-<<<<<<< HEAD
-	override boolean ConsultaCercania(PoiBase destino) {
-=======
+
 	override boolean ConsultaCercania(PuntoBase destino) {
->>>>>>> 7c550f447ab8b9d14b1b92739ffbe94fafbed151
 		this.DistanciaEsMenorA(destino, this.rubro.radioCercania)
 	}
 
