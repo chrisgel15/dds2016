@@ -23,7 +23,7 @@ class BusquedaPorTextoLibreTestSuite {
 		paradaColectivo = new ParadaColectivo(new Point(1, 1), "Parada del 114")
 		paradaColectivo.etiqueta = "Bondi"
 		horario = new HorarioDeAtencion(1, 9, 18)
-		libreriaEscolar = new LibreriaEscolar(new Point(1, 1), "Cuspide", horario, "rubro Libreria")
+		libreriaEscolar = new LocalComercial(new Point(1, 1), "Cuspide", horario, new LibreriaEscolar("libreria"))
 		libreriaEscolar.etiqueta = "Libro"
 		inicio = new DateTime(2010, 1, 1, 0, 0, 0, 0)
 		fin = new DateTime(2010, 1, 1, 0, 0, 0, 0)
