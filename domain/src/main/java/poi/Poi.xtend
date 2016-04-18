@@ -4,7 +4,7 @@ import java.util.ArrayList
 import java.util.List
 import org.uqbar.geodds.Point
 
-abstract class Poi extends PoiBase {
+abstract class Poi extends PuntoBase {
 
 	// Referencia 5 cuadras (0.5 kilometros)
 	static double DISTANCIA_MINIMA_GENERAL = 0.5
