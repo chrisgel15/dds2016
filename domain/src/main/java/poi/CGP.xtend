@@ -45,20 +45,11 @@ class CGP extends Poi {
 // Region Busqueda por Texto
 
 	override BusquedaPorTexto(String texto) {
-		var Poi auxPoi = null
-		auxPoi = BusquedaEtiqueta(texto)
-		if (auxPoi == null)
-			auxPoi = BusquedaNombre(texto)
-		if (auxPoi == null)
-			auxPoi = BusquedaServicio(texto)
-
-		return auxPoi
+		BusquedaEtiqueta(texto) || BusquedaNombre(texto) || BusquedaServicio(texto)
 	}
 	
-	def Poi BusquedaServicio(String texto)
-	{
-		if (this.servicios.findFirst[s | s.nombre == texto] != null)
-			this
+	def boolean BusquedaServicio(String texto) {
+		this.servicios.exists[s|s.nombre == texto]
 	}
 
 // EndRegion Busqueda por Texto

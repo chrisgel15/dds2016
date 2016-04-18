@@ -4,7 +4,7 @@ import java.util.ArrayList
 import java.util.List
 import org.uqbar.geodds.Point
 
-abstract class Poi extends PoiBase implements IUbicable {
+abstract class Poi extends PuntoBase {
 
 	// Referencia 5 cuadras (0.5 kilometros)
 	static double DISTANCIA_MINIMA_GENERAL = 0.5
@@ -24,7 +24,7 @@ abstract class Poi extends PoiBase implements IUbicable {
 		this.etiquetas = new ArrayList()
 	}
 
-	override ConsultaCercania(PoiBase destino) {
+	def ConsultaCercania(PoiBase destino) {
 		this.DistanciaEsMenorA(destino, DISTANCIA_MINIMA_GENERAL)
 	}
 
@@ -42,25 +42,27 @@ abstract class Poi extends PoiBase implements IUbicable {
 	}
 
 	def BusquedaEtiqueta(String etiqueta) {
-		if (ContieneEtiqueta(etiqueta))
-			this
-		else
-			null
+		ContieneEtiqueta(etiqueta)
 	}
 
 	def private ContieneEtiqueta(String etiqueta) {
 		this.etiquetas.exists[element|StringHelper.ComparaStrings(element, etiqueta)]
 	}
 
-	def BusquedaNombre(String nombre) {
-		if (ContieneNombre(nombre))
-			this
-		else
-			null
+	def boolean BusquedaNombre(String nombre) {
+		ContieneNombre(nombre)
 	}
 
 	def ContieneNombre(String nombre) {
 		StringHelper.ComparaStrings(this.nombre, nombre)
+	}
+	
+	def boolean ConsultaDisponibilidad(ServicioYHorario servicioYHorario) {
+		throw new UnsupportedOperationException("No implementado en la clase base. Debe redefinirse")
+	}
+	
+	def boolean BusquedaPorTexto(String texto) {
+		throw new UnsupportedOperationException("No implementado en la clase base. Debe redefinirse")
 	}
 
 }

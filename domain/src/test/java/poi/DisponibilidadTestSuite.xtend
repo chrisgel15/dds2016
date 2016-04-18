@@ -34,9 +34,12 @@ class DisponibilidadTestSuite {
 	Servicio servicioDeColectivos
 	Banco	santanderRio
 	Banco galicia
-	LibreriaEscolar libreria
-	KioscoDiarios kioscoDeLaEsquina
+	LocalComercial libreria
+	IRubro rubroLibreria
+	LocalComercial kioscoDeLaEsquina
+	IRubro rubroKiosco
 	ParadaColectivo parada114
+	
 	
 	ServicioYHorario consultaHorarioServicioSocial = new ServicioYHorario("Servicio Social", new DateTime(2016,4,11,10,30)) 	
 	ServicioYHorario consultaHorarioServicio1 = new ServicioYHorario("Servicio 1", new DateTime(2016,4,12,10,30))
@@ -94,10 +97,13 @@ class DisponibilidadTestSuite {
 		galicia = new Banco(p5, "Banco Galicia")
 		galicia.AgregaServicio(servicioBancario)
 		
-		libreria = new LibreriaEscolar(p6,"LibreriaEscolar",lunesMañana,"Comercial")
+		rubroLibreria = new LibreriaEscolar("Libreria")
+		libreria = new LocalComercial(p6,"LibreriaEscolar",lunesMañana,rubroLibreria)
 		libreria.AgregarHorarios(martes,sabado,10,13) //De Martes a Sábado de 10hs a 13hs
 		libreria.AgregarHorarios(lunes,sabado,17,20) //De Lunes a Sábado de 15hs a 20hs
-		kioscoDeLaEsquina = new KioscoDiarios(p7, "Kiosco de la esquina", lunesMañana,"Comercial") 
+		
+		rubroKiosco = new KioscoDiarios("Kiosco")
+		kioscoDeLaEsquina = new LocalComercial(p7, "Kiosco de la esquina", lunesMañana,rubroKiosco) 
 		kioscoDeLaEsquina.AgregarHorarios(martes,domingo,10,13) //De Martes a Domingo de 10hs a 13hs
 		kioscoDeLaEsquina.AgregarHorarios(lunes,domingo,17,20)//De Lunes a Domingo de 15hs a 20hs
 		parada114 = new ParadaColectivo(p8, "Parada Colectivo 114")
