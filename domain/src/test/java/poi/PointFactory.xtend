@@ -20,6 +20,8 @@ class PointFactory {
 	Point puntoOtraParada28
 	Point puntoParada114
 	Point puntoOtraParada114
+	Point puntoBancoSantander
+	Point puntoBancoGalicia	
 	
 	def cargaDeCoordenada(){
 		puntoVertice1 = new Point(-34.534645, -58.465027) // Av. Lugones y Gral.Paz
@@ -38,6 +40,8 @@ class PointFactory {
 		puntoOtraParada28 = new Point(-34.634487, -58.529944)
 		puntoParada114 = new Point(-34.581020, -58.493649)
 		puntoOtraParada114 = new Point(-34.558240, -58.459838)
+		puntoBancoSantander = new Point (-34.558300, -58.459800)
+		puntoBancoGalicia = new Point (-34.558320, -58.459811)
 	}
 	
 	def puntoTouch(){
@@ -96,5 +100,13 @@ class PointFactory {
 	
 	def puntoOtraParada114(){
 		puntoOtraParada114
+	}
+	
+	def puntoBancoSantander(){
+		puntoBancoSantander
+	}
+	
+	def puntoBancoGalicia(){
+		puntoBancoGalicia
 	}
 }

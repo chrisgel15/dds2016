@@ -1,14 +1,12 @@
 package poi
 
-import org.joda.time.DateTime
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
-import org.uqbar.geodds.Point
 
 class DisponibilidadTestSuite {
 	
-	//Dias de la semana
+/*	//Dias de la semana
 	int lunes = 1
 	int martes = 2
 	int miercoles = 3
@@ -57,10 +55,15 @@ class DisponibilidadTestSuite {
 	ServicioYHorario consultaHorarioServicioComercialDomingo14hs = new ServicioYHorario ("Comercial",new DateTime(2016,4,17,14,00))
 	ServicioYHorario consultaHorarioServicioComercialMiercoles1245hs = new ServicioYHorario ("Comercial",new DateTime(2016,4,13,12,35))
 	ServicioYHorario consultaHorarioServicioComercialJeves1835hs = new ServicioYHorario ("Comercial", new DateTime(2016,4,14,18,35))
+	*/
+	
+	PoiFactory poiFactory
+	
+	ServiciosFactory serviciosFactory
 	
 	@Before
 	def void init() {
-		p1 = new Point(1, 1)
+		/* p1 = new Point(1, 1)
 		p2 = new Point(2, 2)
 		p3 = new Point(3, 3)
 		p4 = new Point(1, 5)
@@ -106,51 +109,56 @@ class DisponibilidadTestSuite {
 		kioscoDeLaEsquina = new LocalComercial(p7, "Kiosco de la esquina", lunesMañana,rubroKiosco) 
 		kioscoDeLaEsquina.AgregarHorarios(martes,domingo,10,13) //De Martes a Domingo de 10hs a 13hs
 		kioscoDeLaEsquina.AgregarHorarios(lunes,domingo,17,20)//De Lunes a Domingo de 15hs a 20hs
-		parada114 = new ParadaColectivo(p8, "Parada Colectivo 114")
+		parada114 = new ParadaColectivo(p8, "Parada Colectivo 114")*/
+		
+		
+		poiFactory = new PoiFactory()
+		poiFactory.crearPois()
+		serviciosFactory = new ServiciosFactory()
 	}
 
 	@Test
 	def void testDisponibilidadServicioCGP() {
-		Assert.assertTrue(this.cgp1.ConsultaDisponibilidad(consultaHorarioServicioSocial))
-		Assert.assertFalse(this.cgp1.ConsultaDisponibilidad(consultaHorarioServicio1))
-		Assert.assertFalse(this.cgp1.ConsultaDisponibilidad(consultaHorarioServicio2))
+		Assert.assertTrue(this.poiFactory.getCGP.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioSocial))
+		Assert.assertFalse(this.poiFactory.getCGP.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicio1))
+		Assert.assertFalse(this.poiFactory.getCGP.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicio2))
 	}
 	
 	@Test
 	def void testDisponibilidadBanco(){
 		//Disponibilidad del banco el lunes a las 11hs.
-		Assert.assertTrue(this.santanderRio.ConsultaDisponibilidad(consultaHorarioServicioBancarioLunes11hs))
+		Assert.assertTrue(this.poiFactory.getSantanderRio.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioBancarioLunes11hs))
 		//Disponibilidad del banco el lunes a las 9hs.
-		Assert.assertFalse(this.santanderRio.ConsultaDisponibilidad(consultaHorarioServicioBancarioLunes9hs))
+		Assert.assertFalse(this.poiFactory.getSantanderRio.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioBancarioLunes9hs))
 		//Disponibilidad del banco el lunes a las 18hs.
-		Assert.assertFalse(this.santanderRio.ConsultaDisponibilidad(consultaHorarioServicioBancarioLunes18hs))
+		Assert.assertFalse(this.poiFactory.getSantanderRio.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioBancarioLunes18hs))
 		//Disponibilidad del banco el domingo a las 11hs 
-		Assert.assertFalse(this.santanderRio.ConsultaDisponibilidad(consultaHorarioServicioBancarioDomingo11hs))
+		Assert.assertFalse(this.poiFactory.getSantanderRio.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioBancarioDomingo11hs))
 	}
 	
 	@Test
 	def void testDisponibilidadParadaDeColectivo(){
 		//Disponibilidad el miercoles a las 13hs
-		Assert.assertTrue(this.parada114.ConsultaDisponibilidad(consultaHorarioServicioColectivosMiercoles13hs))
+		Assert.assertTrue(this.poiFactory.getParada114.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioColectivosMiercoles13hs))
 		//Disponibilidad el domingo a las 23:55hs
-		Assert.assertTrue(this.parada114.ConsultaDisponibilidad(consultaHorarioServicioColectivosDomingo2355hs))
+		Assert.assertTrue(this.poiFactory.getParada114.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioColectivosDomingo2355hs))
 	}
 	@Test
 	def void testDisponibilidadLocalesComerciales(){
 		//Disponibilidad el miercoles a las 14hs
-		Assert.assertFalse(this.libreria.ConsultaDisponibilidad(consultaHorarioServicioComercialMiercoles14hs))
+		Assert.assertFalse(this.poiFactory.getLibreria.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioComercialMiercoles14hs))
 		//Disponibilidad el miercoles a las 22hs
-		Assert.assertFalse(this.libreria.ConsultaDisponibilidad(consultaHorarioServicioComercialMiercoles22hs))
+		Assert.assertFalse(this.poiFactory.getLibreria.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioComercialMiercoles22hs))
 		//Disponibilidad el domingo a las 14hs
-		Assert.assertFalse(this.libreria.ConsultaDisponibilidad(consultaHorarioServicioComercialDomingo14hs))
+		Assert.assertFalse(this.poiFactory.getLibreria.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioComercialDomingo14hs))
 		//Disponibilidad el miercoles a las 12:35hs
-		Assert.assertTrue(this.libreria.ConsultaDisponibilidad(consultaHorarioServicioComercialMiercoles1245hs))
+		Assert.assertTrue(this.poiFactory.getLibreria.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioComercialMiercoles1245hs))
 		//Disponibilidad el jueves a las 18:35hs
-		Assert.assertTrue(this.libreria.ConsultaDisponibilidad(consultaHorarioServicioComercialJeves1835hs))
+		Assert.assertTrue(this.poiFactory.getLibreria.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioComercialJeves1835hs))
 		//Disponibilidad el domingo a las 14hs
-		Assert.assertFalse(this.kioscoDeLaEsquina.ConsultaDisponibilidad(consultaHorarioServicioComercialDomingo14hs))
+		Assert.assertFalse(this.poiFactory.getKiosco.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioComercialDomingo14hs))
 		//Disponibilidad el miercoles a las 12:45hs
-		Assert.assertTrue(this.kioscoDeLaEsquina.ConsultaDisponibilidad(consultaHorarioServicioComercialMiercoles1245hs))
+		Assert.assertTrue(this.poiFactory.getKiosco.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioComercialMiercoles1245hs))
 	}
 	
 	
