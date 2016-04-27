@@ -4,6 +4,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.Assert
 import org.uqbar.geodds.Point
+import poi.Factories.PointFactory
 
 class BusquedaCercaniaTestSuite {
 
@@ -36,9 +37,7 @@ class BusquedaCercaniaTestSuite {
 	@Before
 	def void init() {
 		
-		coordenada = new PointFactory()
-		coordenada.cargaDeCoordenada()
-		
+		coordenada = new PointFactory()	
 		
 		comuna13 = new Comuna("Comuna13 Test", coordenada.puntoVertice1, coordenada.puntoVertice2, coordenada.puntoVertice3)
 		

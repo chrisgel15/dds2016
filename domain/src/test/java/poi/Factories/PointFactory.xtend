@@ -1,4 +1,4 @@
-package poi
+package poi.Factories
 
 import org.uqbar.geodds.Point
 import org.eclipse.xtend.lib.annotations.Accessors
@@ -25,7 +25,7 @@ class PointFactory {
 	Point puntoBancoSantander
 	Point puntoBancoGalicia	
 	
-	def cargaDeCoordenada(){
+	new(){
 		puntoVertice1 = new Point(-34.534645, -58.465027) // Av. Lugones y Gral.Paz
 		puntoVertice2 = new Point(-34.566598, -58.471550) // Blanco Encalada 3500
 		puntoVertice3 = new Point(-34.561650, -58.442024) // Av.Del Libertador 1600
