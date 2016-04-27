@@ -1,7 +1,9 @@
 package poi
 
 import org.uqbar.geodds.Point
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class PointFactory {
 	
 	Point puntoVertice1
@@ -42,71 +44,5 @@ class PointFactory {
 		puntoOtraParada114 = new Point(-34.558240, -58.459838)
 		puntoBancoSantander = new Point (-34.558300, -58.459800)
 		puntoBancoGalicia = new Point (-34.558320, -58.459811)
-	}
-	
-	def puntoTouch(){
-		this.puntoTouchMe
-	}
-	def puntoCgp(){
-		puntoCgp
-	}
-	
-	def puntoCgp13(){
-		puntoCgp13
-	}
-	def puntoV1(){
-		puntoVertice1
-	}
-	def puntoV2(){
-		puntoVertice2
-	}
-	def puntoV3(){
-		puntoVertice3
-	}
-	def puntoIn(){
-		puntoInside
-	}
-	def puntoOut(){
-		puntoOut
-	}
-	
-	def puntoKiosco(){
-		puntoKiosco
-	}
-	
-	def puntoOtroKiosco(){
-		puntoOtroKiosco
-	}
-	
-	def puntoLibreria(){
-		puntoLibreria
-	}
-	
-	def puntoOtraLibreria(){
-		puntoOtraLibreria
-	}
-	
-	def puntoParada28(){
-		puntoParada28
-	}
-	
-	def puntoOtraParada28(){
-		puntoOtraParada28
-	}
-	
-	def puntoParada114(){
-		puntoParada114
-	}
-	
-	def puntoOtraParada114(){
-		puntoOtraParada114
-	}
-	
-	def puntoBancoSantander(){
-		puntoBancoSantander
-	}
-	
-	def puntoBancoGalicia(){
-		puntoBancoGalicia
 	}
 }

@@ -1,7 +1,9 @@
 package poi
 
 import org.uqbar.geodds.Point
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class PoiFactory {
 	//Días de la semana
 	int lunes = 1
@@ -27,40 +29,12 @@ class PoiFactory {
 	
 
 	PointFactory pointFactory
-	
-	def getSantanderRio(){
-		santanderRio
-	}
 
-	def getGalicia(){
-		galicia
-	}
-	
-	def getLibreria(){
-		libreria
-	}
-
-	def getCGP(){
-		cgp
-	}
-	
-	def getKiosco(){
-		kioscoDeLaEsquina
-	}
-	
-	def getParada114(){
-		parada114
-	}
-	
-	def getTouchMe(){
-		TouchMe
-	}
-	
-	def void crearPois(){
+	new (){
 		pointFactory = new PointFactory()
 		pointFactory.cargaDeCoordenada()
 		
-		cgp = new CGP(new Point(0, 0), "CGP 1", new Comuna("Comuna 1", pointFactory.puntoV1, pointFactory.puntoV2, pointFactory.puntoV3))
+		cgp = new CGP(new Point(0, 0), "CGP 1", new Comuna("Comuna 1", pointFactory.puntoVertice1, pointFactory.puntoVertice2, pointFactory.puntoVertice3))
 
 		lunesMañana = new HorarioDeAtencion(lunes, 10, 13)
 		

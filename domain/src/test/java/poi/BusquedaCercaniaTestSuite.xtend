@@ -40,7 +40,7 @@ class BusquedaCercaniaTestSuite {
 		coordenada.cargaDeCoordenada()
 		
 		
-		comuna13 = new Comuna("Comuna13 Test", coordenada.puntoV1, coordenada.puntoV2, coordenada.puntoV3)
+		comuna13 = new Comuna("Comuna13 Test", coordenada.puntoVertice1, coordenada.puntoVertice2, coordenada.puntoVertice3)
 		
 		CGP = new CGP(coordenada.puntoCgp, "CGP 13",comuna13)
 
@@ -89,7 +89,7 @@ class BusquedaCercaniaTestSuite {
 	@Test
 	def void testEstaDentroDeComuna() {
 		
-		Assert.assertTrue(comuna13.PertenecePoint(coordenada.puntoIn))
+		Assert.assertTrue(comuna13.PertenecePoint(coordenada.puntoInside))
 	}
 	
 	@Test
@@ -101,7 +101,7 @@ class BusquedaCercaniaTestSuite {
 	@Test
 	def void testEstaCercaDeCgp13() {
 		
-		Assert.assertTrue(comuna13.AmbosPuntosPertenecen(coordenada.puntoTouch,coordenada.puntoCgp13))
+		Assert.assertTrue(comuna13.AmbosPuntosPertenecen(coordenada.puntoTouchMe,coordenada.puntoCgp13))
 		
 	}
 	

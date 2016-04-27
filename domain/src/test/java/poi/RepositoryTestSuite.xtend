@@ -10,15 +10,14 @@ class RepositoryTestSuite {
 
 	@Before
 	def void init() {
-		val poiFactory = new PoiFactory()
-		poiFactory.crearPois()
+		val poiFactory = new PoiFactory()		
 		repository = new RepositorioPoi()
 
-		repository.create(poiFactory.CGP)
+		repository.create(poiFactory.cgp)
 		repository.create(poiFactory.galicia)
-		repository.create(poiFactory.kiosco)
+		repository.create(poiFactory.kioscoDeLaEsquina)
 		repository.create(poiFactory.libreria)
-		repository.update(poiFactory.CGP)
+		repository.update(poiFactory.cgp)
 
 	}
 

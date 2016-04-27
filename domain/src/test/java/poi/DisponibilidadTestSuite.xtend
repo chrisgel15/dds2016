@@ -13,17 +13,16 @@ class DisponibilidadTestSuite {
 	@Before
 	def void init() {
 		
-		poiFactory = new PoiFactory()
-		poiFactory.crearPois()
+		poiFactory = new PoiFactory()		
 		serviciosFactory = new ServiciosFactory()
 		
 	}
 
 	@Test
 	def void testDisponibilidadServicioCGP() {
-		Assert.assertTrue(this.poiFactory.getCGP.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioSocial))
-		Assert.assertFalse(this.poiFactory.getCGP.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicio1))
-		Assert.assertFalse(this.poiFactory.getCGP.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicio2))
+		Assert.assertTrue(this.poiFactory.cgp.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioSocial))
+		Assert.assertFalse(this.poiFactory.cgp.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicio1))
+		Assert.assertFalse(this.poiFactory.cgp.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicio2))
 	}
 	
 	@Test
@@ -58,9 +57,9 @@ class DisponibilidadTestSuite {
 		//Disponibilidad el jueves a las 18:35hs
 		Assert.assertTrue(this.poiFactory.getLibreria.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioComercialJeves1835hs))
 		//Disponibilidad el domingo a las 14hs
-		Assert.assertFalse(this.poiFactory.getKiosco.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioComercialDomingo14hs))
+		Assert.assertFalse(this.poiFactory.kioscoDeLaEsquina.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioComercialDomingo14hs))
 		//Disponibilidad el miercoles a las 12:45hs
-		Assert.assertTrue(this.poiFactory.getKiosco.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioComercialMiercoles1245hs))
+		Assert.assertTrue(this.poiFactory.kioscoDeLaEsquina.ConsultaDisponibilidad(serviciosFactory.getConsultaHorarioServicioComercialMiercoles1245hs))
 	}
 	
 	
