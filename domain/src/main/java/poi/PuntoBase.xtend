@@ -2,8 +2,9 @@
 package poi
 
 import org.uqbar.geodds.Point
+import org.uqbar.commons.model.Entity
 
-abstract class PuntoBase {
+abstract class PuntoBase extends Entity {
 	public Point localizacionPropia
 	public String nombre
 	

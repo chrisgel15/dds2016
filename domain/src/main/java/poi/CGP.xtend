@@ -15,57 +15,45 @@ class CGP extends Poi {
 		this.comuna = comuna
 		this.servicios = new ArrayList<Servicio>()
 	}
-	
-	def void AgregaServicio(Servicio s)
-	{
+
+	def void AgregaServicio(Servicio s) {
 		this.servicios.add(s)
 	}
 
 //Ingreso un horario sin un valor X, entonces considero que al menos un servicio esta disponible,
 // y por ende retorno True, que el CGP esta disponible.	
 	override ConsultaDisponibilidad(ServicioYHorario servicioYHorario) {
-		return ConsultaDisponibilidadServicio(servicioYHorario.getServicio(),servicioYHorario.getHorario())
+		return ConsultaDisponibilidadServicio(servicioYHorario.getServicio(), servicioYHorario.getHorario())
 	}
-	
+
 /// Region Consulta de Disponibilidad
-	
-	def boolean ConsultaDisponibilidadServicio(String servicio, DateTime horario)
-	{
-		ExisteServicio(servicio) && this.servicios.findFirst[s | s.nombre == servicio].EstaDisponible(horario)
+	def boolean ConsultaDisponibilidadServicio(String servicio, DateTime horario) {
+		ExisteServicio(servicio) && this.servicios.findFirst[s|s.nombre == servicio].EstaDisponible(horario)
 	}
-	
-	def Boolean ExisteServicio(String servicio)
-	{
-		this.servicios.exists[s | s.nombre == servicio] 
+
+	def Boolean ExisteServicio(String servicio) {
+		this.servicios.exists[s|s.nombre == servicio]
 	}
 
 // EndRegion Consulta de Disponibilidad
-	
-	
 // Region Busqueda por Texto
-
 	override BusquedaPorTexto(String texto) {
 		BusquedaEtiqueta(texto) || BusquedaNombre(texto) || BusquedaServicio(texto)
 	}
-	
+
 	def boolean BusquedaServicio(String texto) {
-		this.servicios.exists[s|s.nombre == texto]
+		this.servicios.exists[s|StringHelper.ComparaStrings(s.nombre, texto)]
 	}
 
 // EndRegion Busqueda por Texto
-
-
 // Region Consulta Cercania
-
 	/*  Para saber si un CGP esta cerca, debe chequear que esté en la misma comuna que el origen(Dispositivo Touch.Me).
-		Asumimos que el punto de interés CGP -SIEMPRE- está dentro de la comuna correspondiente
-		Sólo interesa saber si el dispositivo TouchMe tambíen está dentro de los límites de la comuna.
-	*/
-	
+	 * 	Asumimos que el punto de interés CGP -SIEMPRE- está dentro de la comuna correspondiente
+	 * 	Sólo interesa saber si el dispositivo TouchMe tambíen está dentro de los límites de la comuna.
+	 */
 	override ConsultaCercania(PuntoBase origenTouchMe) {
 		this.comuna.PertenecePoint(origenTouchMe.locacionPropia)
 	}
 
 // EndRegion Consulta Cercania
-
 }
