@@ -6,6 +6,7 @@ import org.junit.Assert
 import org.uqbar.geodds.Point
 import poi.Factories.PointFactory
 
+// TODO: Refactorizar para utilizar las factories.
 class BusquedaCercaniaTestSuite {
 
 	TouchMe touchMe
