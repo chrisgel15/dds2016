@@ -4,17 +4,15 @@ package poi
 import java.util.ArrayList
 import java.util.List
 import org.uqbar.geodds.Point
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class Poi extends PuntoBase {
 
 	// Referencia 5 cuadras (0.5 kilometros)
 	static double DISTANCIA_MINIMA_GENERAL = 0.5
 
 	List<String> etiquetas
-
-	def getEtiquetas() {
-		this.etiquetas
-	}
 
 	def setEtiqueta(String etiqueta) {
 		this.etiquetas.add(etiqueta)

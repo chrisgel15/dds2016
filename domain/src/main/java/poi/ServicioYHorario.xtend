@@ -1,7 +1,9 @@
 package poi
 
 import org.joda.time.DateTime
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class ServicioYHorario {
 	val String servicio
 	DateTime horario
@@ -10,11 +12,5 @@ class ServicioYHorario {
 		servicio = nombreServicio
 		horario = horarioDeAtencion
 	}
-	
-	def DateTime getHorario(){
-		this.horario		
-	}
-	def String  getServicio(){
-		this.servicio
-	}
+
 }
