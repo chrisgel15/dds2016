@@ -2,6 +2,7 @@ package poi
 
 import org.apache.commons.collections15.Predicate
 import org.uqbar.commons.model.CollectionBasedRepo
+import java.util.List
 
 class RepositorioPoi extends CollectionBasedRepo<Poi> {
 
@@ -19,6 +20,11 @@ class RepositorioPoi extends CollectionBasedRepo<Poi> {
 	
 	override createExample() {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	def List<Poi> BuscarPorTexto(String texto)
+	{
+		this.search(texto)
 	}
 	
 }
