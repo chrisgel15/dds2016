@@ -27,5 +27,10 @@ class Banco extends Poi {
 	override BusquedaPorTexto(String texto) {
 		BusquedaEtiqueta(texto) || BusquedaNombre(texto)
 	}
+	
+	def void AgregaListaDeServicios (ArrayList<String> listaServicios)
+	{
+		this.servicios = listaServicios
+	}
 
 }
