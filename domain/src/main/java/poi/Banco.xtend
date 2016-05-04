@@ -4,8 +4,10 @@ import java.util.ArrayList
 import java.util.List
 import org.uqbar.geodds.Point
 
+
 class Banco extends Poi {
 	List<Servicio> servicios
+	
 
 	new(Point p, String nom) {
 		super(p, nom)
@@ -28,7 +30,7 @@ class Banco extends Poi {
 		BusquedaEtiqueta(texto) || BusquedaNombre(texto)
 	}
 	
-	def void AgregaListaDeServicios (ArrayList<String> listaServicios)
+	def void AgregaListaDeServicios (List<Servicio> listaServicios)
 	{
 		this.servicios = listaServicios
 	}
