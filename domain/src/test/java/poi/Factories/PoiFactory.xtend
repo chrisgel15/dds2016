@@ -3,6 +3,7 @@ package poi.Factories
 import org.uqbar.geodds.Point
 import org.eclipse.xtend.lib.annotations.Accessors
 import poi.LocalComercial
+import poi.HorarioDeAtencion
 
 @Accessors
 class PoiFactory {
@@ -16,6 +17,7 @@ class PoiFactory {
 	int domingo = 7
 	
 	poi.HorarioDeAtencion lunesMañana
+	HorarioDeAtencion viernesMañana
 	poi.Servicio servicioSocial
 	poi.Servicio servicioBancario
 	poi.Servicio servicioDeColectivos
@@ -24,10 +26,15 @@ class PoiFactory {
 	poi.Banco banco_nacion
 	poi.LocalComercial libreria
 	poi.LocalComercial libreriaEscolar
+	poi.LocalComercial otraLibreria
 	poi.IRubro rubroLibreria
 	poi.LocalComercial kioscoDeLaEsquina
+	poi.LocalComercial otroKiosco
 	poi.IRubro rubroKiosco
 	poi.ParadaColectivo parada114
+	poi.ParadaColectivo parada28
+	poi.ParadaColectivo otroColectivoLinea28
+	poi.ParadaColectivo otroColectivoLinea114
 	poi.CGP cgp
 	poi.CGP cgpAlmagro
 	
@@ -45,6 +52,7 @@ class PoiFactory {
 		cgpAlmagro.etiqueta = "Gestion"
 
 		lunesMañana = new poi.HorarioDeAtencion(lunes, 10, 13)
+		viernesMañana = new poi.HorarioDeAtencion(viernes,9,18)
 		
 		servicioSocial = new poi.Servicio("Servicio Social",lunes, 9, 18)
 		
@@ -82,12 +90,25 @@ class PoiFactory {
 		libreriaEscolar.AgregarHorarios(lunes,sabado,17,20) //De Lunes a Sábado de 15hs a 20hs
 		libreriaEscolar.etiqueta = "Libro"
 		
+		otraLibreria = new LocalComercial(pointFactory.puntoOtraLibreria,"Lilita",viernesMañana,rubroLibreria)
+		
 		rubroKiosco = new poi.KioscoDiarios("Kiosco")
 		kioscoDeLaEsquina = new poi.LocalComercial(pointFactory.puntoKiosco, "Kiosco de la esquina", lunesMañana,rubroKiosco) 
 		kioscoDeLaEsquina.AgregarHorarios(martes,domingo,10,13) //De Martes a Domingo de 10hs a 13hs
 		kioscoDeLaEsquina.AgregarHorarios(lunes,domingo,17,20)//De Lunes a Domingo de 15hs a 20hs
+		
+		otroKiosco = new LocalComercial(pointFactory.puntoOtroKiosco, "Cachos",viernesMañana,rubroKiosco)
+		
 		parada114 = new poi.ParadaColectivo(pointFactory.puntoParada114, "Parada Colectivo 114")
 		parada114.etiqueta = "Bondi"
+		
+		parada28 = new poi.ParadaColectivo(pointFactory.puntoParada28, "Av.Gral.Paz y Balbin")
+		parada28.etiqueta = "Bondi"
+		
+		otroColectivoLinea28 = new poi.ParadaColectivo(pointFactory.puntoOtraParada28, "Liniers")
+		otroColectivoLinea28.etiqueta = "Bondi"
+		
+		otroColectivoLinea114 = new poi.ParadaColectivo(pointFactory.puntoOtraParada114, "Av.Monroe y Av.Cabildo")
 	}
 	
 }
