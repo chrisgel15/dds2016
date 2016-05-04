@@ -1,14 +1,17 @@
 package poi
 
 import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
+import java.util.ArrayList
 
+@Accessors
 class BuscadorDePuntosService {
 
 	static BuscadorDePuntosService Instance = null
-	private RepositorioPoi poiRepository = new RepositorioPoi
-	private ServicioExternoCGP servicioExtCGP = new ServicioExternoCGP
-	private ServicioExternoBancos servicioExtBancos = new ServicioExternoBancos
-	List<Poi> listaRepository
+	public RepositorioPoi poiRepository = new RepositorioPoi
+	public ServicioExternoCGP servicioExtCGP = new ServicioExternoCGP
+	public ServicioExternoBancos servicioExtBancos = new ServicioExternoBancos
+	private List<Poi> listaRepository
 	List<Poi> listaCGP
 	List<Poi> listaBancos
 
@@ -24,9 +27,13 @@ class BuscadorDePuntosService {
 	}
 
 	def List<Poi> BuscarPorTexto(String texto) {
-		listaRepository = Instance.poiRepository.BuscarPorTexto(texto)
-		listaCGP = Instance.servicioExtCGP.BuscarPorTexto(texto)
-		listaBancos = Instance.servicioExtBancos.BuscarPorTexto(texto)
+		listaRepository = Instance.poiRepository.BuscarPorTexto(texto) ?: new ArrayList<Poi>()
+		listaCGP = Instance.servicioExtCGP.BuscarPorTexto(texto) ?: new ArrayList<Poi>()
+		listaBancos = Instance.servicioExtBancos.BuscarPorTexto(texto) ?: new ArrayList<Poi>()
+		
+		listaRepository.addAll(listaCGP)
+		listaRepository.addAll(listaBancos)
+		listaRepository
 
 	}
 

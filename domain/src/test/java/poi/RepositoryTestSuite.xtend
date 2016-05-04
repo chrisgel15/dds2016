@@ -1,8 +1,8 @@
 package poi
 
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
-import org.junit.Assert
 import poi.Factories.PoiFactory
 
 class RepositoryTestSuite {
@@ -11,10 +11,11 @@ class RepositoryTestSuite {
 
 	@Before
 	def void init() {
-		val poiFactory = new PoiFactory()		
+		val poiFactory = new PoiFactory()
 		repository = new RepositorioPoi()
 
 		repository.create(poiFactory.cgp)
+		repository.create(poiFactory.banco_nacion)
 		repository.create(poiFactory.galicia)
 		repository.create(poiFactory.kioscoDeLaEsquina)
 		repository.create(poiFactory.libreria)
@@ -24,20 +25,18 @@ class RepositoryTestSuite {
 
 	@Test
 	def void testRepository() {
-		
-		Assert.assertTrue(this.repository.objects.length == 4)
-		
+
+		Assert.assertEquals(this.repository.objects.size, 5)
+
 		var lista = this.repository.search("banco")
-		
-		Assert.assertTrue(lista.length == 1)
-		
+		Assert.assertEquals(lista.size, 2)
+
 		lista = this.repository.search("social")
-		
-		Assert.assertTrue(lista.length == 1)
-		
+		Assert.assertEquals(lista.size, 1)
+
 		lista = this.repository.search("asdfsdf")
-		
-		Assert.assertTrue(lista.length == 0)
+		Assert.assertEquals(lista.size, 0)
 
 	}
+
 }
