@@ -28,6 +28,7 @@ class Servicio {
 	new(String nom, List<List<Integer>> rangos)
 	{
 		this(nom)
+		horarios = new ArrayList<HorarioDeAtencion>()
 		rangos.forEach[ rango | this.AgregarHorario(rango.get(0),rango.get(1),rango.get(2)) ]
 	}
 

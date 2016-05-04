@@ -16,7 +16,9 @@ class JsonBancoFactory {
 	new() {
 		jsonBanco1 = this.CreateBanco1()
 		jsonBanco2 = this.CreateBanco2()
-		jsonBancoArray = jsonBanco1.merge(jsonBanco2).asArray()
+		//jsonBancoArray = jsonBanco1.merge(jsonBanco2).asArray()
+		jsonBancoArray = new JsonArray().add(jsonBanco1)
+						.add(jsonBanco2)
 	}
 
 	def CreateBanco1() {
@@ -24,20 +26,20 @@ class JsonBancoFactory {
 		.add("x", -35.933832).add("y", 72.34835)
 		.add("sucursal","Avellaneda")
 		.add("gerente", "Javier Loeschbor")
-		.add("servicios",Json.array("cobro cheques", "depósitos", 
-						"extracciones", "transferencias", "créditos", "", "", ""))
+		.add("servicios",Json.array("cobro cheques", "depositos", 
+						"extracciones", "transferencias", "creditos", "", "", ""))
 
 		return aux
 	}
 
 	def CreateBanco2() {
-		aux = Json.object().add("banco", "Banco De La Plaza")
+		aux = Json.object().add("banco", "Banco Nacion")
 		.add("x", -35.934568)
 		.add("y", 72.34454)
 		.add("sucursal","Caballito")
 		.add("gerente", "Fabian Fantaguzzi")
 		.add("servicios",
-			Json.array("depósitos", "extracciones", "transferencias", "seguros", "", "", "", ""))
+			Json.array("depositos", "extracciones", "transferencias", "seguros", "", "", "", ""))
 
 		return aux
 	}

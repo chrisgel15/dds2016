@@ -38,8 +38,8 @@ class ServicioExternoBancos {
 		var double coordenadaX
 		var String nombre
 		var JsonArray servicios
-		var JsonArray jsonArray = Json.parse("").asObject().asArray()
-		for (JsonValue value : jsonArray) {
+	//	var JsonArray jsonArray = Json.parse("").asObject().asArray()
+		for (JsonValue value : jsonBancos) {
 			nombre = value.asObject().get("banco").asString()			
 			coordenadaY = value.asObject().get("y").asDouble()
 			coordenadaX = value.asObject().get("x").asDouble()

@@ -4,7 +4,9 @@ import org.uqbar.geodds.Point
 import org.joda.time.DateTime
 import java.util.ArrayList
 import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class CGP extends Poi {
 	Comuna comuna
 	List<Servicio> servicios

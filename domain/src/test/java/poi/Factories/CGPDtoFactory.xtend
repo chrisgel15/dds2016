@@ -23,8 +23,11 @@ class CGPDtoFactory {
 	new()
 	{
 		centroDto1 = CreateCgp1();
-	//	centroDto2 = CreateCgp2();
+		centroDto2 = CreateCgp1();
 		// aca formar el array...
+		arrayDto = new ArrayList<CentroDTO>()
+		arrayDto.add(centroDto1)
+		arrayDto.add(centroDto2)
 		
 	}
 	
@@ -47,7 +50,17 @@ class CGPDtoFactory {
 	
 	def CreateCgp2()
 	{
-	//	aux = new CentroDTO()
-		//....		
+		auxRango = new RangoServicioDTO(1, 9, 0, 18, 0)
+		auxRango2 = new RangoServicioDTO(2, 10, 0, 19, 0)
+		listRango = new ArrayList<RangoServicioDTO>()
+		listRango.add(auxRango)
+		listRango.add(auxRango2)
+		
+		auxServicio = new ServicioDTO("Cambio de domicilio",listRango)
+		listServicio = new ArrayList<ServicioDTO>()
+		listServicio.add(auxServicio)
+		
+		auxCentro = new CentroDTO(3, 34, -23, "Balvanera, San Cristobal","director", "Junin 521", "1234234134",listServicio )
+		
 	}
 }
