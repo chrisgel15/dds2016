@@ -29,5 +29,12 @@ class CGPMapTestSuite {
 		Assert.assertEquals(respuestaPois.get(1).servicios.get(0).nombre, dtoFactory.centroDto1.serviciosDTO.get(0).nombreServicio)
 
 	}
+	
+	@Test(expected=IndexOutOfBoundsException)
+	def void testIndexOutOfBoundsException() {
+		respuestaPois = servicioCgp.Map(dtoFactory.arrayDto)
+		
+		respuestaPois.get(2)
+    }
 
 }

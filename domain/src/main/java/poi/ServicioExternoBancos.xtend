@@ -18,17 +18,9 @@ class ServicioExternoBancos {
 		// JsonArray listaBancos = ServicioExterno......
 		
 		this.Map(listaBancos)
-	//	this.BusquedaPorNombre(texto)
-	}
 	
-//	def BusquedaPorNombre(String texto) {
-//		bancos.filter[poi|poi.nombreIgualA(texto)].toList
-//	}
-//	
-//	def nombreIgualA(Poi poi, String string) {
-//		poi.nombre == string
-//	}
-//	
+	}	
+
 	def List<Banco> Map(JsonArray jsonBancos)
 	{
 		// Aca se mapea el JsonArray que viene del servicio externo a nuestro dominio...
@@ -36,8 +28,7 @@ class ServicioExternoBancos {
 		var double coordenadaY
 		var double coordenadaX
 		var String nombre
-		var JsonArray servicios
-	//	var JsonArray jsonArray = Json.parse("").asObject().asArray()
+		var JsonArray servicios	
 		for (JsonValue value : jsonBancos) {
 			nombre = value.asObject().get("banco").asString()			
 			coordenadaY = value.asObject().get("y").asDouble()

@@ -32,6 +32,13 @@ class BancoMapTestSuite {
 		
 		Assert.assertTrue(StringHelper.ComparaStrings(respuestaPois.get(1).nombre,
 			jsonFactory.jsonBanco2.get("banco").asString()
-		))		
+		))
 	}
+	
+	@Test(expected=IndexOutOfBoundsException)
+	def void testIndexOutOfBoundsException() {
+		respuestaPois = servicioBancos.Map(jsonFactory.jsonBancoArray)
+		
+		respuestaPois.get(2)
+    }
 }
