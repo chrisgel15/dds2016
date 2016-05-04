@@ -10,16 +10,21 @@ import org.junit.Assert
 
 class BuscadorDePuntosServiceTestSuite {
 	RepositorioPoi repositoryMocked
+	ServicioExternoCGP servicioCgpMocked
 	PoiFactory poiFactory
 	List<Poi> aux
+	List<CGP> auxCgp
 	List<Poi> returnList
 
 	@Before
 	def void init() {
 		poiFactory = new PoiFactory()
 		repositoryMocked = Mockito.mock(RepositorioPoi)
+		servicioCgpMocked = Mockito.mock(ServicioExternoCGP)
 		aux = new ArrayList<Poi>()
+		auxCgp = new ArrayList<CGP>()
 		BuscadorDePuntosService.instance.poiRepository = repositoryMocked
+		BuscadorDePuntosService.instance.servicioExtCGP = servicioCgpMocked
 	}
 
 	@Test
@@ -47,9 +52,9 @@ class BuscadorDePuntosServiceTestSuite {
 	@Test
 	def void testDevuelveDosCGP()
 	{					
-		aux.add(poiFactory.cgp)
-		aux.add(poiFactory.cgpAlmagro)
-		Mockito.when(repositoryMocked.BuscarPorTexto("cgp")).thenReturn(aux)
+		auxCgp.add(poiFactory.cgp)
+		auxCgp.add(poiFactory.cgpAlmagro)
+		Mockito.when(servicioCgpMocked.BuscarPorTexto("cgp")).thenReturn(auxCgp)
 		
 		returnList = BuscadorDePuntosService.instance.BuscarPorTexto("cgp")
 		

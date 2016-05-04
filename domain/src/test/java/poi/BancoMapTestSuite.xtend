@@ -10,7 +10,7 @@ class BancoMapTestSuite {
 	
 	JsonBancoFactory jsonFactory
 	ServicioExternoBancos servicioBancos
-	List<Poi> respuestaPois
+	List<Banco> respuestaPois
 	
 	@Before
 	def void init()
