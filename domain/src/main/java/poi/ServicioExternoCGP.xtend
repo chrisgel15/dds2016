@@ -17,8 +17,8 @@ class ServicioExternoCGP {
 	List<Integer> rangosDeHoras = new ArrayList<Integer>()
 	CGP aux
 	Servicio auxServicio
-	List<Integer> a
-	List<List<Integer>> b
+	List<Integer> diaYHorarios
+	List<List<Integer>> diasYHorariosDeUnServicio
 
 	Point puntoCero
 
@@ -52,6 +52,7 @@ class ServicioExternoCGP {
 	}
 
 	def mapearServicio(ServicioDTO unServicioDTO) {
+		// Para cada servicio, se mapean su lista de dias y horarios.
 		auxServicio = new Servicio(
 			unServicioDTO.nombreServicio,
 			mapearDatos(unServicioDTO.rangos)
@@ -59,14 +60,14 @@ class ServicioExternoCGP {
 	}
 
 	def List<List<Integer>> mapearDatos(List<RangoServicioDTO> rangos) {
-		b = rangos.map[rango|mapearRango(rango)]
+		diasYHorariosDeUnServicio = rangos.map[rango|mapearRango(rango)]
 	}
 
 	def List<Integer> mapearRango(RangoServicioDTO unRangoDTO) {
-		a = new ArrayList<Integer>()
-		a.add(unRangoDTO.numeroDia)
-		a.add(unRangoDTO.horarioDesde)
-		a.add(unRangoDTO.horarioHasta)
-		return a
+		diaYHorarios = new ArrayList<Integer>()
+		diaYHorarios.add(unRangoDTO.numeroDia)
+		diaYHorarios.add(unRangoDTO.horarioDesde)
+		diaYHorarios.add(unRangoDTO.horarioHasta)
+		return diaYHorarios
 	}
 }

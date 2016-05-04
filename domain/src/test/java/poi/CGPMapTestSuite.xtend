@@ -36,5 +36,17 @@ class CGPMapTestSuite {
 		
 		respuestaPois.get(2)
     }
+    
+//    @Test
+//	def void testMapSinServicios() {
+//		respuestaPois = servicioCgp.Map(dtoFactory.arraySinServicios)
+//
+//		Assert.assertEquals(2, respuestaPois.size)
+//
+//	//	Assert.assertEquals(respuestaPois.get(0).servicios.get(0).nombre, dtoFactory.centroDto1.serviciosDTO.get(0).nombreServicio)
+//		
+//	//	Assert.assertEquals(respuestaPois.get(1).servicios.get(0).nombre, dtoFactory.centroDto1.serviciosDTO.get(0).nombreServicio)
+//
+//	}
 
 }
