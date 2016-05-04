@@ -30,9 +30,4 @@ class Banco extends Poi {
 		BusquedaEtiqueta(texto) || BusquedaNombre(texto)
 	}
 	
-	def void AgregaListaDeServicios (List<Servicio> listaServicios)
-	{
-		this.servicios = listaServicios
-	}
-
 }
