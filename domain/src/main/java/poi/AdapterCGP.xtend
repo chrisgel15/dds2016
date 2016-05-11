@@ -8,26 +8,17 @@ import org.uqbar.geodds.Point
 @Accessors
 class AdapterCGP {
 	
-	List<CGP> pois = new ArrayList<CGP>()
-	List<CentroDTO> listaDTO = new ArrayList<CentroDTO>()
-	List<ServicioDTO> listaServicioDTO = new ArrayList<ServicioDTO>()
-	List<RangoServicioDTO> listaRangoDTO = new ArrayList<RangoServicioDTO>()
-	List<Integer> diaYHorarios
-	List<List<Integer>> diasYHorariosDeUnServicio
-	CGP aux
-	Point puntoCero
-	Servicio auxServicio
-	
 	def List<CGP> adaptarCGP(List<CentroDTO> dtoCGPs){
+		val List<CGP> pois = new ArrayList<CGP>()
 		dtoCGPs.forEach[centro|
 			pois.add(mapearCGP(centro))
 		]
 		return pois
 	}
 	
+	// Para cada centroDTO crea un CGP y le asigna la lista de servicios//
 	def mapearCGP(CentroDTO unCentroDTO) {
-		aux = CreaCGP(unCentroDTO)
-		// Para cada centroDTO crea un CGP y le asigna la lista de servicios//
+		val CGP aux = CreaCGP(unCentroDTO)
 		(unCentroDTO.serviciosDTO).forEach [ servicio |
 			aux.AgregaServicio(mapearServicio(servicio))
 		]
@@ -35,22 +26,26 @@ class AdapterCGP {
 	}
 	
 	def CreaCGP(CentroDTO unCentroDTO) {
+		var Point puntoCero
 		puntoCero = new Point(0, 0)
 		new CGP(new Point(unCentroDTO.coordenadaX, unCentroDTO.coordenadaY), 'CGP' + unCentroDTO.domicilio,
 		new Comuna('CGP: ' + unCentroDTO.domicilio, puntoCero, puntoCero, puntoCero))
 	}
 
+	// Para cada servicio, se mapean su lista de dias y horarios.
 	def mapearServicio(ServicioDTO unServicioDTO) {
-		// Para cada servicio, se mapean su lista de dias y horarios.
+		var Servicio auxServicio
 		auxServicio = new Servicio(unServicioDTO.nombreServicio,
 			mapearDatos(unServicioDTO.rangos))
 	}
 
 	def List<List<Integer>> mapearDatos(List<RangoServicioDTO> rangos) {
+		var List<List<Integer>> diasYHorariosDeUnServicio
 		diasYHorariosDeUnServicio = rangos.map[rango|mapearRango(rango)]
 	}
 
 	def List<Integer> mapearRango(RangoServicioDTO unRangoDTO) {
+		var List<Integer> diaYHorarios
 		diaYHorarios = new ArrayList<Integer>()
 		diaYHorarios.add(unRangoDTO.numeroDia)
 		diaYHorarios.add(unRangoDTO.horarioDesde)
