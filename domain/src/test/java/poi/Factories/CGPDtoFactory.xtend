@@ -15,7 +15,7 @@ class CGPDtoFactory {
 	public ArrayList<CentroDTO> arraySinServicios
 	private CentroDTO auxCentro
 	private ServicioDTO auxServicio
-	private ServicioDTO auxServicio2
+	//private ServicioDTO auxServicio2
 	private List<ServicioDTO> listServicio
 	private RangoServicioDTO auxRango
 	private RangoServicioDTO auxRango2
