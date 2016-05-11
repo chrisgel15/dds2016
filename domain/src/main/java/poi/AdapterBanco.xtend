@@ -10,12 +10,10 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class AdapterBanco {
 	
-	JsonArray listaBancos = new JsonArray()
-	List<Banco> bancos
-	
 	def List<Banco> adaptarBanco(JsonArray jsonBancos)
 	{
 		// Se mapea el JsonArray
+		var List<Banco> bancos
 		bancos = new ArrayList<Banco>()
 		var double coordenadaY
 		var double coordenadaX
