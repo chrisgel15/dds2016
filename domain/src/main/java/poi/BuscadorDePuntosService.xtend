@@ -5,7 +5,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.ArrayList
 
 @Accessors
-class BuscadorDePuntosService {
+class BuscadorDePuntosService implements IBuscarPorTexto {
 
 	static BuscadorDePuntosService Instance = null
 	public RepositorioPoi poiRepository = new RepositorioPoi
@@ -26,7 +26,7 @@ class BuscadorDePuntosService {
 		Instance
 	}
 
-	def List<Poi> BuscarPorTexto(String texto) {
+	override List<Poi> BuscarPorTexto(String texto) {
 		listaRepository = Instance.poiRepository.BuscarPorTexto(texto) ?: new ArrayList<Poi>()
 		listaCGP = Instance.servicioExtCGP.BuscarPorTexto(texto) ?: new ArrayList<CGP>()
 		listaBancos = Instance.servicioExtBancos.BuscarPorTexto(texto) ?: new ArrayList<Banco>()
