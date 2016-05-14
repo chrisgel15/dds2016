@@ -12,6 +12,7 @@ class BuscadorDePuntosServiceTestSuite {
 	RepositorioPoi repositoryMocked
 	ServicioExternoCGP servicioCgpMocked
 	PoiFactory poiFactory
+	BuscadorDePuntosService buscadorDePuntosService
 	List<Poi> aux
 	List<CGP> auxCgp
 	List<Poi> returnList
@@ -23,8 +24,10 @@ class BuscadorDePuntosServiceTestSuite {
 		servicioCgpMocked = Mockito.mock(ServicioExternoCGP)
 		aux = new ArrayList<Poi>()
 		auxCgp = new ArrayList<CGP>()
-		BuscadorDePuntosService.instance.poiRepository = repositoryMocked
-		BuscadorDePuntosService.instance.servicioExtCGP = servicioCgpMocked
+		buscadorDePuntosService = new BuscadorDePuntosService()
+		buscadorDePuntosService.poiRepository = repositoryMocked
+		buscadorDePuntosService.servicioExtCGP = servicioCgpMocked
+		
 	}
 
 	@Test
@@ -34,7 +37,7 @@ class BuscadorDePuntosServiceTestSuite {
 		Mockito.when(repositoryMocked.BuscarPorTexto("libreria")).thenReturn(aux)
 		// Fin	
 		// Ejecuto el metodo que quiero testear, que debe retornar el resultado que mockee.
-		returnList = BuscadorDePuntosService.instance.BuscarPorTexto("libreria")
+		returnList = buscadorDePuntosService.BuscarPorTexto("libreria")
 
 		// Pruebo sobre lo que devolvio
 		Assert.assertEquals(returnList.get(0), poiFactory.libreria)
@@ -45,7 +48,7 @@ class BuscadorDePuntosServiceTestSuite {
 	@Test
 	def void testNoDevuelveNingunPoi() {
 		Mockito.when(repositoryMocked.BuscarPorTexto("libreria")).thenReturn(aux)
-		returnList = BuscadorDePuntosService.instance.BuscarPorTexto("libreria")
+		returnList = buscadorDePuntosService.BuscarPorTexto("libreria")
 		Assert.assertEquals(returnList.size, 0)
 	}
 	
@@ -56,7 +59,7 @@ class BuscadorDePuntosServiceTestSuite {
 		auxCgp.add(poiFactory.cgpAlmagro)
 		Mockito.when(servicioCgpMocked.BuscarPorTexto("cgp")).thenReturn(auxCgp)
 		
-		returnList = BuscadorDePuntosService.instance.BuscarPorTexto("cgp")
+		returnList = buscadorDePuntosService.BuscarPorTexto("cgp")
 		
 		Assert.assertEquals(returnList.get(0), poiFactory.cgp)
 		Assert.assertEquals(returnList.get(1), poiFactory.cgpAlmagro)
