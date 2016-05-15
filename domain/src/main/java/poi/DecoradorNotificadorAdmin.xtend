@@ -5,14 +5,19 @@ class DecoradorNotificadorAdmin extends DecoradorServicioTexto {
 	int tiempoMaximo
 	
 	new(IBuscarPorTexto c, int tiempoMaximo) {
-	//	super(c)
+		super(c)
 		this.tiempoMaximo = tiempoMaximo
-		this.componente = c
 	}
 	
-	def NotificarAlAdministrador()
-	{
-		// ToDo implementar!!!
+	override BuscarPorTexto(String texto) {
+		this.listaDePois = componenteDecorado.BuscarPorTexto(texto)
+		this.NotificarAdministrador()
+		this.listaDePois
+	}
+	
+	def NotificarAdministrador() {
+		componenteDecorado.CalcularTiempoDeBusqueda()
+		// Juan, implementate la notificacion por mail al Admin (con el ejemplo visto en otras clases)
 	}
 	
 }

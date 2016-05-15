@@ -13,8 +13,10 @@ class BuscadorDePuntosService implements IBuscarPorTexto {
 	private List<Poi> listaRepository
 	List<CGP> listaCGP
 	List<Banco> listaBancos
+	public int duracionBusqueda
 
 	override List<Poi> BuscarPorTexto(String texto) {
+		
 		listaRepository = this.poiRepository.BuscarPorTexto(texto) ?: new ArrayList<Poi>()
 		listaCGP = this.servicioExtCGP.BuscarPorTexto(texto) ?: new ArrayList<CGP>()
 		listaBancos = this.servicioExtBancos.BuscarPorTexto(texto) ?: new ArrayList<Banco>()
@@ -23,6 +25,10 @@ class BuscadorDePuntosService implements IBuscarPorTexto {
 		listaRepository.addAll(listaBancos)
 		listaRepository
 
+	}
+	
+	override CalcularTiempoDeBusqueda() {
+		duracionBusqueda
 	}
 
 }
