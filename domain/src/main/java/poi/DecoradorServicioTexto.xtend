@@ -15,9 +15,6 @@ abstract class DecoradorServicioTexto implements IBuscarPorTexto {
 		this.listaDePois = componenteDecorado.BuscarPorTexto(texto)
 	}
 
-//	override CalcularTiempoDeBusqueda() {
-//		componenteDecorado.CalcularTiempoDeBusqueda()
-//	}
 	override getMomentoInicial() {
 		this.componenteDecorado.momentoInicial
 	}

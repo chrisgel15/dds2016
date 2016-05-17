@@ -2,7 +2,9 @@
 package poi
 
 import org.uqbar.geodds.Point
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class TouchMe extends PuntoBase {
 	
 	IBuscarPorTexto servicio

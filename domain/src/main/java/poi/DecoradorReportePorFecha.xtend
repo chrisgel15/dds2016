@@ -25,7 +25,7 @@ class DecoradorReportePorFecha extends DecoradorServicioTexto {
 		var diaActual = new LocalDate()
 		if (this.busquedasPorFecha.containsKey(diaActual)) {
 			var valor = this.busquedasPorFecha.get(diaActual)
-			this.busquedasPorFecha.put(diaActual, valor++)
+			this.busquedasPorFecha.put(diaActual, valor + 1)
 		} else {
 			this.busquedasPorFecha.put(diaActual, 1)
 		}
