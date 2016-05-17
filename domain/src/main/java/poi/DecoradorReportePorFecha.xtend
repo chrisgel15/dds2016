@@ -3,7 +3,9 @@ package poi
 import java.util.HashMap
 import java.util.Map
 import org.joda.time.LocalDate
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class DecoradorReportePorFecha extends DecoradorServicioTexto {
 
 	Map<LocalDate, Integer> busquedasPorFecha
@@ -14,7 +16,7 @@ class DecoradorReportePorFecha extends DecoradorServicioTexto {
 	}
 
 	override BuscarPorTexto(String texto) {
-		this.listaDePois = componenteDecorado.BuscarPorTexto(texto)
+		componenteDecorado.BuscarPorTexto(texto)
 		this.CuentaBusqueda()
 		this.listaDePois
 	}

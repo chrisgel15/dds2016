@@ -3,21 +3,27 @@ package poi
 import java.util.List
 
 abstract class DecoradorServicioTexto implements IBuscarPorTexto {
-	
+
 	protected IBuscarPorTexto componenteDecorado
 	protected List<Poi> listaDePois
-	
-	override BuscarPorTexto(String texto) {
-		componenteDecorado.BuscarPorTexto(texto)
-	}
-	
-	new(IBuscarPorTexto componente )
-	{
+
+	new(IBuscarPorTexto componente) {
 		this.componenteDecorado = componente
 	}
-	
-	override CalcularTiempoDeBusqueda()
-	{
-		componenteDecorado.CalcularTiempoDeBusqueda()
+
+	override BuscarPorTexto(String texto) {
+		this.listaDePois = componenteDecorado.BuscarPorTexto(texto)
 	}
+
+//	override CalcularTiempoDeBusqueda() {
+//		componenteDecorado.CalcularTiempoDeBusqueda()
+//	}
+	override getMomentoInicial() {
+		this.componenteDecorado.momentoInicial
+	}
+
+	override getMomentoFinal() {
+		this.componenteDecorado.momentoFinal
+	}
+
 }

@@ -1,11 +1,16 @@
 package poi
 
 import java.util.List
+import org.joda.time.DateTime
 
 interface IBuscarPorTexto {
 	
 	def List<Poi> BuscarPorTexto(String texto)
 	
-	def int CalcularTiempoDeBusqueda()
+	def DateTime getMomentoInicial()
+	
+	def DateTime getMomentoFinal()
+	
+//	def double CalcularTiempoDeBusqueda()
 
 }
