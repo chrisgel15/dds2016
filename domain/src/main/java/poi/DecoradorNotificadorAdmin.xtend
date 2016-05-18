@@ -19,6 +19,17 @@ class DecoradorNotificadorAdmin extends DecoradorServicioTexto {
 	def NotificarAdministrador() {
 		tiempoDeBusqueda = DecoradorHelper.elapsedSeconds(componenteDecorado.momentoInicial,
 			componenteDecorado.momentoFinal)
-	// Juan, implementate la notificacion por mail al Admin (con el ejemplo visto en otras clases)
+		if(tiempoDeBusqueda>tiempoMaximo){
+			enviarMailDeNotificacion(crearMailDeNotificación())
+		}	
 	}
+	def Mail crearMailDeNotificación(){
+		var Mail mail
+		mail = new Mail("DecoratorNotidificador", "administrador@admin.com", "Se supero el tiempo máximo de busqueda","Alerta notificación de tiempo de busqueda")	
+	}
+	def void enviarMailDeNotificacion(Mail mail){
+		var MailSender mailSender
+		mailSender.send(mail)
+	}
+	
 }

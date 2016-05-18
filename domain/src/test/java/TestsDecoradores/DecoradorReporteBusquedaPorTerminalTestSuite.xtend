@@ -3,7 +3,7 @@ package TestsDecoradores
 import poi.Factories.PoiFactory
 import poi.Factories.PointFactory
 import poi.RepositorioPoi
-import poi.DecoradorAlmacenamientoResultados
+//import poi.DecoradorAlmacenamientoResultados
 import poi.TouchMe
 import java.util.List
 import org.junit.Before
