@@ -28,5 +28,8 @@ class SingletonReporteTotalPorUsuario {
 		var Integer valor = this.reportePorUsuario.get(me)
 		this.reportePorUsuario.put(me, valor + cantidadBusquedas)
 	}
-
+	def int cantidadDeBusquedasDelUsuario(TouchMe me){
+		var int cantidad
+		cantidad = this.reportePorUsuario.get(me)
+	}
 }

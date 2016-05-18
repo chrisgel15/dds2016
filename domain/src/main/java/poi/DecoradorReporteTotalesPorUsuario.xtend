@@ -8,7 +8,7 @@ class DecoradorReporteTotalesPorUsuario extends DecoradorServicioTexto {
 	SingletonReporteTotalPorUsuario reporte
 	TouchMe decoradorTouchMe
 	
-	private new(IBuscarPorTexto componente, TouchMe touchMe) {
+	new(IBuscarPorTexto componente, TouchMe touchMe) {
 		super(componente)
 		this.decoradorTouchMe = touchMe
 		this.reporte = SingletonReporteTotalPorUsuario.instance
@@ -17,7 +17,7 @@ class DecoradorReporteTotalesPorUsuario extends DecoradorServicioTexto {
 	
 	override BuscarPorTexto(String texto)
 	{
-		this.componenteDecorado.BuscarPorTexto(texto)
+		this.listaDePois = this.componenteDecorado.BuscarPorTexto(texto)
 		this.reporte.addBusquedas(this.decoradorTouchMe, this.listaDePois.size)
 		this.listaDePois		
 	}
