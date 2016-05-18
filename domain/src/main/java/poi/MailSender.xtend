@@ -1,9 +1,6 @@
 package poi
 
-interface MailSender {
-	
+class MailSender {
 	def void send(Mail mail){
-
 	}
-	
 }

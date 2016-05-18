@@ -1,13 +1,19 @@
 package poi
 
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
 class DecoradorNotificadorAdmin extends DecoradorServicioTexto {
 
-	int tiempoMaximo
+	double tiempoMaximo
+	int enviosAlAdministrador
 	double tiempoDeBusqueda
+	MailSender mailSender
 
-	new(IBuscarPorTexto c, int tiempoMaximo) {
+	new(IBuscarPorTexto c, double tiempoMaximo) {
 		super(c)
 		this.tiempoMaximo = tiempoMaximo
+		enviosAlAdministrador = 0
 	}
 
 	override BuscarPorTexto(String texto) {
@@ -20,16 +26,17 @@ class DecoradorNotificadorAdmin extends DecoradorServicioTexto {
 		tiempoDeBusqueda = DecoradorHelper.elapsedSeconds(componenteDecorado.momentoInicial,
 			componenteDecorado.momentoFinal)
 		if(tiempoDeBusqueda>tiempoMaximo){
+			enviosAlAdministrador+=1
 			enviarMailDeNotificacion(crearMailDeNotificación())
+			
 		}	
 	}
 	def Mail crearMailDeNotificación(){
 		var Mail mail
-		mail = new Mail("DecoratorNotidificador", "administrador@admin.com", "Se supero el tiempo máximo de busqueda","Alerta notificación de tiempo de busqueda")	
+		mail = new Mail("DecoratorNotidificador", "administrador@poi.com", "Se supero el tiempo máximo de busqueda","Alerta notificación de tiempo de busqueda")	
 	}
 	def void enviarMailDeNotificacion(Mail mail){
-		var MailSender mailSender
-		mailSender.send(mail)
+		//mailSender.send(mail)
 	}
 	
 }

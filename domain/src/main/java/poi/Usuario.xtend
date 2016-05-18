@@ -12,4 +12,8 @@ class Usuario {
 		this.direccionDeMail = unaDireccion
 		casilla = new ArrayList<Mail>()
 	}
+	def void recibirMail(Mail mail){
+		casilla.add(mail)
+	}
+	
 }
