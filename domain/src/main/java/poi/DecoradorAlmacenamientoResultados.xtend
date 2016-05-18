@@ -1,25 +1,37 @@
 package poi
 
+import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
 class DecoradorAlmacenamientoResultados extends DecoradorServicioTexto {
 
-	String fraseBuscada
-	int cantidadDeResultados
-	double tiempoDemoraConsulta
+	ArrayList<DecoradorAlmacenDeResultados> almacen
+	TouchMe touchMe
 
-	new(IBuscarPorTexto componente) {
+	new(IBuscarPorTexto componente, TouchMe touch) {
 		super(componente)
+		this.almacen = new ArrayList<DecoradorAlmacenDeResultados>()
+		this.touchMe = touch
 	}
 
 	override BuscarPorTexto(String texto) {
-		this.fraseBuscada = texto
-		componenteDecorado.BuscarPorTexto(texto)
-		this.tiempoDemoraConsulta = DecoradorHelper.elapsedSeconds(componenteDecorado.momentoInicial,
+		this.listaDePois = componenteDecorado.BuscarPorTexto(texto)
+		var double tiempoDemora = DecoradorHelper.elapsedSeconds(componenteDecorado.momentoInicial,
 			componenteDecorado.momentoFinal)
-		this.cantidadDeResultados = this.listaDePois.size
+		GeneraResultado(texto, tiempoDemora)
+
 		this.listaDePois
+	}
+
+	def private GeneraResultado(String texto, double tiempoDemora) {
+		var aux = new DecoradorAlmacenDeResultados(
+			texto,
+			this.listaDePois.size,
+			tiempoDemora
+		)
+
+		this.almacen.add(aux)
 	}
 
 }

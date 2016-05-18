@@ -1,20 +1,24 @@
 package poi
 
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
 class DecoradorReporteTotalesPorUsuario extends DecoradorServicioTexto {
 	
-//	private static DecoradorReporteTotalesPorUsuario Instance
+	SingletonReporteTotalPorUsuario reporte
+	TouchMe decoradorTouchMe
 	
-	private new(IBuscarPorTexto componente) {
+	private new(IBuscarPorTexto componente, TouchMe touchMe) {
 		super(componente)
+		this.decoradorTouchMe = touchMe
+		this.reporte = SingletonReporteTotalPorUsuario.instance
+		this.reporte.addTouchMe(touchMe)
 	}
 	
-//	def public static DecoradorReporteTotalesPorUsuario getInstance(IBuscarPorTexto componente)
-//	{
-//		if (Instance == null)
-//		{
-//			Instance = new(componente)
-//		}
-//		Instance
-//	}
-//	
+	override BuscarPorTexto(String texto)
+	{
+		this.componenteDecorado.BuscarPorTexto(texto)
+		this.reporte.addBusquedas(this.decoradorTouchMe, this.listaDePois.size)
+		this.listaDePois		
+	}
 }

@@ -1,4 +1,4 @@
-package poi
+package TestsDecoradores
 
 import java.util.ArrayList
 import java.util.List
@@ -12,21 +12,21 @@ import poi.Factories.PoiFactory
 class DecoradorReportePorFechaTestSuite {
 	
 	PoiFactory poiFactory
-	BuscadorDePuntosService buscadorDePuntosMocked
-	DecoradorReportePorFecha decoradorFecha
+	poi.BuscadorDePuntosService buscadorDePuntosMocked
+	poi.DecoradorReportePorFecha decoradorFecha
 	
-	List<Poi> aux
-	List<CGP> auxCgp
+	List<poi.Poi> aux
+	List<poi.CGP> auxCgp
 
 	@Before
 	def void init()
 	{
-		buscadorDePuntosMocked = Mockito.mock(BuscadorDePuntosService)		
-		decoradorFecha = new DecoradorReportePorFecha(buscadorDePuntosMocked)
+		buscadorDePuntosMocked = Mockito.mock(poi.BuscadorDePuntosService)		
+		decoradorFecha = new poi.DecoradorReportePorFecha(buscadorDePuntosMocked)
 		
 		poiFactory = new PoiFactory()		
-		aux = new ArrayList<Poi>()
-		auxCgp = new ArrayList<CGP>()		
+		aux = new ArrayList<poi.Poi>()
+		auxCgp = new ArrayList<poi.CGP>()		
 	}
 	
 	@Test

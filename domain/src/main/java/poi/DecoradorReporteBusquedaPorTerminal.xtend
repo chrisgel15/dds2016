@@ -1,12 +1,23 @@
 package poi
 
+import java.util.ArrayList
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
 class DecoradorReporteBusquedaPorTerminal extends DecoradorServicioTexto {
-	
-	new(IBuscarPorTexto componente) {
+
+	TouchMe terminal
+	ArrayList<Integer> resultadosParciales
+
+	new(IBuscarPorTexto componente, TouchMe terminal) {
 		super(componente)
+		this.terminal = terminal
+		this.resultadosParciales = new ArrayList<Integer>()
 	}
-	
-	// Juan, implementa este.
-	// Resta ver como hacemos el reporte "Totales Por Usuario"
-	
+
+	override BuscarPorTexto(String texto) {
+		this.listaDePois = this.componenteDecorado.BuscarPorTexto(texto)
+		this.resultadosParciales.add(this.listaDePois.size)
+		this.listaDePois
+	}
 }

@@ -7,6 +7,7 @@ import org.mockito.Mockito
 import java.util.List
 import java.util.ArrayList
 import org.junit.Assert
+import org.joda.time.LocalDate
 
 class BuscadorDePuntosServiceTestSuite {
 	RepositorioPoi repositoryMocked
@@ -27,7 +28,7 @@ class BuscadorDePuntosServiceTestSuite {
 		buscadorDePuntosService = new BuscadorDePuntosService()
 		buscadorDePuntosService.poiRepository = repositoryMocked
 		buscadorDePuntosService.servicioExtCGP = servicioCgpMocked
-		
+
 	}
 
 	@Test
@@ -51,19 +52,30 @@ class BuscadorDePuntosServiceTestSuite {
 		returnList = buscadorDePuntosService.BuscarPorTexto("libreria")
 		Assert.assertEquals(returnList.size, 0)
 	}
-	
+
 	@Test
-	def void testDevuelveDosCGP()
-	{					
+	def void testDevuelveDosCGP() {
 		auxCgp.add(poiFactory.cgp)
 		auxCgp.add(poiFactory.cgpAlmagro)
 		Mockito.when(servicioCgpMocked.BuscarPorTexto("cgp")).thenReturn(auxCgp)
-		
+
 		returnList = buscadorDePuntosService.BuscarPorTexto("cgp")
-		
+
 		Assert.assertEquals(returnList.get(0), poiFactory.cgp)
 		Assert.assertEquals(returnList.get(1), poiFactory.cgpAlmagro)
-		Assert.assertEquals(returnList.size, 2)		
+		Assert.assertEquals(returnList.size, 2)
 	}
-	
+
+	@Test
+	def void testCargaMomentosInicialFinal() {
+		aux.add(poiFactory.libreria)
+		Mockito.when(repositoryMocked.BuscarPorTexto("libreria")).thenReturn(aux)
+		returnList = buscadorDePuntosService.BuscarPorTexto("libreria")
+
+		Assert.assertEquals(buscadorDePuntosService.inicioBusqueda.toLocalDate, new LocalDate())
+		Assert.assertEquals(buscadorDePuntosService.finBusqueda.toLocalDate, new LocalDate())
+		Assert.assertNotEquals(buscadorDePuntosService.inicioBusqueda, buscadorDePuntosService.finBusqueda)
+
+	}
+
 }

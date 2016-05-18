@@ -10,7 +10,5 @@ interface IBuscarPorTexto {
 	def DateTime getMomentoInicial()
 	
 	def DateTime getMomentoFinal()
-	
-//	def double CalcularTiempoDeBusqueda()
 
 }

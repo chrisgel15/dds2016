@@ -14,7 +14,7 @@ class BuscadorDePuntosService implements IBuscarPorTexto {
 	private List<Poi> listaRepository
 	List<CGP> listaCGP
 	List<Banco> listaBancos
-	//public double duracionBusqueda
+	// public double duracionBusqueda
 	DateTime inicioBusqueda
 	DateTime finBusqueda
 
@@ -31,23 +31,13 @@ class BuscadorDePuntosService implements IBuscarPorTexto {
 		listaRepository
 
 	}
-	
+
 	override getMomentoInicial() {
 		this.inicioBusqueda
 	}
-	
+
 	override getMomentoFinal() {
 		this.finBusqueda
 	}
-
-//	override CalcularTiempoDeBusqueda() {
-//		this.elapsedSeconds(this.inicioBusqueda, this.finBusqueda)
-//	}
-//
-//	private def double elapsedSeconds(DateTime start, DateTime stop) {
-//		var interval = new Interval(start, stop)
-//		var long milliseconds = interval.toDurationMillis()
-//		(milliseconds / 1000 )
-//	}
 
 }
