@@ -58,7 +58,5 @@ class DecoradorNotificadorAdminTestSuite {
 		decoradorNotificador = new poi.DecoradorNotificadorAdmin(buscadorDePuntos, 0)
 		// Pruebo sobre lo que devolvio
 		Assert.assertEquals(decoradorNotificador.enviosAlAdministrador, 0)
-		// Tiempo de respuesta maximo 3
-		Assert.assertEquals(decoradorNotificador.enviosAlAdministrador, 0)
 	}
 }

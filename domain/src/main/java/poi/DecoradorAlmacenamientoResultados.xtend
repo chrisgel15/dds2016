@@ -7,12 +7,10 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class DecoradorAlmacenamientoResultados extends DecoradorServicioTexto {
 
 	ArrayList<DecoradorAlmacenDeResultados> almacen
-	TouchMe touchMe
 
-	new(IBuscarPorTexto componente, TouchMe touch) {
+	new(IBuscarPorTexto componente) {
 		super(componente)
 		this.almacen = new ArrayList<DecoradorAlmacenDeResultados>()
-		this.touchMe = touch
 	}
 
 	override BuscarPorTexto(String texto) {

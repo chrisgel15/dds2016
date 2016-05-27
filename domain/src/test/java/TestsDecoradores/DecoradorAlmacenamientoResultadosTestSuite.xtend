@@ -31,7 +31,7 @@ class DecoradorAlmacenamientoResultadosTestSuite {
 		pointFactory = new PointFactory()		
 		buscadorDePuntos = new BuscadorDePuntosService		
 		this.touchMe = new TouchMe(pointFactory.puntoCero, "terminalAbasto")
-		decoradorAlmacenamiento = new poi.DecoradorAlmacenamientoResultados(buscadorDePuntos, touchMe)
+		decoradorAlmacenamiento = new poi.DecoradorAlmacenamientoResultados(buscadorDePuntos)
 		
 		poiFactory = new PoiFactory()		
 		aux = new ArrayList<poi.Poi>()			
