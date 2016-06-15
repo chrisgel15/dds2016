@@ -17,7 +17,9 @@ class Poi extends PuntoBase {
 	def setEtiqueta(String etiqueta) {
 		this.etiquetas.add(etiqueta)
 	}
-
+	def setEtiquetas(List<String> etiquetas){
+		etiquetas.forEach[etiqueta | this.setEtiqueta(etiqueta) ]
+	}
 	new(Point p, String nom) {
 		super(p, nom)
 		this.etiquetas = new ArrayList()
