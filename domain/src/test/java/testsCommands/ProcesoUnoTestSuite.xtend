@@ -13,7 +13,7 @@ class ProcesoUnoTestSuite {
 	@Before
 	def void init(){
 		
-			proceso1 = new ProcesoUno("nombreProceso", "Carrousel;colegio escolar uniformes modas", repositorio, new ConfiguracionErrorMail())		
+			proceso1 = new ProcesoUno("nombreProceso", "Carrousel;colegio escolar uniformes modas", repositorio, new ConfiguracionErrorMail(""))		
 	}
 	
 	@Test
