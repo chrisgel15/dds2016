@@ -23,7 +23,7 @@ class ProcesoCuatroTestSuite {
 		proceso1Mocked = Mockito.mock(ProcesoUno)
 		proceso2Mocked = Mockito.mock(ProcesoDos)
 		proceso3Mocked = Mockito.mock(ProcesoTres)
-		proceso4 = new ProcesoCuatro("nombre Proceso", new ConfiguracionErrorMail())		
+		proceso4 = new ProcesoCuatro("nombre Proceso", new ConfiguracionErrorMail(""))		
 	}
 	
 	@Test

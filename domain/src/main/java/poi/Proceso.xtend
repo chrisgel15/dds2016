@@ -7,7 +7,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class Proceso {
 
 	String nombreProceso
-	IConfiguracionProcesoError configuracionError
+	public IConfiguracionProcesoError configuracionError
 	public AlmacenamientoProcesoResultado almacenamiento = AlmacenamientoProcesoResultado.instance
 	public ProcesoResultado resultado;
 	public EstadoProceso estado;
