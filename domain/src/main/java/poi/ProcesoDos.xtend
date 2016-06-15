@@ -1,11 +1,13 @@
 package poi
 
 import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class ProcesoDos extends Proceso implements IProceso {
 
-	ServicioExternoBajaPois servicio
-	RepositorioPoi poiRepository
+	public ServicioExternoBajaPois servicio
+	public RepositorioPoi poiRepository
 
 	new(String nombre, IConfiguracionProcesoError configuracionError) {
 		super(nombre, configuracionError)
@@ -15,7 +17,7 @@ class ProcesoDos extends Proceso implements IProceso {
 
 	override Ejecutar() {
 		try {
-			// Que onda con el nombre de usuario?
+			// Manejamos el nombre de usuario?
 			this.IniciarProceso(nombreProceso, "")
 			this.EjecutarProcesoDos()
 			this.ActualizarEstadoOK()
@@ -26,43 +28,35 @@ class ProcesoDos extends Proceso implements IProceso {
 		} catch (Exception ex) {
 			this.ActualizarEstadoError("Error desconocido")
 		} finally {
-			this.configuracionError.EjecucionAnteError(this)
+			this.getConfiguracionError().EjecucionAnteError(this)
 		}
 	}
 
 	def void EjecutarProcesoDos() {
 		var List<BajaPois> listaBaja
 		try {
-			listaBaja = this.servicio.EjecutarServicioGCBA()
+			listaBaja = this.getServicio().EjecutarServicioGCBA()
 		} catch (Exception ex) {
 			throw new ProcesoDosServicioGCBAException("Error al ejecutar el servicio GCBA")
 		}
 
-		listaBaja.forEach[baja|BuscaPoi(baja)]
+		listaBaja.forEach[baja|EliminaPoi(baja)]
 	}
 
-	def BuscaPoi(BajaPois pois) {
+	def EliminaPoi(BajaPois pois) {
 		var List<Poi> lista;
 		try {
-			lista = this.poiRepository.BuscarPorTexto(pois.valorDeBusqueda)
+			lista = this.getPoiRepository().BuscarPorTexto(pois.valorDeBusqueda)
 		} catch (Exception ex) {
 			throw new ProcesoDosBuscarPorTextoException("Error al Buscar en el repositorio de Pois")
 		}
-		lista.forEach[poi|this.poiRepository.delete(poi)]
+		lista.forEach[poi|EliminaPoi(poi)]
 	}
 
-}
-
-class ProcesoDosServicioGCBAException extends Exception {
-	new(String msg) {
-		super(msg)
+	def EliminaPoi(Poi poi) {
+		this.getPoiRepository().delete(poi)
 	}
-}
 
-class ProcesoDosBuscarPorTextoException extends Exception {
-	new(String msg) {
-		super(msg)
-	}
 }
 
 enum EstadoProceso {
