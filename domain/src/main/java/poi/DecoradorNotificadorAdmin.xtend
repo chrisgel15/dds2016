@@ -36,7 +36,7 @@ class DecoradorNotificadorAdmin extends DecoradorServicioTexto {
 		mail = new Mail("DecoratorNotidificador", "administrador@poi.com", "Se supero el tiempo máximo de busqueda","Alerta notificación de tiempo de busqueda")	
 	}
 	def void enviarMailDeNotificacion(Mail mail){
-		//mailSender.send(mail)
+		mailSender.send(mail)
 	}
 	
 }

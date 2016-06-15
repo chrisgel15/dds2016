@@ -12,6 +12,7 @@ import java.util.ArrayList
 import org.mockito.Mockito
 import org.junit.Test
 import org.junit.Assert
+import poi.StubMailSender
 
 class DecoradorNotificadorAdminTestSuite {
 	PoiFactory poiFactory
@@ -20,6 +21,7 @@ class DecoradorNotificadorAdminTestSuite {
 	RepositorioPoi repositoryMocked
 	DecoradorNotificadorAdmin decoradorNotificador
 	TouchMe touchMe
+	StubMailSender stubMailSender = new StubMailSender
 	
 	List<poi.Poi> aux
 
@@ -32,7 +34,7 @@ class DecoradorNotificadorAdminTestSuite {
 		this.touchMe = new TouchMe(pointFactory.puntoCero, "terminalAbasto")
 		//tiempo de repuesta maximo -1
 		decoradorNotificador = new poi.DecoradorNotificadorAdmin(buscadorDePuntos, -1)
-		
+		decoradorNotificador.mailSender = stubMailSender
 		poiFactory = new PoiFactory()		
 		aux = new ArrayList<poi.Poi>()			
 	}
@@ -49,14 +51,15 @@ class DecoradorNotificadorAdminTestSuite {
 		repositoryMocked = Mockito.mock(RepositorioPoi)
 		Mockito.when(repositoryMocked.BuscarPorTexto("libreria")).thenReturn(aux)
 		buscadorDePuntos.poiRepository = repositoryMocked	
-				
-		decoradorNotificador.BuscarPorTexto("libreria")	
 		
-		// Pruebo sobre lo que devolvio
-		Assert.assertEquals(decoradorNotificador.enviosAlAdministrador, 1)
-		// Tiempo de respuesta maximo 0
-		decoradorNotificador = new poi.DecoradorNotificadorAdmin(buscadorDePuntos, 0)
-		// Pruebo sobre lo que devolvio
-		Assert.assertEquals(decoradorNotificador.enviosAlAdministrador, 0)
+		
+		// Antes de buscar mails enviados 0
+		Assert.assertEquals(0,stubMailSender.mailsDe("notidificadorAdmin@poi.com").size)
+		
+		// Despues de buscar mails enviados 1
+		decoradorNotificador.BuscarPorTexto("libreria")	
+		Assert.assertEquals(1,stubMailSender.mailsDe("notidificadorAdmin@poi.com").size)
+				
+		
 	}
 }
