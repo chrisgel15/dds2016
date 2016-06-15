@@ -1,7 +1,6 @@
 package poi
 
 interface IProceso {
-	
-	def void Ejecutar();
-	
+
+	def void Ejecutar()	
 }
