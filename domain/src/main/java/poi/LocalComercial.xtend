@@ -8,12 +8,14 @@ class LocalComercial extends Poi {
 
 	protected List<HorarioDeAtencion> horarios
 	private IRubro rubro
+	private List<String> palabrasClave
 
 	new(Point p, String nom, HorarioDeAtencion horario, IRubro rubro) {
 		super(p, nom)
 		this.rubro = rubro
 		horarios = new ArrayList<HorarioDeAtencion>()
 		horarios.add(horario)
+		palabrasClave = new ArrayList<String>()
 	}
 	
 	def void AgregarHorario(HorarioDeAtencion horario) {
@@ -43,5 +45,7 @@ class LocalComercial extends Poi {
 	override boolean ConsultaCercania(PuntoBase destino) {
 		this.DistanciaEsMenorA(destino, this.rubro.radioCercania)
 	}
-
+	def void anadirPalabrasClave(List<String> palabras){
+		palabras.forEach[palabra | palabrasClave.add(palabra)] 
+	}
 }
