@@ -1,24 +1,22 @@
 package poi_ui_arena
 
-import org.uqbar.arena.windows.MainWindow
-import org.uqbar.arena.windows.ErrorsPanel
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.widgets.TextBox
-import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import org.uqbar.arena.windows.SimpleWindow
-import org.uqbar.arena.widgets.Button
-import poi.BusquedaUI
-import org.uqbar.arena.windows.WindowOwner
-import poi.CriterioBusqueda
 import org.uqbar.arena.Application
-import org.uqbar.arena.windows.Window
+import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.VerticalLayout
-import org.uqbar.arena.windows.Dialog
-import java.awt.Color
-import org.uqbar.arena.widgets.tables.Table
+import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.tables.Column
+import org.uqbar.arena.widgets.tables.Table
+import org.uqbar.arena.windows.ErrorsPanel
+import org.uqbar.arena.windows.SimpleWindow
+import org.uqbar.arena.windows.Window
+import org.uqbar.arena.windows.WindowOwner
+import poi.BusquedaUI
+import poi.CriterioBusqueda
+import poi.Poi
+
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
 class BuscadorPoiWindow extends SimpleWindow<BusquedaUI>{
 	new(WindowOwner owner, BusquedaUI modelo){
@@ -59,32 +57,46 @@ class BuscadorPoiWindow extends SimpleWindow<BusquedaUI>{
 			]
 		]
 		
-		//Boton Buscar
+		//Boton Borrar Criterios
 		new Button(panelBusqueda) => [
-			caption = "Buscar"
-			onClick()[|
-			 //modelObject.buscar()
+			caption = "Borrar Criterios"
+			onClick()[|			
 			 modelObject.borrarCriterio()
 			 ]
 		]
 		
+		//Boton Buscar
+		new Button(panelBusqueda) => [
+			caption = "Buscar"
+			onClick()[|
+			 modelObject.buscar()
+			 ]
+		]
+		
+		//Boton Borrar Criterios
+		new Button(panelBusqueda) => [
+			caption = "Limpiar Grilla"
+			onClick()[|
+			 modelObject.limpiarGrilla()
+			 ]
+		]
+	
+		
 		new Label(mainPanel).text = "Resultado"
 		
 		//Crear grilla para traer los resultados de la busqueda
-		val tablaDeResultados = new Table<BusquedaUI>(mainPanel,typeof(BusquedaUI)) => [
-			
+		val tablaDeResultados = new Table<Poi>(mainPanel,typeof(Poi)) => [
+			items <=> "resultadoBusqueda"
 			numberVisibleRows = 10
 		]
 		
-		new Column<BusquedaUI>(tablaDeResultados) => [
+		new Column<Poi>(tablaDeResultados) => [
 			title = "Nombre"
 			fixedSize = 300
+			bindContentsToProperty("nombre")
 			
 			]
-		new Column<BusquedaUI>(tablaDeResultados) => [
-			title = "Dirección"
-			fixedSize = 300
-			]
+		
 		
 		
 	}

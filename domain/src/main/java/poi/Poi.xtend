@@ -5,7 +5,9 @@ import java.util.ArrayList
 import java.util.List
 import org.uqbar.geodds.Point
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.utils.Observable
 
+@Observable
 @Accessors
 class Poi extends PuntoBase {
 
