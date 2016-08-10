@@ -12,7 +12,7 @@ class BusquedaUI {
 	List<CriterioBusqueda> criterios
 	String textoBusqueda
 	RepositorioPoi repo
-	List resultados
+	List<Poi> resultados
 
 	new() {
 		criterios = new ArrayList<CriterioBusqueda>();

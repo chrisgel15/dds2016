@@ -1,24 +1,21 @@
 package poi_ui_arena
 
-import org.uqbar.arena.windows.MainWindow
-import org.uqbar.arena.windows.ErrorsPanel
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.widgets.TextBox
-import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import org.uqbar.arena.windows.SimpleWindow
-import org.uqbar.arena.widgets.Button
-import poi.BusquedaUI
-import org.uqbar.arena.windows.WindowOwner
-import poi.CriterioBusqueda
 import org.uqbar.arena.Application
-import org.uqbar.arena.windows.Window
+import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.VerticalLayout
-import org.uqbar.arena.windows.Dialog
-import java.awt.Color
-import org.uqbar.arena.widgets.tables.Table
+import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.tables.Column
+import org.uqbar.arena.widgets.tables.Table
+import org.uqbar.arena.windows.ErrorsPanel
+import org.uqbar.arena.windows.SimpleWindow
+import org.uqbar.arena.windows.Window
+import org.uqbar.arena.windows.WindowOwner
+import poi.BusquedaUI
+import poi.CriterioBusqueda
+
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
 class BuscadorPoiWindow extends SimpleWindow<BusquedaUI>{
 	new(WindowOwner owner, BusquedaUI modelo){
@@ -26,8 +23,6 @@ class BuscadorPoiWindow extends SimpleWindow<BusquedaUI>{
 		title = "Búsqueda"
 		
 	}
-	
-	
 	
 	override createContents(Panel mainPanel){
 		new ErrorsPanel(mainPanel,"Búsqueda")
