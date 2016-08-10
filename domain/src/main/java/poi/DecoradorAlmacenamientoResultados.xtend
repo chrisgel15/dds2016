@@ -6,11 +6,11 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class DecoradorAlmacenamientoResultados extends DecoradorServicioTexto {
 
-	ArrayList<DecoradorAlmacenDeResultados> almacen
+	ArrayList<ResultadoDeBusqueda> resultados
 
 	new(IBuscarPorTexto componente) {
 		super(componente)
-		this.almacen = new ArrayList<DecoradorAlmacenDeResultados>()
+		this.resultados = new ArrayList<ResultadoDeBusqueda>()
 	}
 
 	override BuscarPorTexto(String texto) {
@@ -23,13 +23,16 @@ class DecoradorAlmacenamientoResultados extends DecoradorServicioTexto {
 	}
 
 	def private GeneraResultado(String texto, double tiempoDemora) {
-		var aux = new DecoradorAlmacenDeResultados(
+		var aux = new ResultadoDeBusqueda(
 			texto,
 			this.listaDePois.size,
 			tiempoDemora
 		)
 
-		this.almacen.add(aux)
+		this.resultados.add(aux)
 	}
-
+	def int cantidadDeBusquedas(){
+		resultados.size
+	}
+	
 }

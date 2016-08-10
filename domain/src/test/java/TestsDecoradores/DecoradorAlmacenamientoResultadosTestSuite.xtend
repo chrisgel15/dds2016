@@ -53,28 +53,13 @@ class DecoradorAlmacenamientoResultadosTestSuite {
 		decoradorAlmacenamiento.BuscarPorTexto("libreria")	
 		
 		// Pruebo sobre lo que devolvio
-		Assert.assertEquals(decoradorAlmacenamiento.almacen.size, 1)
-		Assert.assertEquals(decoradorAlmacenamiento.almacen.get(0).cantidadDeResultados, 6)
-		Assert.assertEquals(decoradorAlmacenamiento.almacen.get(0).fraseBuscada, "libreria")
+		Assert.assertEquals(decoradorAlmacenamiento.cantidadDeBusquedas, 1)
 		
 		decoradorAlmacenamiento.BuscarPorTexto("libreria")	
 		
 		// Pruebo sobre lo que devolvio
-		Assert.assertEquals(decoradorAlmacenamiento.almacen.size, 2)
-		Assert.assertEquals(decoradorAlmacenamiento.almacen.get(1).cantidadDeResultados, 6)
-		Assert.assertEquals(decoradorAlmacenamiento.almacen.get(1).fraseBuscada, "libreria")	
+		Assert.assertEquals(decoradorAlmacenamiento.cantidadDeBusquedas, 2)
 		
-		decoradorAlmacenamiento.BuscarPorTexto("asdfasdf")	
-		
-		// Pruebo sobre lo que devolvio
-		Assert.assertEquals(decoradorAlmacenamiento.almacen.size, 3)
-		Assert.assertEquals(decoradorAlmacenamiento.almacen.get(2).cantidadDeResultados, 0)
-		Assert.assertEquals(decoradorAlmacenamiento.almacen.get(2).fraseBuscada, "asdfasdf")
-		
-		//Pruebo como quedo
-		Assert.assertEquals(decoradorAlmacenamiento.almacen.size, 3)
-		Assert.assertEquals(decoradorAlmacenamiento.almacen.get(0).cantidadDeResultados, 6)
-		Assert.assertEquals(decoradorAlmacenamiento.almacen.get(1).cantidadDeResultados, 6)					
-	    Assert.assertEquals(decoradorAlmacenamiento.almacen.get(0).fraseBuscada, "libreria")
+				
 	}
 }
