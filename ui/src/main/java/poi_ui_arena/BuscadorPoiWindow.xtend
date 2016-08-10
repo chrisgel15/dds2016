@@ -25,8 +25,6 @@ class BuscadorPoiWindow extends SimpleWindow<BusquedaUI>{
 		
 	}
 	
-	
-	
 	override createContents(Panel mainPanel){
 		new ErrorsPanel(mainPanel,"Búsqueda")
 		new Label(mainPanel).text = "Criterio de búsqueda"

@@ -1,15 +1,15 @@
 package poi_ui_arena
 
-import org.uqbar.arena.windows.SimpleWindow
-import poi.BusquedaUI
-import org.uqbar.arena.windows.WindowOwner
-import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.widgets.Button
-import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.layout.HorizontalLayout
-import poi.CriterioBusqueda
+import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.windows.SimpleWindow
+import org.uqbar.arena.windows.WindowOwner
+import poi.BusquedaUI
+
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
 class CriterioWindow extends SimpleWindow<BusquedaUI>{
 	new(WindowOwner owner, BusquedaUI modelo){
