@@ -52,7 +52,7 @@
           </thead>
  <tbody ng-repeat="n in buscadorCtrl.buscadorPois.listaPois">
             <tr>
-              <td>{{n.nombre}}</td>
+              <td>{{n.prototype.nombre}}</td>
               <td>{{n.direccion}}</td>
               <td>
                 <a class="btn btn-info" href="#" role="button" data-toggle="modal" data-target="#{{n.modal}}">Ver detalle</a>
@@ -337,7 +337,7 @@
           </div>
         </form>
 
-
+  <script src="js/Poi.js"></script>
   <script src="js/buscadorPois.js"></script>
   <script src="js/app.js"></script>
       </body>
