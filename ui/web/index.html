@@ -29,14 +29,17 @@
       </div>
 
       <!-- Button trigger modal -->
+      <div class="pull-right">
       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
         Agregar Criterio
       </button>
-      <button type="button" class="btn btn-primary btn-lg">
+      <button type="button" class="btn btn-primary btn-lg" ng-click="buscadorCtrl.buscadorPois.buscarPois()">
         Buscar
       </button>
-         <button type="button" class="btn btn-default btn-lg" data-dismiss="modal" ng-click="buscadorCtrl.buscadorPois.limpiarCriterios()">Limpiar Criterios</button>
-           
+         <button type="button" class="btn btn-default btn-lg" data-dismiss="modal" ng-click="buscadorCtrl.buscadorPois.limpiarCriterios()">Limpiar</button>
+</div>
+<br><br>
+      <div ng-show="buscadorCtrl.buscadorPois.hayResultados">      
       <h2>
         Resultado
       </h2>
@@ -47,40 +50,19 @@
             <th>Direccion</th>
             <th>Detalle</th>
           </thead>
-
-          <tbody>
+ <tbody ng-repeat="n in buscadorCtrl.buscadorPois.listaPois">
             <tr>
-              <td>Banco Galicia</td>
-              <td>Reconquista 150</td>
+              <td>{{n.nombre}}</td>
+              <td>{{n.direccion}}</td>
               <td>
-                <a class="btn btn-info" href="#" role="button" data-toggle="modal" data-target="#bancoModal">Ver detalle</a>
-              </td>
-            </tr>
-
-            <tr>
-              <td>CGP Caballito</td>
-              <td>Comuna 10</td>
-              <td>
-                <a class="btn btn-info" href="#" role="button" data-toggle="modal" data-target="#cgpModal">Ver detalle</a>
-              </td>
-            </tr>
-            <tr>
-              <td>Libreria Barco de Papel</td>
-              <td>Rivadavia 123</td>
-              <td>
-                <a class="btn btn-info" href="#" role="button" data-toggle="modal" data-target="#localModal">Ver detalle</a>
-              </td>
-            </tr>
-            <tr>
-              <td>Colectivo 98</td>
-              <td>-</td>
-              <td>
-                <a class="btn btn-info" href="#" role="button" data-toggle="modal" data-target="#colectivoModal">Ver detalle</a>
+                <a class="btn btn-info" href="#" role="button" data-toggle="modal" data-target="#{{n.modal}}">Ver detalle</a>
               </td>
             </tr>
           </tbody>
+        
         </table>
 
+      </div>
       </div>
 
 
