@@ -10,10 +10,6 @@ function ValidadorUsr() {
 		this.usuario = "";
 	};
 
-	this.limpiarCriterios = function(){
-		this.nombre = [];
-	};
-
 	this.validarUsuario = function(nombre, pass){
 		
 	}
