@@ -1,37 +1,71 @@
-function Poi(nombre) {
+function Poi(nombre, id) {
 	this.nombre = nombre;
+	this.id = id;
 }
 
-function ParadaDeColectivo(nombre) {
-	this.prototype = new Poi(nombre);
+function ParadaDeColectivo(nombre, id) {
+	this.prototype = new Poi(nombre, id);
+
+	this.FiltrarPorNombre = new FiltrarPorNombre(this);
+
+	this.Filtrar = function(filtro){
+		return this.FiltrarPorNombre.filtro(filtro);
+	};
+	
  }
 
 // Test
 var bondi = new ParadaDeColectivo('linea 20');
 console.log(bondi);
 
-function Banco(nombre, direccion)
+function Banco(nombre, direccion, id)
 {
-	this.prototype = new Poi(nombre);
+	this.prototype = new Poi(nombre, id);
 	this.direccion = direccion;
 	this.servicios = [];
 	this.agregarServicio = function(nombre, dia){
 		this.servicios.push(new Servicio(nombre, dia, 10, 15));
 	};
+
+	this.FiltrarPorDireccion = new FiltrarPorDireccion(this);
+
+	this.FiltrarPorServicio = new FiltrarPorServicio(this);
+
+	this.FiltrarPorNombre = new FiltrarPorNombre(this);
+
+	this.Filtrar = function(filtro){
+		return this.FiltrarPorDireccion.filtro(filtro) || 
+			this.FiltrarPorServicio.filtro(filtro) || 
+				this.FiltrarPorNombre.filtro(filtro);
+	};
 }
+
+
 
 // Test
 var banco = new Banco('Banco Santander');
 banco.agregarServicio('servicio banco', 2);
 console.log(banco);
 
-function CGP(nombre, direccion)
+function CGP(nombre, direccion, id)
 {
 	this.prototype = new Poi(nombre);
 	this.direccion = direccion;
 	this.servicios = [];
 	this.agregarServicio = function (nombre, dia, horaInicio, horaFin){
 		this.servicios.push(new Servicio(nombre, dia, horaInicio, horaFin));
+	};
+
+this.FiltrarPorDireccion = new FiltrarPorDireccion(this);
+
+	this.FiltrarPorServicio = new FiltrarPorServicio(this);
+
+	this.FiltrarPorNombre = new FiltrarPorNombre(this);
+
+	this.Filtrar = function(filtro){
+		return this.FiltrarPorDireccion.filtro(filtro) || 
+			this.FiltrarPorServicio.filtro(filtro) || 
+				this.FiltrarPorNombre.filtro(filtro);
 	};
 }
 
@@ -67,3 +101,33 @@ console.log(servicio);
 
 
 
+function FiltrarPorString(objeto, string){
+	return objeto.toLowerCase().indexOf(string.toLowerCase());
+}
+
+
+function FiltrarPorDireccion(objeto)
+{
+	this.filtro = function(filtro){
+		if (FiltrarPorString(objeto.direccion, filtro) > -1)
+			return objeto;
+	};
+}
+
+function FiltrarPorServicio(objeto){
+
+	this.filtro = function(filtro){
+		var i = 0;
+		for ( i = 0; i < objeto.servicios.length ; i++)
+			if (FiltrarPorString(objeto.servicios[i].nombre, filtro) > -1)
+				return objeto;
+	};
+}
+
+function FiltrarPorNombre(objeto){
+
+	this.filtro = function(filtro) {
+		if (FiltrarPorString(objeto.prototype.nombre, filtro) > -1)
+			return objeto;
+	};
+}

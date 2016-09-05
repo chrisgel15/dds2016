@@ -50,7 +50,7 @@
             <th>Direccion</th>
             <th>Detalle</th>
           </thead>
- <tbody ng-repeat="n in buscadorCtrl.buscadorPois.listaPois">
+ <tbody ng-repeat="n in buscadorCtrl.buscadorPois.listaPois track by n.prototype.id">
             <tr>
               <td>{{n.prototype.nombre}}</td>
               <td>{{n.direccion}}</td>
@@ -337,6 +337,7 @@
           </div>
         </form>
 
+  <script src="bower_components/lodash/lodash.js"></script>
   <script src="js/Poi.js"></script>
   <script src="js/buscadorPois.js"></script>
   <script src="js/app.js"></script>

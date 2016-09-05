@@ -22,7 +22,7 @@ function BuscadorPois() {
 
 	this.buscarPois = function(){
 		this.hayResultados = true;
-		this.listaPois = filterPois(this.nombre, listaPois)
+		this.listaPois = filterPois(this.nombre, listaPois);
 	};
 
 	this.listaPois = [];
@@ -33,23 +33,27 @@ function BuscadorPois() {
 }
 
 
-var listaPois = [ new Banco('Banco Santander', 'direccion 1'),
-new CGP('CGP Comuna 10', 'direccion 2'),
-new ParadaDeColectivo('linea 27'),
-new Banco('Banco Galicia', 'direccion 4'),
-new Banco('Banco Frances', 'direccion 5')
+var listaPois = [ new Banco('Banco Santander', 'direccion 1', 1),
+new CGP('CGP Comuna 10', 'direccion 2', 2),
+new ParadaDeColectivo('linea 27', 3),
+new Banco('Banco Galicia', 'direccion 4', 4),
+new Banco('Banco Frances', 'direccion 5', 5)
 ];
 
 function filterPois(array , lista)
 {
-	var arrayFiltrado = [];
-	var longitudArray = array.length;
-	var indice = 0;
+	var i = 0, j = 0;
+	returnLista = [];
 
-	for (indice ; indice < longitudArray ; indice++)
-		arrayFiltrado.push($filter('filter')(lista, array[indice], true));
+	for (i = 0; i < array.length ; i++)
+		for (j = 0; j < lista.length ; j++)
+		{
+			var value = lista[j].Filtrar(array[i]);
+			if ( value != -1 && value != undefined )
+				returnLista.push(value);			
+		}
 
-	return arrayFiltrado;
+	return returnLista;
 }
 
 
