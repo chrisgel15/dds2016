@@ -11,7 +11,7 @@
     "bootstrap",
     "theme"
   ],
-  "license": "UTN",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",

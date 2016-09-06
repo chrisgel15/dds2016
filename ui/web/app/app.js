@@ -1,23 +1,18 @@
+'use strict';
+
 angular.module('poi-app', ['ui.router'])
-.config(function($urlRouterProvider, $locationProvider) {
-  $urlRouterProvider.otherwise('/');
-  return $locationProvider.html5Mode(true);
-})
-.constant('_', window._)
-.config(function($stateProvider) {
-  return $stateProvider
-  .state('main', {
-    abstract: true,
-    views: {
-      'layout': {
-        templateUrl: "app/layout/layout.html"
-      },
-      'container@main': {
-        template: "<ui-view>"
-      },
-      'topbar@main': {
-        templateUrl: "app/layout/topbar.html"
-      }
-    }
-  });
+  .config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/');
+    .stateProvider.state('home', {
+            url:'/',
+            template: '<h1>Home</h1>'
+    });
+    .stateProvider.state('layout', {
+            url:'/app/layout',
+            template:'layout.html'
+    });
+    .stateProvider.state('login', {
+            url: '/app/login',
+            template: 'login.html'
+    });
 });
