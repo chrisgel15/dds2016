@@ -1,10 +1,11 @@
-function Poi(nombre, id) {
+function Poi(nombre, id, tipo) {
 	this.nombre = nombre;
 	this.id = id;
+	this.tipo = tipo;
 }
 
-function ParadaDeColectivo(nombre, id) {
-	this.prototype = new Poi(nombre, id);
+function ParadaDeColectivo(nombre, id, tipo) {
+	this.prototype = new Poi(nombre, id, tipo);
 
 	this.FiltrarPorNombre = new FiltrarPorNombre(this);
 
@@ -15,13 +16,14 @@ function ParadaDeColectivo(nombre, id) {
  }
 
 // Test
-var bondi = new ParadaDeColectivo('linea 20');
+var bondi = new ParadaDeColectivo('linea 20', 1, 'Colectivo');
 console.log(bondi);
 
-function Banco(nombre, direccion, id)
+function Banco(nombre, direccion, id, tipo, zona)
 {
-	this.prototype = new Poi(nombre, id);
+	this.prototype = new Poi(nombre, id, tipo);
 	this.direccion = direccion;
+	this.zona = zona;
 	this.servicios = [];
 	this.agregarServicio = function(nombre, dia){
 		this.servicios.push(new Servicio(nombre, dia, 10, 15));
@@ -43,13 +45,13 @@ function Banco(nombre, direccion, id)
 
 
 // Test
-var banco = new Banco('Banco Santander');
+var banco = new Banco('Banco Santander', 1, 'Banco', 'Zona 1');
 banco.agregarServicio('servicio banco', 2);
 console.log(banco);
 
-function CGP(nombre, direccion, id)
+function CGP(nombre, direccion, id, tipo)
 {
-	this.prototype = new Poi(nombre);
+	this.prototype = new Poi(nombre, id, tipo);
 	this.direccion = direccion;
 	this.servicios = [];
 	this.agregarServicio = function (nombre, dia, horaInicio, horaFin){
@@ -70,7 +72,7 @@ this.FiltrarPorDireccion = new FiltrarPorDireccion(this);
 }
 
 // Test
-var cgp = new CGP('CGP 10');
+var cgp = new CGP('CGP 10', 1, 'CGP');
 cgp.agregarServicio('servicio cgp', 2, 3,4);
 console.log(cgp);
 
@@ -131,3 +133,5 @@ function FiltrarPorNombre(objeto){
 			return objeto;
 	};
 }
+
+
