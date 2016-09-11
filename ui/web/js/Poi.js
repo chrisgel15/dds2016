@@ -1,27 +1,14 @@
-function Poi(nombre, id, tipo) {
+function Poi(nombre, id, tipo, imagenUrl) {
 	this.nombre = nombre;
 	this.id = id;
 	this.tipo = tipo;
+	this.imagenUrl = imagenUrl;
 }
 
-function ParadaDeColectivo(nombre, id, tipo) {
-	this.prototype = new Poi(nombre, id, tipo);
 
-	this.FiltrarPorNombre = new FiltrarPorNombre(this);
-
-	this.Filtrar = function(filtro){
-		return this.FiltrarPorNombre.filtro(filtro);
-	};
-	
- }
-
-// Test
-var bondi = new ParadaDeColectivo('linea 20', 1, 'Colectivo');
-console.log(bondi);
-
-function Banco(nombre, direccion, id, tipo, zona)
+function Banco(nombre, direccion, id, tipo, zona, imagenUrl)
 {
-	this.prototype = new Poi(nombre, id, tipo);
+	this.prototype = new Poi(nombre, id, tipo, imagenUrl);
 	this.direccion = direccion;
 	this.zona = zona;
 	this.servicios = [];

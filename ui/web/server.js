@@ -8,11 +8,14 @@ app.use("/node_modules", express.static("node_modules"));
 app.use("/js", express.static("js"));
 app.use("/partials", express.static("partials"));
 app.use("/imagenes", express.static("imagenes"));
+app.use("/controllers", express.static("controllers"));
+app.use("/services", express.static("services"));
+
 
 app.get('/*', function (req, res) {
   res.sendfile('index.html');
 });
 
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+  console.log('POI app listening on port 3000!');
 });

@@ -1,31 +1,7 @@
     <!-- Modal Local Comercial -->
-      <div id="colectivoModal" aria-labelledby="myModalLabel" ng-controller="detalleColectivoCtrl as detalleColectivoCtrl">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h3 class="modal-title" id="myModalLabel">Detalle Colectivo</h3>
-            </div>
-            <div class="modal-body">
-              <img class="img-responsive img-rounded center-block" src="imagenes/linea98.jpg" alt="sin imagen..." />
-              <br>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <div class="panel-title">
-                    <h4>      
-                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                      Informacion Adicional
-                    </h4>
-                  </div>
-                </div>
-                <div class="panel-body">
-                  <p>
-                    {{detalleColectivoCtrl.detalleColectivo.nombre}}
-                  </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <div id="colectivoModal" aria-labelledby="myModalLabel" ng-controller="detalleColectivoCtrl as detalleColectivoCtrl">
+      <ul>                
+       <li> Nombre: {{detalleColectivoCtrl.detalleColectivo.nombre}} </li>
+        <li> Cantidad de Paradas: {{detalleColectivoCtrl.detalleColectivo.cantidadParadas}}</li> 
+             </ul>     
           </div>
