@@ -1,0 +1,27 @@
+      <!-- Modal Direccion Servicios -->
+                  <div ng-controller="direccionServiciosCtrl as dirServCtrl">
+                    <table class="table table-bordered">
+                      <thead>
+                        <th>
+                          <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Direccion
+                        </th>
+                        <th>
+                          <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Servicios
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <address>{{dirServCtrl.direccionServicios.direccion}}</address></td>
+                              <td>
+                                <ul ng-repeat="n in dirServCtrl.direccionServicios.servicios">
+                                  <li>{{n.nombre}}</li>  
+                                  <div ui-view="horarios"></div>
+                                </ul>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        </div>
+                    
+               

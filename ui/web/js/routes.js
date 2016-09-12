@@ -10,7 +10,7 @@ poiApp.config(function ($stateProvider, $urlRouterProvider) {
      cache: false
    })
    .state('detalleComun',{
-    url:"/detalleComun/",
+    url:"/detalleComun",
     templateUrl: "partials/detalleComun.html",
     controller: "detalleComunCtrl as detalleComunCtrl",
     cache: false
@@ -22,22 +22,42 @@ poiApp.config(function ($stateProvider, $urlRouterProvider) {
      cache: false
    })
    .state('detalleComun.banco', {
-     url: "/banco/:id",
-    templateUrl: "partials/modalBanco.html",
-     controller: "detalleBancoCtrl as detalleBancoCtrl",
-     cache: false
+     url: "/banco/:id",    
+     cache: false,
+      views: {
+            '': {
+              templateUrl: "partials/modalBanco.html",
+              controller: "detalleBancoCtrl as detalleBancoCtrl",
+              cache: false
+            },
+            'dirServ@detalleComun.banco': {
+              templateUrl: "partials/direccion-servicios.html",
+              controller: "direccionServiciosCtrl as dirServCtrl",
+              cache: false
+            }
+     }
    })
-    .state('cgp', {
-     url: "/detalleCgp/:id",
-    templateUrl: "partials/modalCgp.html",
-     controller: "detalleCtrl as detalleCtrl",
-     cache: false
-   })
-    .state('detalle', {
-      url: "/detalle",
-      templateUrl: "partials/modalheader2.html",
-      controller: "padreCtrl as padreCtrl",
-      cache: false
-     });
+    .state('detalleComun.cgp', {
+     url: "/cgp/:id",
+     cache: false,
+     views: {
+      '': {
+        templateUrl: "partials/modalCgp.html",
+        controller: "detalleCgpCtrl as detalleCgpCtrl",
+        cache: false,
+      },
+            'dirServ@detalleComun.cgp': {
+              templateUrl: "partials/direccion-servicios.html",
+              controller: "direccionServiciosCtrl as dirServCtrl",
+              cache: false
+            }
+            //,'horarios@detalleComun.cgp':{
+             // templateUrl: "partial/horariosCgp.html",
+             // controller: "horariosCgpCtrl as horariosCgpCtrl",
+             // cache: false
+           // }
+
+     }
+   });
    
 });

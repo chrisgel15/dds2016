@@ -20,8 +20,13 @@ function PoiService($stateParams, $state) {
 	var bondi2 = new ParadaDeColectivo('Linea 132', 6, 'Colectivo', 'imagenes/linea132.jpg');
 	bondi2.agregarParadas(5);
 
+	var cgp1 = new CGP('CGP Comuna 10', 'direccion 2', 2, 'CGP','imagenes/cgp_1.jpg', 'Comuna 5');
+	cgp1.agregarServicio('Servicio cgp', 'Miercoles', 13,14);
+	cgp1.agregarServicio('Servicio cgp', 'Jueves', 15, 16);
+	cgp1.agregarServicio('Otro servicio', 'Martes', 13, 14);
+
 	this.listaPois = [ banco1,
-					new CGP('CGP Comuna 10', 'direccion 2', 2, 'CGP'),
+					cgp1,
 						bondi1,
 							banco2,
 								banco3,
