@@ -9,9 +9,7 @@ function DetalleCgp($stateParams , $state, PoiService){
 		return;
 	}
 
-//	this.direccion = this.Poi.direccion;
 	this.comuna = this.Poi.comuna;
-//	this.servicios = this.Poi.servicios;
 
 }
 

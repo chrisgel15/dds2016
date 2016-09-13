@@ -1,4 +1,4 @@
-function DireccionServicios($stateParams, $state, PoiService){
+function DireccionServicios($stateParams, $state, PoiService, ShowHorario){
 	this.Poi = PoiService.poiService.getPoi();
 
 	if (!this.Poi){
@@ -8,4 +8,6 @@ function DireccionServicios($stateParams, $state, PoiService){
 
 	this.direccion = this.Poi.direccion;
 	this.servicios = this.Poi.getServicios();
+
+	this.mostrarHorarios = ShowHorario.mostrar;
 }

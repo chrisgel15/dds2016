@@ -40,7 +40,8 @@ function BuscadorPois($stateParams, $state, poiService) {
 
 	this.VerDetalle = function (poi) {
 		//$state.go("detalleComun", { 'id' : poi.prototype.id }, {reload : true});
-		$state.go("detalleComun." + poi.prototype.tipo.toLowerCase() , { 'id' : poi.prototype.id }, {reload : true});
+		$state.go("home.detalleComun." + poi.prototype.tipo.toLowerCase() , { 'id' : poi.prototype.id }, {reload : "home.detalleComun" });
+		//$state.go("home.detalleComun");
 		//$state.go("detalle" , { 'id' : poi.prototype.id });
   };
 

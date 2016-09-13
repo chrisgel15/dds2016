@@ -22,17 +22,7 @@ this.FiltrarPorDireccion = new FiltrarPorDireccion(this);
 	};
 
 	this.getServicios = function() {
-		var i = 0, j = 0;
-		var returnServicios = [];
-		for (i = 0; i < this.servicios.length ; i++)
-		{
-			for (j = 0; j < this.servicios[i].horarios.length ; j++)
-				returnServicios.push({ 'nombre': this.servicios[i].nombre + ' - '
-						 + this.servicios[i].horarios[j].dia + ' Desde: ' + 
-						 + this.servicios[i].horarios[j].horaInicio + ' Hasta: ' + 
-						 + this.servicios[i].horarios[j].horaFin });
-		}
-		return returnServicios;
+		return this.servicios;
 	};
 }
 

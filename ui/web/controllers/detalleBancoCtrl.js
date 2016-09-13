@@ -1,6 +1,6 @@
 function DetalleBanco($stateParams , $state, PoiService){
 
-	//this.Poi = PoiService.poiService.getPoiById($stateParams.id);
+//	this.Poi = PoiService.poiService.getPoiById($stateParams.id);
 
 	this.Poi = PoiService.poiService.getPoi();
 
@@ -9,9 +9,10 @@ function DetalleBanco($stateParams , $state, PoiService){
 		return;
 	}
 
-	this.direccion = this.Poi.direccion;
 	this.zona = this.Poi.zona;
-	this.servicios = this.Poi.servicios;
+
+
+
 
 }
 

@@ -1,5 +1,5 @@
       <!-- Modal Direccion Servicios -->
-                  <div ng-controller="direccionServiciosCtrl as dirServCtrl">
+                  <div>
                     <table class="table table-bordered">
                       <thead>
                         <th>
@@ -16,7 +16,11 @@
                               <td>
                                 <ul ng-repeat="n in dirServCtrl.direccionServicios.servicios">
                                   <li>{{n.nombre}}</li>  
-                                  <div ui-view="horarios"></div>
+                                 
+                                    <ul ng-repeat="m in n.horarios" ng-show="dirServCtrl.direccionServicios.mostrarHorarios">
+                                         <li>{{m.dia}}: {{m.horaInicio}} - {{m.horaFin}}</li> 
+                                    </ul>
+                                  
                                 </ul>
                               </td>
                             </tr>
