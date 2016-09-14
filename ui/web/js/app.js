@@ -8,6 +8,10 @@ poiApp.controller('loginCtrl', function($stateParams, $state) {
 	};
 });
 
+/*poiApp.controller('loginCtrl', function($stateParams, $state, UsuariosService) {
+	this.login = new ValidarUsuario($stateParams, $state, UsuariosService);
+});*/
+
 poiApp.controller('buscadorCtrl', function($stateParams, $state, PoiService) {
 	this.buscadorPois = new BuscadorPois($stateParams, $state, PoiService);
 });
