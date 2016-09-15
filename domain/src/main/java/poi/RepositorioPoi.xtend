@@ -5,6 +5,18 @@ import org.uqbar.commons.model.CollectionBasedRepo
 import java.util.List
 
 class RepositorioPoi extends CollectionBasedRepo<Poi> {
+	
+	RepositorioUsuarios repoUsuario
+
+	/* Singleton */
+	static RepositorioPoi repoTareas
+
+	def static RepositorioPoi getInstance() {
+		if (RepositorioPoi.repoTareas == null) {
+			RepositorioPoi.repoTareas = new RepositorioPoi
+		}
+		RepositorioPoi.repoTareas
+	}
 
 	override protected Predicate<Poi> getCriterio(Poi example) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
@@ -25,6 +37,11 @@ class RepositorioPoi extends CollectionBasedRepo<Poi> {
 	def List<Poi> BuscarPorTexto(String texto)
 	{
 		this.search(texto)
+	}
+	
+	def AgregarPoi(Poi poi)
+	{
+		this.create(poi);
 	}
 	
 }

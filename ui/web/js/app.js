@@ -6,7 +6,7 @@ poiApp.controller('loginCtrl', function($stateParams, $state) {
 	this.login = function(){
 		$state.go("home");
 	};
-});
+}); 
 
 /*poiApp.controller('loginCtrl', function($stateParams, $state, UsuariosService) {
 	this.login = new ValidarUsuario($stateParams, $state, UsuariosService);
@@ -40,6 +40,11 @@ poiApp.service('PoiService', function($stateParams, $state) {
 	this.poiService = new PoiService($stateParams , $state);
 });
 
+poiApp.service('UsuariosService', function($http) { 
+    this.findAll = function(callback) {
+        $http.get('/usuarios').then(callback); 
+    };
+});
 
 
 

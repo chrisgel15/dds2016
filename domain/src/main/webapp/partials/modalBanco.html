@@ -1,0 +1,11 @@
+<!-- Modal Banco -->
+<div id="bancoModal" aria-labelledby="myModalLabel" ng-controller="detalleBancoCtrl as detalleBancoCtrl">
+  <div class="container-fluid">
+    <div ui-view="dirServ"></div>
+    <p>
+    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Zona:                   
+      {{detalleBancoCtrl.detalleBanco.zona}}
+    </p>
+  </div>
+</div>
+               

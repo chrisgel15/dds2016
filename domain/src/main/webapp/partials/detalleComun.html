@@ -1,0 +1,82 @@
+    <!-- Detalle Comun -->
+      <div id="detalleComun" aria-labelledby="myModalLabel" ng-controller="detalleComunCtrl as detalleComunCtrl">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h3 class="modal-title" id="myModalLabel">{{detalleComunCtrl.detalleComun.nombre}}</h3>
+            </div>
+            <div class="modal-body">
+              <img class="img-responsive img-rounded center-block" ng-src="{{detalleComunCtrl.detalleComun.imagenUrl}}" alt="sin imagen..." />
+              <br>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <div class="panel-title">
+                    <h4>      
+                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                      Informacion Adicional
+                    </h4>
+                  </div>
+                </div>
+                <div class="panel-body">
+                   <div ui-view="detalleParticular"></div>
+                   <div>
+                   	<h3>Calificacion General: ((Calif...))</h3>
+                   	<h3>Favorito</h3>
+                   	<input type="checkbox" />
+                   </div>
+                   <div>
+                   <h3>Tu opinion</h3>
+                   <textarea></textarea>
+                   <select>
+                   	<option>1</option>
+                   	<option>2</option>
+                   	<option>3</option>
+                   	<option>4</option>
+                   	<option>5</option>
+                   </select>
+                   <button>Enviar</button>
+                   </div>
+                   <div>
+                   	<h3>Opiniones</h3>
+                   	<table>
+                   	<thead>
+                   		<th>Usuario</th>
+                   		<th>Comentario</th>
+                   		<th>Calificacion</th>
+                   	</thead>
+                   	<tbody>
+                   	<tr>
+                   		<td>Usu 1</td>
+                   		<td>Muy bueno!</td>
+                   		<td>5</td>
+                   		</tr>
+
+                   	<tr>
+                   		<td>Usu 1</td>
+                   		<td>Muy bueno!</td>
+                   		<td>5</td>
+                   		</tr>
+
+                   	<tr>
+                   		<td>Usu 1</td>
+                   		<td>Muy bueno!</td>
+                   		<td>5</td>
+                   		</tr>
+                   		
+                   	<tr>
+                   		<td>Usu 1</td>
+                   		<td>Muy bueno!</td>
+                   		<td>5</td>
+                   		</tr>
+                   	</tbody>
+
+                   	</table>
+                   </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>

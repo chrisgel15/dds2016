@@ -12,7 +12,7 @@ class RepositoryTestSuite {
 	@Before
 	def void init() {
 		val poiFactory = new PoiFactory()
-		repository = new RepositorioPoi()
+		repository = RepositorioPoi.instance
 
 		repository.create(poiFactory.cgp)
 		repository.create(poiFactory.banco_nacion)

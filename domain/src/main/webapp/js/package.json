@@ -1,0 +1,9 @@
+
+{
+  "name": "poi-ui-angular",
+  "description": "Poi AngularJS",
+  "author": "",
+  "dependencies": {
+    "angular": ">= 1.3.15"
+  }
+}
