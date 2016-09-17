@@ -18,12 +18,12 @@ class RepositorioUsuarios extends CollectionBasedRepo<Usuario> {
 	
 	new()
 	{
-		this.create(new Usuario("christiangelman@gmail.com"))
-		this.create(new Usuario("chrisgel15@hotmail.com"))
-		this.create(new Usuario("rominacuadra@gmail.com"))
-		this.create(new Usuario("federicomandri@hotmail.com"))
-		this.create(new Usuario("juanpabloferreira@gmail.com"))
-		this.create(new Usuario("kenchi@gmail.com"))
+		this.create(new Usuario("christiangelman@gmail.com", "abc123"))
+		this.create(new Usuario("chrisgel15@hotmail.com", "abc123"))
+		this.create(new Usuario("rominacuadra@gmail.com", "abc123"))
+		this.create(new Usuario("federicomandri@hotmail.com", "abc123"))
+		this.create(new Usuario("juanpabloferreira@gmail.com", "abc123"))
+		this.create(new Usuario("kenchi@gmail.com", "abc123"))
 	}
 
 	override protected Predicate<Usuario> getCriterio(Usuario example) {
@@ -34,8 +34,8 @@ class RepositorioUsuarios extends CollectionBasedRepo<Usuario> {
 		typeof(Usuario)
 	}
 
-	def search(String texto) {
-		//allInstances.filter[usu|usu.BusquedaPorTexto(texto)].toList
+	def search(String nombre, String pass) {
+		allInstances.exists[usu|usu.BusquedaPorNombreYPass(nombre, pass)]
 	}
 	
 	override createExample() {

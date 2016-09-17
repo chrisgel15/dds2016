@@ -1,17 +1,6 @@
 'use strict';
 var poiApp = angular.module("poiApp", ['ui.router']);
 
-/*poiApp.controller('loginCtrl', function($stateParams, $state) {
-	//this.buscadorPois = new BuscadorPois($stateParams, $state, PoiService);
-	this.login = function(){
-		$state.go("home");
-	};
-}); */
-
- poiApp.controller('loginCtrl', function($stateParams, $state, UsuariosService) {
-	this.login = new ValidarUsuario($stateParams, $state, UsuariosService);
-}); 
-
 poiApp.controller('buscadorCtrl', function($stateParams, $state, PoiService) {
 	this.buscadorPois = new BuscadorPois($stateParams, $state, PoiService);
 });
@@ -41,9 +30,11 @@ poiApp.service('PoiService', function($stateParams, $state) {
 });
 
 poiApp.service('UsuariosService', function($http) { 
-    this.findAll = function(callback) {
-        $http.get('/login').then(callback); 
-    };
+
+  this.validarCredenciales = function (Usuario, callback, errorHandler) {
+    $http.post('/login',Usuario).then(callback, errorHandler);
+    
+  };
 });
 
 

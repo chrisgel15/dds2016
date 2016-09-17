@@ -1,6 +1,6 @@
-function Usuario(id , mail)
+function Usuario(nombre , password)
 {
-	this.id = id;
+	this.nombre = nombre;
 
-	this.mail = mail;
+	this.password = password;
 }

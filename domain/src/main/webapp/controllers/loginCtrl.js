@@ -1,15 +1,20 @@
-function ValidarUsuario($stateParams, $state, UsuariosService)
-{
+poiApp.controller('loginCtrl', function($stateParams, $state, UsuariosService) {
 	var self = this;
-	var usuarios = [];
 
-	this.getUsuarios = function() {
-	    UsuariosService.findAll(function(response) {
-	    	self.usuarios = response.data;
-	    });
-	};	
+	self.nombre = "";
+	self.password = "";
+	self.showMensajeUsuarioIncorrecto = false;
+	self.mensajeUsuarioIncorrecto = "";
 
-	this.getUsuarios();
-
-	
-}
+	self.login = function(){
+		self.showMensajeUsuarioIncorrecto = false;
+		UsuariosService.validarCredenciales({'nombre':self.nombre, 'password':self.password}, 
+			function() { 
+				$state.go("home");
+			}, 
+			function(mensajeError) { 
+						self.showMensajeUsuarioIncorrecto = true;						
+						self.mensajeUsuarioIncorrecto = mensajeError.data;
+			});
+	};
+}); 
