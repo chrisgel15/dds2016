@@ -31,8 +31,6 @@ function BuscadorPois($stateParams, $state, PoiService) {
 				self.listaPois = _.map(response.data, transformarAPoi);
 				console.log(self.listaPois); } ,
 			function() { alert("error!"); } );
-		//this.listaPois = poiService.poiService.listaPois;
-		//this.listaPois = filterPois(this.nombre, this.listaPois);
 		$state.go("home");
 	};
 
@@ -40,10 +38,6 @@ function BuscadorPois($stateParams, $state, PoiService) {
 	self.limpiarResultados = function(){
 		self.hayResultados = false;
 		$state.go("home");
-	};
-
-	self.changeState = function changeState() {
-		$state.go("testRoute");
 	};
 
 	self.VerDetalle = function (poi) {
@@ -54,21 +48,4 @@ function BuscadorPois($stateParams, $state, PoiService) {
 		return Poi.asPoi(jsonPoi);
 	}
 
-
-}
-
-function filterPois(array , lista)
-{
-	var i = 0, j = 0;
-	returnLista = [];
-
-	for (i = 0; i < array.length ; i++)
-		for (j = 0; j < lista.length ; j++)
-		{
-			var value = lista[j].Filtrar(array[i]);
-			if ( value != -1 && value != undefined )
-				returnLista.push(value);			
-		}
-
-	return returnLista;
 }
