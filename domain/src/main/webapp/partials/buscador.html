@@ -38,14 +38,12 @@
           </thead>
  <tbody ng-repeat="n in buscadorCtrl.buscadorPois.listaPois">
             <tr>
-              <td>{{n.prototype.nombre}}</td>
+              <td>{{n.nombre}}</td>
               <td>{{n.direccion}}</td>
               <td>
                <button type="button" class="btn btn-info" ng-click="buscadorCtrl.buscadorPois.VerDetalle(n)"> Ver detalle... </button>
               </td>
-              <td>  
-                
-              
+              <td>                
               </td>
             </tr>
           </tbody>

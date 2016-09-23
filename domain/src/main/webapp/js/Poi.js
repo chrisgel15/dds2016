@@ -5,6 +5,11 @@ function Poi(nombre, id, tipo, imagenUrl) {
 	this.imagenUrl = imagenUrl;
 }
 
+Poi.asPoi = function (jsonPoi) {
+  return angular.extend(new Poi(), jsonPoi);
+};
+
+
 
 
 

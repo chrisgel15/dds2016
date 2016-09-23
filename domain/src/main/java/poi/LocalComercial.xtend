@@ -16,6 +16,7 @@ class LocalComercial extends Poi {
 		horarios = new ArrayList<HorarioDeAtencion>()
 		horarios.add(horario)
 		palabrasClave = new ArrayList<String>()
+		this.tipo = "localComercial"
 	}
 	
 	def void AgregarHorario(HorarioDeAtencion horario) {
@@ -38,7 +39,7 @@ class LocalComercial extends Poi {
 	}
 
 	override BusquedaPorTexto(String texto) {
-		BusquedaEtiqueta(texto) || BusquedaNombre(texto) || BusquedaRubro(texto)
+		BusquedaEtiqueta(texto) || BusquedaNombre(texto) || BusquedaRubro(texto) || BusquedaDireccion(texto)
 	}
 	
 

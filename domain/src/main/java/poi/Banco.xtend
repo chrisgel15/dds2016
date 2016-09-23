@@ -2,16 +2,19 @@ package poi
 
 import java.util.ArrayList
 import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.geodds.Point
 
-
+@Accessors
 class Banco extends Poi {
+	
 	List<Servicio> servicios
 	
 
 	new(Point p, String nom) {
 		super(p, nom)
 		this.servicios = new ArrayList<Servicio>()
+		this.tipo = "banco"
 	}
 
 	def void AgregaServicio(Servicio s) {
@@ -27,7 +30,7 @@ class Banco extends Poi {
 	}
 
 	override BusquedaPorTexto(String texto) {
-		BusquedaEtiqueta(texto) || BusquedaNombre(texto)
+		BusquedaEtiqueta(texto) || BusquedaNombre(texto) || BusquedaDireccion(texto)
 	}
 	
 }

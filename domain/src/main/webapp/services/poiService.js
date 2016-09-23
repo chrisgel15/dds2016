@@ -1,4 +1,5 @@
-function PoiService($stateParams, $state) {
+poiApp.service('PoiService', function($stateParams, $state, $http)
+{
 
 	var banco1 = new Banco('Banco Santander', 'Calle Falsa 123', 1, 'Banco', 'Zona 1', 'imagenes/banco_santander.jpg');
 	banco1.agregarServicio('Cajero Automatico', 'Lunes');
@@ -47,4 +48,8 @@ function PoiService($stateParams, $state) {
    		});
 	};
 
-}
+	this.buscarPois = function (Criterios, callback, errorHandler) {
+    	$http.post('/home', Criterios).then(callback, errorHandler);    
+  	};
+
+});

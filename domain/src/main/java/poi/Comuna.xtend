@@ -2,7 +2,11 @@ package poi
 
 import org.uqbar.geodds.Point
 import org.uqbar.geodds.Polygon
+import org.eclipse.xtend.lib.annotations.Accessors
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
+@Accessors
+@JsonIgnoreProperties("vertices")
 class Comuna {
 
 	String nombre

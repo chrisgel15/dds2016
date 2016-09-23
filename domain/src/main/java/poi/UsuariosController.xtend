@@ -1,18 +1,20 @@
 package poi
 
-import org.uqbar.xtrest.api.annotation.Controller
-import org.uqbar.xtrest.json.JSONUtils
-import org.uqbar.xtrest.api.annotation.Get
-import org.uqbar.xtrest.api.Result
-import org.uqbar.xtrest.http.ContentType
-import poi.RepositorioUsuarios
-import org.uqbar.xtrest.api.XTRest
-import org.uqbar.xtrest.api.annotation.Post
-import org.uqbar.xtrest.api.annotation.Body
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.core.type.TypeReference
+import com.fasterxml.jackson.databind.ObjectMapper
+import java.util.ArrayList
 import java.util.HashMap
 import java.util.Map
+import org.uqbar.xtrest.api.Result
+import org.uqbar.xtrest.api.XTRest
+import org.uqbar.xtrest.api.annotation.Body
+import org.uqbar.xtrest.api.annotation.Controller
+import org.uqbar.xtrest.api.annotation.Get
+import org.uqbar.xtrest.api.annotation.Post
+import org.uqbar.xtrest.http.ContentType
+import org.uqbar.xtrest.json.JSONUtils
+import java.util.List
+import poi.Factories.PoiFactory
 
 @Controller
 class UsuariosController {
@@ -39,6 +41,24 @@ class UsuariosController {
 		
 		response.contentType = ContentType.APPLICATION_JSON	
 		ok(existeUsuario.toJson)
+	}
+	
+	@Post("/home")
+	def Result getPois(@Body String body) {
+		val criterios = body.fromJson(ArrayList)		
+		var List<Poi> pois = new ArrayList<Poi>()		
+				
+		try {
+			pois = RepositorioPoi.instance.BuscarPorCriterios(criterios)
+		}
+		catch (Exception e)
+		{
+			// TODO: loguear e.message
+			return internalServerError("Ha ocurrido un error. Contacte al administrador.");
+		}
+		
+		response.contentType = ContentType.APPLICATION_JSON		
+		ok(pois.toJson)
 	}
 	
 	def static void main(String[] args) {	

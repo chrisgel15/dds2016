@@ -1,49 +1,59 @@
-function BuscadorPois($stateParams, $state, poiService) {
-	this.nombre = [];
+function BuscadorPois($stateParams, $state, PoiService) {
+	var self = this;
 
-	this.nuevoCriterio = "";
+	self.nombre = [];
 
-	this.agregarCriterio = function(){
-		if (this.nuevoCriterio != "" && this.nombre.indexOf(this.nuevoCriterio) == -1){
-			this.nombre.push(this.nuevoCriterio);
-			this.limpiarResultados();
+	self.nuevoCriterio = "";
+
+	self.agregarCriterio = function(){
+		if (self.nuevoCriterio != "" && self.nombre.indexOf(this.nuevoCriterio) == -1){
+			self.nombre.push(this.nuevoCriterio);
+			self.limpiarResultados();
 		}
-		this.nuevoCriterio = "";
+		self.nuevoCriterio = "";
 		
 	};
 
-	this.limpiarCriterios = function(){
-		this.nombre = [];
-		this.limpiarResultados();
+	self.limpiarCriterios = function(){
+		self.nombre = [];
+		self.limpiarResultados();
 	};
 
-	this.hayResultados = false;
+	self.hayResultados = false;
 
-	this.listaPois = [];
+	self.listaPois = [];
 
-	this.buscarPois = function(){
-		this.hayResultados = true;
-		this.listaPois = poiService.poiService.listaPois;
-		this.listaPois = filterPois(this.nombre, this.listaPois);
+	self.buscarPois = function(){
+		self.hayResultados = true;
+		self.listaPois = PoiService.buscarPois(self.nombre,
+			function(response) { 
+				console.log(response.data); 
+				self.listaPois = _.map(response.data, transformarAPoi);
+				console.log(self.listaPois); } ,
+			function() { alert("error!"); } );
+		//this.listaPois = poiService.poiService.listaPois;
+		//this.listaPois = filterPois(this.nombre, this.listaPois);
 		$state.go("home");
 	};
 
 
-	this.limpiarResultados = function(){
-		this.hayResultados = false;
+	self.limpiarResultados = function(){
+		self.hayResultados = false;
 		$state.go("home");
 	};
 
-	this.changeState = function changeState() {
+	self.changeState = function changeState() {
 		$state.go("testRoute");
 	};
 
-	this.VerDetalle = function (poi) {
-		//$state.go("detalleComun", { 'id' : poi.prototype.id }, {reload : true});
+	self.VerDetalle = function (poi) {
 		$state.go("home.detalleComun." + poi.prototype.tipo.toLowerCase() , { 'id' : poi.prototype.id }, {reload : "home.detalleComun" });
-		//$state.go("home.detalleComun");
-		//$state.go("detalle" , { 'id' : poi.prototype.id });
   };
+
+  function transformarAPoi(jsonPoi) {
+		return Poi.asPoi(jsonPoi);
+	}
+
 
 }
 

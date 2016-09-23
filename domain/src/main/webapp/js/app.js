@@ -25,17 +25,11 @@ poiApp.controller('direccionServiciosCtrl', function($stateParams, $state, PoiSe
 	this.direccionServicios = new DireccionServicios($stateParams, $state, PoiService, MostrarHorario);
 });
 
-poiApp.service('PoiService', function($stateParams, $state) {
-	this.poiService = new PoiService($stateParams , $state);
-});
+//poiApp.service('PoiService', function($stateParams, $state) {
+//	this.poiService = new PoiService($stateParams , $state);
+//});
 
-poiApp.service('UsuariosService', function($http) { 
 
-  this.validarCredenciales = function (Usuario, callback, errorHandler) {
-    $http.post('/login',Usuario).then(callback, errorHandler);
-    
-  };
-});
 
 
 

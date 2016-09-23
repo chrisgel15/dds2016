@@ -16,6 +16,7 @@ class CGP extends Poi {
 		super(p, nombre)
 		this.comuna = comuna
 		this.servicios = new ArrayList<Servicio>()
+		this.tipo = "cgp"
 	}
 
 	def void AgregaServicio(Servicio s) {
@@ -40,7 +41,7 @@ class CGP extends Poi {
 // EndRegion Consulta de Disponibilidad
 // Region Busqueda por Texto
 	override BusquedaPorTexto(String texto) {
-		BusquedaEtiqueta(texto) || BusquedaNombre(texto) || BusquedaServicio(texto)
+		BusquedaEtiqueta(texto) || BusquedaNombre(texto) || BusquedaServicio(texto) || BusquedaDireccion(texto)
 	}
 
 	def boolean BusquedaServicio(String texto) {

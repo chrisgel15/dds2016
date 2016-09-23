@@ -7,7 +7,7 @@ import poi.HorarioDeAtencion
 import poi.RepositorioPoi
 
 @Accessors
-class PoiFactory {
+public class PoiFactory {
 	// Días de la semana
 	int lunes = 1
 	int martes = 2
@@ -45,7 +45,7 @@ class PoiFactory {
 
 	ComunaFactory comunaFactory
 
-	new() {
+	public new() {
 		pointFactory = new PointFactory()
 		comunaFactory = new ComunaFactory()
 

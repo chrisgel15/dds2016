@@ -1,7 +1,9 @@
 package poi
 
 import org.uqbar.geodds.Point
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class ParadaColectivo extends Poi {
 
 	// Referencia una cuadra (0.1 kilometros)
@@ -9,6 +11,7 @@ class ParadaColectivo extends Poi {
 	
 	new(Point p, String nom) {
 		super(p, nom)
+		this.tipo = "colectivo"
 	}
 
 // El servicio de colectivos siempre esta disponible
@@ -21,7 +24,7 @@ class ParadaColectivo extends Poi {
 	}
 
 	override BusquedaPorTexto(String texto) {
-		BusquedaEtiqueta(texto) || BusquedaNombre(texto)
+		BusquedaEtiqueta(texto) || BusquedaNombre(texto) || BusquedaDireccion(texto)
 	}
 	
 	
