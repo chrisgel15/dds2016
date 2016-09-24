@@ -3,17 +3,15 @@ poiApp.controller('loginCtrl', function($stateParams, $state, UsuariosService) {
 
 	self.nombre = "";
 	self.password = "";
-	self.showMensajeUsuarioIncorrecto = false;
 	self.mensajeUsuarioIncorrecto = "";
 
 	self.login = function(){
-		self.showMensajeUsuarioIncorrecto = false;
+		self.mensajeUsuarioIncorrecto = "";
 		UsuariosService.validarCredenciales({'nombre':self.nombre, 'password':self.password}, 
 			function() { 
 				$state.go("home");
 			}, 
 			function(mensajeError) { 
-						self.showMensajeUsuarioIncorrecto = true;						
 						self.mensajeUsuarioIncorrecto = mensajeError.data;
 			});
 	};

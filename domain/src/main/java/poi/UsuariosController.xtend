@@ -57,6 +57,9 @@ class UsuariosController {
 			return internalServerError("Ha ocurrido un error. Contacte al administrador.");
 		}
 		
+		if (pois.empty)
+			return badRequest("No se encontraron resultados.")
+		
 		response.contentType = ContentType.APPLICATION_JSON		
 		ok(pois.toJson)
 	}

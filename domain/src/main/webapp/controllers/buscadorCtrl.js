@@ -20,23 +20,29 @@ function BuscadorPois($stateParams, $state, PoiService) {
 	};
 
 	self.hayResultados = false;
+	self.mensajeError = "";
 
 	self.listaPois = [];
 
 	self.buscarPois = function(){
-		self.hayResultados = true;
+		self.mensajeError = "";
 		self.listaPois = PoiService.buscarPois(self.nombre,
 			function(response) { 
+				self.hayResultados = true;
 				console.log(response.data); 
 				self.listaPois = _.map(response.data, transformarAPoi);
 				console.log(self.listaPois); } ,
-			function() { alert("error!"); } );
+			function(response) { 
+				self.hayResultados = false;
+				self.mensajeError = response.data;
+			 } );
 		$state.go("home");
 	};
 
 
 	self.limpiarResultados = function(){
 		self.hayResultados = false;
+		self.mensajeError = "";
 		$state.go("home");
 	};
 

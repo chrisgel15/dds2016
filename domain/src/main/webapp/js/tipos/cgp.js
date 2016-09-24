@@ -9,18 +9,6 @@ function CGP(nombre, direccion, id, tipo, imagenUrl, comuna)
 		this.servicios.push(new Servicio(nombre, dia, horaInicio, horaFin));
 	};
 
-this.FiltrarPorDireccion = new FiltrarPorDireccion(this);
-
-	this.FiltrarPorServicio = new FiltrarPorServicio(this);
-
-	this.FiltrarPorNombre = new FiltrarPorNombre(this);
-
-	this.Filtrar = function(filtro){
-		return this.FiltrarPorDireccion.filtro(filtro) || 
-			this.FiltrarPorServicio.filtro(filtro) || 
-				this.FiltrarPorNombre.filtro(filtro);
-	};
-
 	this.getServicios = function() {
 		return this.servicios;
 	};
