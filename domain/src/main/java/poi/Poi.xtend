@@ -20,6 +20,7 @@ class Poi extends PuntoBase {
 	String imagenUrl
 	List<String> etiquetas
 	String tipo // Se utiliza para que viaje el tipo por JSON. TODO: Utilizar annotations
+	List<Review> reviews
 
 	def setEtiqueta(String etiqueta) {
 		this.etiquetas.add(etiqueta)
@@ -31,6 +32,7 @@ class Poi extends PuntoBase {
 		super(p, nom)
 		this.etiquetas = new ArrayList()
 		this.direccion = ""
+		this.reviews = new ArrayList()
 	}
 
 	def ConsultaCercania(PuntoBase destino) {
@@ -80,6 +82,14 @@ class Poi extends PuntoBase {
 	
 	def boolean BusquedaPorTexto(String texto) {
 		throw new UnsupportedOperationException("No implementado en la clase base. Debe redefinirse")
+	}
+	
+	def void AgregarReview(Review rev)
+	{
+		if (!this.reviews.exists[ r | r.equals(rev) ])
+			this.reviews.add(rev)
+		else
+			throw(new Exception("El usuario ya ha agregado comentarios."))
 	}
 
 }

@@ -52,6 +52,7 @@ poiApp.config(function($stateProvider, $urlRouterProvider) {
         .state('home.detalleComun.banco', {
             url: "/banco/:id",
             cache: false,
+            params: { 'id':null },
             resolve: {
               MostrarHorario: function(){
                 return {'mostrar': false};

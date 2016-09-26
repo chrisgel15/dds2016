@@ -35,7 +35,7 @@ class RepositorioUsuarios extends CollectionBasedRepo<Usuario> {
 	}
 
 	def search(String nombre, String pass) {
-		allInstances.exists[usu|usu.BusquedaPorNombreYPass(nombre, pass)]
+		allInstances.findFirst[usu|usu.BusquedaPorNombreYPass(nombre, pass)]
 	}
 	
 	override createExample() {

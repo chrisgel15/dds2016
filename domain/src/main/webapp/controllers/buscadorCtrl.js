@@ -1,4 +1,4 @@
-function BuscadorPois($stateParams, $state, PoiService, $rootScope) {
+function BuscadorPois($stateParams, $state, PoiService, $rootScope, UsuariosService) {
 	var self = this;
 
 	self.nombre = [];
@@ -59,5 +59,11 @@ function BuscadorPois($stateParams, $state, PoiService, $rootScope) {
         self.hayResultados = false;
 		self.mensajeError = "No se puede mostrar el detalle.";
     });
+
+    self.usuarioLogueado = UsuariosService.usuarioLogueado;
+
+    if (!self.usuarioLogueado)
+    	$state.go("login");
+    
 
 }

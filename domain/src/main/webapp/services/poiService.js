@@ -15,3 +15,14 @@ poiApp.service('DetallePoiService', function($stateParams, $state, $http)
   	};
 
 });
+
+
+poiApp.service('ReviewService', function($stateParams, $state, $http){
+	
+	var self = this;
+
+	self.addReview = function(review, $stateParams, callback, errorHandler ) {
+		$http.post('/addReview/' + $stateParams.id , review).then(callback, errorHandler);
+	};
+
+});

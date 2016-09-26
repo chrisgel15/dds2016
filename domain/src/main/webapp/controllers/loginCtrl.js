@@ -8,7 +8,8 @@ poiApp.controller('loginCtrl', function($stateParams, $state, UsuariosService) {
 	self.login = function(){
 		self.mensajeUsuarioIncorrecto = "";
 		UsuariosService.validarCredenciales({'nombre':self.nombre, 'password':self.password}, 
-			function() { 
+			function(usuario) { 
+				UsuariosService.guardarUsuario(new Usuario(usuario.data.nombre, usuario.data.password, usuario.data.id));
 				$state.go("home");
 			}, 
 			function(mensajeError) { 

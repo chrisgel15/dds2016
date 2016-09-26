@@ -1,8 +1,8 @@
 'use strict';
 var poiApp = angular.module("poiApp", ['ui.router']);
 
-poiApp.controller('buscadorCtrl', function($stateParams, $state, PoiService, $rootScope) {
-	this.buscadorPois = new BuscadorPois($stateParams, $state, PoiService, $rootScope);
+poiApp.controller('buscadorCtrl', function($stateParams, $state, PoiService, $rootScope, UsuariosService) {
+	this.buscadorPois = new BuscadorPois($stateParams, $state, PoiService, $rootScope, UsuariosService);
 });
 
 poiApp.controller('detalleColectivoCtrl', function($stateParams, $state, PoiService) {
