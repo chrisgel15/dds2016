@@ -24,6 +24,12 @@ poiApp.config(function($stateProvider, $urlRouterProvider) {
         .state('home.detalleComun', {
             url: "/detalle",
             cache: false,
+            params: { 'id':null },
+            resolve: {
+              DetallePoi: ['$stateParams','DetallePoiService', function($stateParams,DetallePoiService){
+                return DetallePoiService.buscarDetalleById($stateParams);
+              }]
+            },
             views: {
              'detalle': { templateUrl: "partials/detalleComun.html",
               controller: "detalleComunCtrl as detalleComunCtrl",

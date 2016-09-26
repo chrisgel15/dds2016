@@ -9,6 +9,7 @@ import java.util.HashSet
 import poi.Factories.PoiFactory
 import poi.Factories.PointFactory
 import poi.Factories.ComunaFactory
+import poi.Factories.ServiciosFactory
 
 class RepositorioPoi extends CollectionBasedRepo<Poi> {
 	
@@ -16,6 +17,7 @@ class RepositorioPoi extends CollectionBasedRepo<Poi> {
 	static RepositorioPoi repoPoi
 	PointFactory pointFactory
 	ComunaFactory comunaFactory
+	ServiciosFactory servicioFactory
 
 	def static RepositorioPoi getInstance() {
 		if (RepositorioPoi.repoPoi == null) {
@@ -28,13 +30,10 @@ class RepositorioPoi extends CollectionBasedRepo<Poi> {
 	{
 		pointFactory = new PointFactory()
 		comunaFactory = new ComunaFactory()
-		
-		this.CrearRepositorio()
-		
+		servicioFactory = new ServiciosFactory()		
+		this.CrearRepositorio()	
 		
 	}
-	
-	
 
 	override protected Predicate<Poi> getCriterio(Poi example) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
@@ -76,28 +75,40 @@ class RepositorioPoi extends CollectionBasedRepo<Poi> {
 	
 	def CrearRepositorio() {
 		var banco1 = new Banco(pointFactory.puntoBancoSantander, "Banco Santander Rio")
+		banco1.AgregaServicio(servicioFactory.servicioBanco1)
 		banco1.direccion = "Rivadavia 1234"
 		banco1.imagenUrl = "imagenes/banco_santander.jpg"
+		banco1.zona = "Zona centro"
 		this.create(banco1)
 		
-		var banco2 = new Banco(pointFactory.puntoBancoSantander, "Banco Santander Rio 2")
+		var banco2 = new Banco(pointFactory.puntoBancoSantander, "Banco Frances")
+		banco2.AgregaServicio(servicioFactory.servicioBanco1)
+		banco2.AgregaServicio(servicioFactory.servicioBanco2)
 		banco2.direccion = "Lavalle 4321"
-		banco2.imagenUrl = "imagenes/banco_santander.jpg"
+		banco2.imagenUrl = "imagenes/banco_frances.jpg"
+		banco2.zona = "Zona norte"
 		this.create(banco2)
 		
-		var banco3 = new Banco(pointFactory.puntoBancoSantander, "Santander Rio 3")
+		var banco3 = new Banco(pointFactory.puntoBancoSantander, "Banco Galicia")
+		banco3.AgregaServicio(servicioFactory.servicioBanco1)
+		banco3.AgregaServicio(servicioFactory.servicioBanco2)
+		banco3.AgregaServicio(servicioFactory.servicioBanco3)
 		banco3.direccion = "Cordoba 2222"
-		banco3.imagenUrl = "imagenes/banco_santander.jpg"
+		banco3.imagenUrl = "imagenes/banco_galicia.jpg"
+		banco3.zona = "Zona oeste"
 		this.create(banco3)
 		
-		var banco4 = new Banco(pointFactory.puntoBancoSantander, "Banco Santander Rio 4")
+		var banco4 = new Banco(pointFactory.puntoBancoSantander, "Banco ICBC")
+		banco4.AgregaServicio(servicioFactory.servicioBanco4)
 		banco4.direccion = "Rivadavia 3333"
-		banco4.imagenUrl = "imagenes/banco_santander.jpg"
+		banco4.imagenUrl = "imagenes/banco_icbc.jpg"
+		banco4.zona = "Zona Capital"
 		this.create(banco4)
 		
-		var banco5 = new Banco(pointFactory.puntoBancoSantander, "Santander Rio 5")
+		var banco5 = new Banco(pointFactory.puntoBancoSantander, "Banco Nacion")
 		banco5.direccion = "Avenida de Mayo 5454"
-		banco5.imagenUrl = "imagenes/banco_santander.jpg"
+		banco5.imagenUrl = "imagenes/banco_nacion.jpg"
+		banco5.zona = "Zona GBA"
 		this.create(banco5)
 		
 		var cgp1 = new CGP(pointFactory.puntoCgp, "CGP Barrio caballito", comunaFactory.comuna13)

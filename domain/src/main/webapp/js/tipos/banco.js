@@ -15,6 +15,12 @@ function Banco(nombre, direccion, id, tipo, zona, imagenUrl)
 	};
 }
 
+Banco.asBanco = function (jsonBanco) {
+  return angular.extend(new Banco(jsonBanco.nombre, jsonBanco.direccion, jsonBanco.id, jsonBanco.tipo, jsonBanco.zona ,
+  		jsonBanco.imagenUrl), jsonBanco);
+};
+
+
 // Test
 var banco = new Banco('Banco Santander', 1, 'Banco', 'Zona 1');
 banco.agregarServicio('servicio banco', 2);

@@ -1,13 +1,13 @@
     <!-- Detalle Comun -->
-      <div id="detalleComun" aria-labelledby="myModalLabel" ng-controller="detalleComunCtrl as detalleComunCtrl">
+      <div id="detalleComun" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h3 class="modal-title" id="myModalLabel">{{detalleComunCtrl.detalleComun.nombre}}</h3>
+              <h3 class="modal-title" id="myModalLabel">{{detalleComunCtrl.nombre}}</h3>
             </div>
             <div class="modal-body">
-              <img class="img-responsive img-rounded center-block" ng-src="{{detalleComunCtrl.detalleComun.imagenUrl}}" alt="sin imagen..." />
+              <img class="img-responsive img-rounded center-block" ng-src="{{detalleComunCtrl.imagenUrl}}" alt="sin imagen..." />
               <br>
               <div class="panel panel-default">
                 <div class="panel-heading">

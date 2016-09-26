@@ -1,14 +1,11 @@
-function DetalleComun($stateParams, $state, PoiService){
-	//this.Poi = PoiService.poiService.getPoiById($stateParams.id);
+'use strict';
+poiApp.controller('detalleComunCtrl', function($stateParams, $state , DetallePoi) {
 
-	this.Poi = PoiService.poiService.getPoi();
+	var self = this;
 
-	if (!this.Poi){
-		$state.go("home");
-		return;
-	}
+	self.DetallePoiComun = DetallePoi.data;
 
-	this.nombre = this.Poi.prototype.nombre;
-	this.imagenUrl = this.Poi.prototype.imagenUrl;
+	self.nombre = self.DetallePoiComun.nombre;
+	self.imagenUrl = self.DetallePoiComun.imagenUrl;
 
-}
+});

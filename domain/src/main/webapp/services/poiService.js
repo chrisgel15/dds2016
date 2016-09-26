@@ -5,3 +5,13 @@ poiApp.service('PoiService', function($stateParams, $state, $http)
   	};
 
 });
+
+poiApp.service('DetallePoiService', function($stateParams, $state, $http)
+{
+	var self = this;
+
+	self.buscarDetalleById = function($stateParams, callback, errorHandler ) {
+  		return $http.get('/detalle/' + $stateParams.id, $stateParams.id).then(callback, errorHandler);
+  	};
+
+});

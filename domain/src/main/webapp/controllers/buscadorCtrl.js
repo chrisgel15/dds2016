@@ -1,4 +1,4 @@
-function BuscadorPois($stateParams, $state, PoiService) {
+function BuscadorPois($stateParams, $state, PoiService, $rootScope) {
 	var self = this;
 
 	self.nombre = [];
@@ -47,11 +47,17 @@ function BuscadorPois($stateParams, $state, PoiService) {
 	};
 
 	self.VerDetalle = function (poi) {
-		$state.go("home.detalleComun." + poi.prototype.tipo.toLowerCase() , { 'id' : poi.prototype.id }, {reload : "home.detalleComun" });
+		console.log("home.detalleComun." + poi.tipo.toLowerCase() + "." + poi.id);
+		$state.go("home.detalleComun." + poi.tipo.toLowerCase() , { 'id' : poi.id }, {reload : "home.detalleComun" });
   };
 
   function transformarAPoi(jsonPoi) {
 		return Poi.asPoi(jsonPoi);
 	}
+
+	$rootScope.$on("$stateChangeError", function () {
+        self.hayResultados = false;
+		self.mensajeError = "No se puede mostrar el detalle.";
+    });
 
 }

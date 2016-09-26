@@ -3,7 +3,9 @@ package poi
 import java.util.ArrayList
 import java.util.List
 import org.joda.time.DateTime
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class Servicio {
 
 	public String nombre

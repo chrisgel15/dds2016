@@ -1,21 +1,13 @@
-function DetalleBanco($stateParams , $state, PoiService){
+poiApp.controller('detalleBancoCtrl', function($stateParams, $state, DetallePoi) {
 
-//	this.Poi = PoiService.poiService.getPoiById($stateParams.id);
+	var self = this;
+	self.DetalleBanco = transformarABanco(DetallePoi.data);
 
-	this.Poi = PoiService.poiService.getPoi();
+	self.zona = self.DetalleBanco.zona;
 
-	if (!this.Poi){
-		$state.go("home");
-		return;
+function transformarABanco(jsonBanco) {
+		return Banco.asBanco(jsonBanco);
 	}
 
-	this.zona = this.Poi.zona;
-
-
-
-
-}
-
-
-
+});
 

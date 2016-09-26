@@ -64,6 +64,24 @@ class UsuariosController {
 		ok(pois.toJson)
 	}
 	
+	@Get("/detalle/:id")
+	def Result getPoiById(@Body String body)
+	{
+		var Poi poi = null
+		
+		try{
+			poi = RepositorioPoi.instance.searchById(Integer.parseInt(id))
+		}
+		catch(Exception e)
+		{
+			// TODO: loguear e.message
+			return internalServerError("Ha ocurrido un error. Contacte al administrador.");
+		}
+		
+		response.contentType = ContentType.APPLICATION_JSON		
+		ok(poi.toJson)
+	}
+	
 	def static void main(String[] args) {	
 		XTRest.start(UsuariosController, 9000)
 	}

@@ -12,12 +12,12 @@
                       <tbody>
                         <tr>
                           <td>
-                            <address>{{dirServCtrl.direccionServicios.direccion}}</address></td>
+                            <address>{{dirServCtrl.direccion}}</address></td>
                               <td>
-                                <ul ng-repeat="n in dirServCtrl.direccionServicios.servicios">
+                                <ul ng-repeat="n in dirServCtrl.servicios">
                                   <li>{{n.nombre}}</li>  
                                  
-                                    <ul ng-repeat="m in n.horarios" ng-show="dirServCtrl.direccionServicios.mostrarHorarios">
+                                    <ul ng-repeat="m in n.horarios" ng-show="dirServCtrl.mostrarHorarios">
                                          <li>{{m.dia}}: {{m.horaInicio}} - {{m.horaFin}}</li> 
                                     </ul>
                                   

@@ -2,6 +2,7 @@ package poi.Factories
 
 import org.joda.time.DateTime
 import org.eclipse.xtend.lib.annotations.Accessors
+import poi.Servicio
 
 @Accessors
 class ServiciosFactory {
@@ -23,6 +24,13 @@ class ServiciosFactory {
 	poi.ServicioYHorario consultaHorarioServicioComercialDomingo14hs = new poi.ServicioYHorario ("Comercial",new DateTime(2016,4,17,14,00))
 	poi.ServicioYHorario consultaHorarioServicioComercialMiercoles1245hs = new poi.ServicioYHorario ("Comercial",new DateTime(2016,4,13,12,35))
 	poi.ServicioYHorario consultaHorarioServicioComercialJeves1835hs = new poi.ServicioYHorario ("Comercial", new DateTime(2016,4,14,18,35))
+	
+	Servicio servicioBanco1 = new Servicio("Servicio bancario 1", 1, 10, 15)
+	Servicio servicioBanco2 = new Servicio("Cajero", 2, 10, 15)
+	Servicio servicioBanco3 = new Servicio("Extracciones", 3, 10, 15)
+	Servicio servicioBanco4 = new Servicio("Creditos", 4, 10, 15)
+	Servicio servicioBanco5 = new Servicio("Tarjetas", 5, 10, 15)
+	
 	
 //	def getConsultaHorarioServicioSocial(){
 //		consultaHorarioServicioSocial

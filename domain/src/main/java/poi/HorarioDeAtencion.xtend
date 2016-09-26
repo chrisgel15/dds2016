@@ -1,7 +1,9 @@
 package poi
 
 import org.joda.time.DateTime
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class HorarioDeAtencion {
 	int dia
 	int horaInicio

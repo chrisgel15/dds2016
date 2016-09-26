@@ -1,13 +1,10 @@
-function DireccionServicios($stateParams, $state, PoiService, ShowHorario){
-	this.Poi = PoiService.poiService.getPoi();
+poiApp.controller('direccionServiciosCtrl', function($stateParams, $state, DetallePoi, MostrarHorario){
 
-	if (!this.Poi){
-		$state.go("home");
-		return;
-	}
+	var self = this;
 
-	this.direccion = this.Poi.direccion;
-	this.servicios = this.Poi.getServicios();
+self.direccion = DetallePoi.data.direccion;
+self.servicios = DetallePoi.data.servicios;
+self.mostrarHorarios = MostrarHorario.mostrar;
 
-	this.mostrarHorarios = ShowHorario.mostrar;
-}
+
+});

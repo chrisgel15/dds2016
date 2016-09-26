@@ -9,12 +9,14 @@ import org.uqbar.geodds.Point
 class Banco extends Poi {
 	
 	List<Servicio> servicios
+	String zona
 	
 
 	new(Point p, String nom) {
 		super(p, nom)
 		this.servicios = new ArrayList<Servicio>()
 		this.tipo = "banco"
+		this.zona = ""
 	}
 
 	def void AgregaServicio(Servicio s) {
