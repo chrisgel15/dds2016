@@ -12,7 +12,8 @@ class Usuario extends Entity {
 	String direccionDeMail
 	String nombre
 	String password
-	List<Mail> casilla	
+	List<Mail> casilla
+	List<Poi> favoritos	
 	
 	new(String unaDireccion) {
 		this.direccionDeMail = unaDireccion
