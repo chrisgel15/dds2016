@@ -1,29 +1,29 @@
 package poi
 
+import java.util.ArrayList
+import java.util.HashSet
+import java.util.List
+import java.util.Set
 import org.apache.commons.collections15.Predicate
 import org.uqbar.commons.model.CollectionBasedRepo
-import java.util.List
-import java.util.ArrayList
-import java.util.Set
-import java.util.HashSet
-import poi.Factories.PoiFactory
-import poi.Factories.PointFactory
 import poi.Factories.ComunaFactory
+import poi.Factories.PointFactory
 import poi.Factories.ServiciosFactory
 
 class RepositorioPoi extends CollectionBasedRepo<Poi> {
 	
-	/* Singleton */
-	static RepositorioPoi repoPoi
+	
 	PointFactory pointFactory
 	ComunaFactory comunaFactory
 	ServiciosFactory servicioFactory
+	/* Singleton */
+	static RepositorioPoi repoPoi
 
 	def static RepositorioPoi getInstance() {
-		if (RepositorioPoi.repoPoi == null) {
-			RepositorioPoi.repoPoi = new RepositorioPoi
+		if (repoPoi == null) {
+			repoPoi = new RepositorioPoi
 		}
-		RepositorioPoi.repoPoi
+		repoPoi
 	}
 	
 	new()

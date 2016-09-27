@@ -16,6 +16,6 @@ app.get('/*', function (req, res) {
   res.sendfile('index.html');
 });
 
-app.listen(9000, function () {
+app.listen(4000, function () {
   console.log('POI app listening on port 3000!');
 });
