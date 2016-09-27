@@ -1,82 +1,92 @@
-    <!-- Detalle Comun -->
-      <div id="detalleComun" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h3 class="modal-title" id="myModalLabel">{{detalleComunCtrl.nombre}}</h3>
-            </div>
-            <div class="modal-body">
-              <img class="img-responsive img-rounded center-block" ng-src="{{detalleComunCtrl.imagenUrl}}" alt="sin imagen..." />
-              <br>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <div class="panel-title">
-                    <h4>      
-                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                      Informacion Adicional
-                    </h4>
-                  </div>
-                </div>
-                <div class="panel-body">
-                   <div ui-view="detalleParticular"></div>
-                   <div>
-                   	<h3>Calificacion General: ((Calif...))</h3>
-                   	<h3>Favorito</h3>
-                   	<input type="checkbox" />
-                   </div>
-                   <div>
-                   <h3>Tu opinion</h3>
-                   <textarea></textarea>
-                   <select>
-                   	<option>1</option>
-                   	<option>2</option>
-                   	<option>3</option>
-                   	<option>4</option>
-                   	<option>5</option>
-                   </select>
-                   <button>Enviar</button>
-                   </div>
-                   <div>
-                   	<h3>Opiniones</h3>
-                   	<table>
-                   	<thead>
-                   		<th>Usuario</th>
-                   		<th>Comentario</th>
-                   		<th>Calificacion</th>
-                   	</thead>
-                   	<tbody>
-                   	<tr>
-                   		<td>Usu 1</td>
-                   		<td>Muy bueno!</td>
-                   		<td>5</td>
-                   		</tr>
 
-                   	<tr>
-                   		<td>Usu 1</td>
-                   		<td>Muy bueno!</td>
-                   		<td>5</td>
-                   		</tr>
+<!-- Detalle Comun -->
+<div id="detalleComun" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 class="modal-title" id="myModalLabel">{{detalleComunCtrl.nombre}}</h3>
+			</div>
+			<div class="modal-body">
+				<img class="img-responsive img-rounded center-block"
+					ng-src="{{detalleComunCtrl.imagenUrl}}" alt="sin imagen..." /> <br>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title">
+							<h4>
+								<span class="glyphicon glyphicon-exclamation-sign"
+									aria-hidden="true"></span> Informacion Adicional
+							</h4>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div ui-view="detalleParticular"></div>
+						<div class="row">
+							<div class="col-md-6 control-label">
+								<h3>Calificacion General:</h3>
+							</div>
+							<div class="col-md-6">
+								<h3>9</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-1">
+								<div class="checkbox">
+									<label> <input type="checkbox">
+									</label>
+								</div>
+							</div>
+							<div class="col-md-11">
+								<h4>Favorito</h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-7">
+								<textarea class="form-control" rows="4">Tu opinion...</textarea>
+							</div>
+							<div class="col-md-2">
+								<select class="form-control">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary">Enviar</button>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-12">
+								<h3>Opiniones de los usuarios</h3>
+							</div>
+						</div>
+						<div class="container-fluid">
+							<table class="table table-striped">
+								<thead>
+									<th>Usuario</th>
+									<th>Comentario</th>
+									<th>Calificacion</th>
+								</thead>
+								<tbody>
+									<tr>
+										<td>romina.cuadra</td>
+										<td>muy bueno</td>
+										<td>9</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-                   	<tr>
-                   		<td>Usu 1</td>
-                   		<td>Muy bueno!</td>
-                   		<td>5</td>
-                   		</tr>
-                   		
-                   	<tr>
-                   		<td>Usu 1</td>
-                   		<td>Muy bueno!</td>
-                   		<td>5</td>
-                   		</tr>
-                   	</tbody>
-
-                   	</table>
-                   </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
