@@ -16,6 +16,8 @@ poiApp.controller('detalleComunCtrl', function($stateParams, $state , DetallePoi
 	self.mensaje = "";
 	self.listaReviews = _.map(self.DetallePoiComun.reviews, transformarAReview);
 
+	self.notaPromedio = self.DetallePoiComunObject.CalcularPromedio(self.listaReviews);
+
 	// Marca el Poi como favorito o no.
 	self.DetallePoiComunObject.marcarFavorito(UsuariosService.favoritosId);
 
@@ -29,6 +31,7 @@ poiApp.controller('detalleComunCtrl', function($stateParams, $state , DetallePoi
 				self.reviewError = false;
 				self.mensaje = "Review enviada con exito";
 				self.listaReviews = _.map(response.data, transformarAReview);
+				self.notaPromedio = self.DetallePoiComunObject.CalcularPromedio(self.listaReviews);
 				console.log(self.listaReviews);
 			},	 
 			function() {
@@ -44,13 +47,21 @@ poiApp.controller('detalleComunCtrl', function($stateParams, $state , DetallePoi
 			'idPoi':self.DetallePoiComun.id },
 			function() { 
 				UsuariosService.usuarioObject.marcarFavorito(self.DetallePoiComun.id);
+				self.reviewOk = true;
+				self.reviewError = false;
+				self.mensaje = "Su selección fue guardada con éxito.";
 			 },
-			function() { alert('error'); } );
+			function() { self.reviewError = true;
+				self.reviewOk = false;
+				self.mensaje = "Hubo un error al intentar guardar su selección."; 
+				 } );
 
 	};
 
 	function transformarAReview(jsonReview) {
 		return Review.asReview(jsonReview);
 	}
+
+
 
 });

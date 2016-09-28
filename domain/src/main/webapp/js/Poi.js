@@ -13,6 +13,21 @@ function Poi(nombre, id, tipo, imagenUrl) {
 		else
 			self.esFavorito = false;
 	};
+
+	self.CalcularPromedio = function(listaReviews){
+		var i;
+		var sum = 0;
+
+		for (i=0 ; i<listaReviews.length ; i++)
+		{
+			sum += listaReviews[i].puntaje;
+		}
+
+		if (listaReviews.length > 0)
+			sum = sum / listaReviews.length;
+
+		return sum; 
+	};
 }
 
 Poi.asPoi = function (jsonPoi) {
