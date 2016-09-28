@@ -11,7 +11,7 @@ poiApp.controller('detalleComunCtrl', function($stateParams, $state , DetallePoi
 	self.puntaje = 0;
 	self.reviewOk = "";
 	self.mensaje = "";
-	self.listaReviews = [];
+	self.listaReviews = _.map(self.DetallePoiComun.reviews, transformarAReview);
 
 	self.addReview = function(){
 		ReviewService.addReview( angular.toJson(new Review(UsuariosService.idUsuarioLogueado, self.opinion,self.puntaje)), $stateParams ,
