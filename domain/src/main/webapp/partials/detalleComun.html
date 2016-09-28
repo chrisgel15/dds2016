@@ -35,7 +35,7 @@
 						<div class="row">
 							<div class="col-md-1">
 								<div class="checkbox">
-									<label> <input type="checkbox" ng-model="detalleComunCtrl.favorito">
+									<label> <input type="checkbox">
 									</label>
 								</div>
 							</div>
@@ -48,7 +48,7 @@
 								<textarea class="form-control" rows="4" ng-model="detalleComunCtrl.opinion">Tu opinion...</textarea>
 							</div>
 							<div class="col-md-2">
-								<select class="form-control">
+								<select class="form-control" ng-model="detalleComunCtrl.puntaje">
                    	<option>1</option>
                    	<option>2</option>
                    	<option>3</option>
@@ -61,6 +61,7 @@
 									<button ng-click="detalleComunCtrl.addReview()" class="btn btn-primary">Enviar</button>
 								</div>
 							</div>
+							 
 						</div>
 						<div class=row>
 							<div class="col-md-12">
@@ -74,11 +75,11 @@
                    		<th>Comentario</th>
                    		<th>Calificacion</th>
                    	</thead>
-                   	<tbody>
+                   	<tbody ng-repeat="n in detalleComunCtrl.listaReviews">
                    	<tr>
-										<td>romina.cuadra</td>
-										<td>muy bueno</td>
-										<td>9</td>
+										<td>{{n.idUsuario}}</td>
+										<td>{{n.comentario}}</td>
+										<td>{{n.puntaje}}</td>
                    		</tr>
                    	</tbody>
                    	</table>
@@ -89,4 +90,11 @@
                 </div>
               </div>
             </div>
+            <div class="alert alert-danger" ng-show="!detalleComunCtrl.reviewOk" role="alert">
+            	<p><strong>{{detalleComunCtrl.mensaje}}</strong></p>
+        	</div>
+        	<div class="alert alert-success" ng-show="detalleComunCtrl.reviewOk" role="alert">
+            	<p><strong>{{detalleComunCtrl.mensaje}}</strong></p>
+        	</div>
+        	
 

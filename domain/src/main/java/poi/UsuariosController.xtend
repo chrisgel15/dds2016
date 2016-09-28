@@ -103,7 +103,7 @@ class UsuariosController {
 		}		
 		
 		response.contentType = ContentType.APPLICATION_JSON
-		ok()
+		ok(poi.reviews.toJson)
 	}
 	
 	
