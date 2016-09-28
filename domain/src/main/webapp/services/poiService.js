@@ -25,4 +25,6 @@ poiApp.service('ReviewService', function($stateParams, $state, $http){
 		$http.post('/addReview/' + $stateParams.id , review).then(callback, errorHandler);
 	};
 
+	
+
 });

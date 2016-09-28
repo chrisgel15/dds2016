@@ -1,15 +1,11 @@
-function DetalleColectivo($stateParams , $state, PoiService){
 
-//	this.Poi = PoiService.poiService.getPoiById($stateParams.id);
 
-//	this.Poi = PoiService.poiService.getPoi();
+poiApp.controller('detalleColectivoCtrl', function($stateParams, $state, DetallePoi){
+	var self = this;
 
-	if (!this.Poi){
-		$state.go("home");
-		return;
+	self.DetalleColectivo = transformarAColectivo(DetallePoi.data);
+
+	function transformarAColectivo(jsonColectivo) {
+		return ParadaDeColectivo.asParadaDeColectivo(jsonColectivo);
 	}
-
-	this.nombre = this.Poi.prototype.nombre;
-	this.cantidadParadas = this.Poi.cantidadParadas;
-
-}
+});

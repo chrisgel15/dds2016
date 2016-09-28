@@ -40,6 +40,7 @@ poiApp.config(function($stateProvider, $urlRouterProvider) {
         .state('home.detalleComun.colectivo', {
             url: "/colectivo/:id",
             cache: false,
+            
             views: {
               'detalleParticular': {
                   templateUrl: "partials/modalColectivo.html",

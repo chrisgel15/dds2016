@@ -5,13 +5,7 @@ poiApp.controller('buscadorCtrl', function($stateParams, $state, PoiService, $ro
 	this.buscadorPois = new BuscadorPois($stateParams, $state, PoiService, $rootScope, UsuariosService);
 });
 
-poiApp.controller('detalleColectivoCtrl', function($stateParams, $state, PoiService) {
-	this.detalleColectivo = new DetalleColectivo($stateParams, $state, PoiService);
-});
 
-poiApp.controller('detalleCgpCtrl', function($stateParams, $state, PoiService) {
-	this.detalleCgp = new DetalleCgp($stateParams, $state, PoiService);
-});
 
 
 
