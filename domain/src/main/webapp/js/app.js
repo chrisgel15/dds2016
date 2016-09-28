@@ -9,11 +9,6 @@ poiApp.controller('detalleColectivoCtrl', function($stateParams, $state, PoiServ
 	this.detalleColectivo = new DetalleColectivo($stateParams, $state, PoiService);
 });
 
-poiApp.controller('detalleCgpCtrl', function($stateParams, $state, PoiService) {
-	this.detalleCgp = new DetalleCgp($stateParams, $state, PoiService);
-});
-
-
 
 // ********** Para detectar errores de ruteo ********* ///////////////
 
