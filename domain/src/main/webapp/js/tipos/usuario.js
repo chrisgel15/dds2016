@@ -1,9 +1,23 @@
-function Usuario(nombre , password, id)
+function Usuario(nombre , password, id, favoritos)
 {
-	this.nombre = nombre;
-	this.password = password;
-	this.id = id;
+	var self = this;
+
+	self.nombre = nombre;
+	self.password = password;
+	self.id = id;
+	self.favoritos = favoritos;
+
+	self.marcarFavorito = function (idPoi) {
+			if (_.includes(self.favoritos, idPoi,0))
+				self.favoritos.pop(idPoi);
+			else
+				self.favoritos.push(idPoi);
+	};
 }
+
+Usuario.asUsuario = function(jsonUsuario) {
+	return angular.extend(new Usuario(jsonUsuario.nombre, jsonUsuario.password, jsonUsuario.id, jsonUsuario.favoritosId));
+};
 
 function Review(idUsuario, comentario, puntaje, nombre)
 {

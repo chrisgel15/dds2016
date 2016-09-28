@@ -26,3 +26,13 @@ poiApp.service('ReviewService', function($stateParams, $state, $http){
 	};
 
 });
+
+poiApp.service('FavoritoService', function($stateParams, $state, $http){
+
+	var self = this;
+
+	self.favorito = function(favoritear, callback, errorHandler) {
+		$http.post('/favorito', favoritear).then(callback, errorHandler);
+	};
+
+});

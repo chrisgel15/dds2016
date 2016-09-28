@@ -18,7 +18,10 @@ class RepositorioUsuarios extends CollectionBasedRepo<Usuario> {
 	
 	new()
 	{
-		this.create(new Usuario("christiangelman@gmail.com", "abc123"))
+		val Usuario usu1 = new Usuario("christiangelman@gmail.com", "abc123")
+		usu1.AgregarFavorito(RepositorioPoi.instance.allInstances.get(0))
+		usu1.AgregarFavorito(RepositorioPoi.instance.allInstances.get(1)) 
+		this.create(usu1)
 		this.create(new Usuario("chrisgel15@hotmail.com", "abc123"))
 		this.create(new Usuario("rominacuadra@gmail.com", "abc123"))
 		this.create(new Usuario("federicomandri@hotmail.com", "abc123"))

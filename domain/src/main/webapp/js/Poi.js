@@ -1,8 +1,18 @@
 function Poi(nombre, id, tipo, imagenUrl) {
-	this.nombre = nombre;
-	this.id = id;
-	this.tipo = tipo;
-	this.imagenUrl = imagenUrl;
+	var self = this;
+
+	self.nombre = nombre;
+	self.id = id;
+	self.tipo = tipo;
+	self.imagenUrl = imagenUrl;
+	self.esFavorito = false;
+
+	self.marcarFavorito = function(favoritosUsuario) {
+		if (_.includes(favoritosUsuario, self.id,0))
+			self.esFavorito = true;
+		else
+			self.esFavorito = false;
+	};
 }
 
 Poi.asPoi = function (jsonPoi) {
