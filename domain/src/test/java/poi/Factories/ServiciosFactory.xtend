@@ -31,6 +31,12 @@ class ServiciosFactory {
 	Servicio servicioBanco4 = new Servicio("Creditos", 4, 10, 15)
 	Servicio servicioBanco5 = new Servicio("Tarjetas", 5, 10, 15)
 	
+	Servicio servicioCGP1 = new Servicio("Servicio CGP 1", 1, 8, 20)
+	Servicio servicioCGP2 = new Servicio("Servicio CGP 2", 2, 9, 18)
+	Servicio servicioCGP3 = new Servicio("Servicio CGP 3", 3, 10, 13)
+	Servicio servicioCGP4 = new Servicio("Servicio CGP 4", 4, 13, 17)
+	Servicio servicioCGP5 = new Servicio("Servicio CGP 5", 5, 6, 13)
+	
 	
 //	def getConsultaHorarioServicioSocial(){
 //		consultaHorarioServicioSocial

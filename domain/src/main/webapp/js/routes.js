@@ -83,8 +83,8 @@ poiApp.config(function($stateProvider, $urlRouterProvider) {
             },
             views: {
                 'detalleParticular': {
-                    templateUrl: "partials/modalCgp.html",
-                    controller: "detalleCgpCtrl as detalleCgpCtrl",
+                    templateUrl: "partials/modalBanco.html",
+                    controller: "detalleCgpCtrl as detalleBancoCtrl",
                     cache: false,
                 },
                 'dirServ@home.detalleComun.cgp': {

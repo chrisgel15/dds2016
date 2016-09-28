@@ -8,7 +8,6 @@ poiApp.controller('buscadorCtrl', function($stateParams, $state, PoiService, $ro
 
 
 
-
 // ********** Para detectar errores de ruteo ********* ///////////////
 
 angular.module("poiApp").run(['$rootScope',function($rootScope){ 
