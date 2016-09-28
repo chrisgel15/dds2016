@@ -40,6 +40,7 @@ class UsuariosController {
 			return badRequest("Usuario o contraseña incorrectos. Intente nuevamente.");
 		
 		response.contentType = ContentType.APPLICATION_JSON	
+		//user.generarFavoritosId()
 		ok(user.toJson)
 	}
 	
@@ -104,6 +105,28 @@ class UsuariosController {
 		
 		response.contentType = ContentType.APPLICATION_JSON
 		ok(poi.reviews.toJson)
+	}
+	
+	@Post("/favorito")
+	def Result favorito(@Body String body)
+	{
+		val idUsuario = body.getPropertyValue("idUsuario") as String
+		val idPoi = body.getPropertyValue("idPoi") as String
+	//	val agregar = body.getPropertyValue("agregar") as Boolean
+		
+		val poi = RepositorioPoi.instance.searchById(Integer.parseInt(idPoi))
+		val usuario = RepositorioUsuarios.instance.searchById(Integer.parseInt(idUsuario))
+			
+			try {
+				usuario.AgregarFavorito(poi)
+			}
+			catch(Exception ex)
+			{
+				return badRequest(ex.message)
+			}			
+		
+		response.contentType = ContentType.APPLICATION_JSON
+		ok()
 	}
 	
 	

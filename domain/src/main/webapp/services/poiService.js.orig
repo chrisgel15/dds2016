@@ -25,6 +25,9 @@ poiApp.service('ReviewService', function($stateParams, $state, $http){
 		$http.post('/addReview/' + $stateParams.id , review).then(callback, errorHandler);
 	};
 
+<<<<<<< HEAD
+	
+=======
 });
 
 poiApp.service('FavoritoService', function($stateParams, $state, $http){
@@ -34,4 +37,6 @@ poiApp.service('FavoritoService', function($stateParams, $state, $http){
 	self.favorito = function(favoritear, callback, errorHandler) {
 		$http.post('/favorito', favoritear).then(callback, errorHandler);
 	};
+>>>>>>> entrega5
+
 });

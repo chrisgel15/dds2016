@@ -3,6 +3,9 @@ poiApp.service('UsuariosService', function($http) {
 
 	self.usuarioLogueado = "";
 	self.idUsuarioLogueado = "";
+  self.favoritosId = [];
+
+  self.usuarioObject = "";
 
   self.validarCredenciales = function (Usuario, callback, errorHandler) {
   	$http.post('/login',Usuario).then(callback, errorHandler);    
@@ -11,5 +14,10 @@ poiApp.service('UsuariosService', function($http) {
   self.guardarUsuario = function(usuarioLogueado){
   	self.usuarioLogueado = usuarioLogueado.nombre;
   	self.idUsuarioLogueado = usuarioLogueado.id;
+    self.favoritosId = usuarioLogueado.favoritos;
+
+    self.usuarioObject = usuarioLogueado;
+
+    console.log(self.favoritosId);
   };
 });

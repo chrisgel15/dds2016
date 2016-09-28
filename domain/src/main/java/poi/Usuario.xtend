@@ -13,7 +13,8 @@ class Usuario extends Entity {
 	String nombre
 	String password
 	List<Mail> casilla
-	List<Poi> favoritos	
+	//List<Poi> favoritos
+	List<Integer> favoritosId	
 	
 	new(String unaDireccion) {
 		this.direccionDeMail = unaDireccion
@@ -23,7 +24,28 @@ class Usuario extends Entity {
 	{
 		this.nombre = nombre
 		this.password = pass
+	//	this.favoritos = new ArrayList<Poi>()
+		this.favoritosId = new ArrayList<Integer>()
 	}
+	
+	def void AgregarFavorito(Poi p)
+	{
+		if (!this.favoritosId.contains(p.id))
+			this.favoritosId.add(p.id)
+		else
+			this.favoritosId.remove(p.id)
+	}
+	
+//	def void generarFavoritosId()
+//	{
+//		var ArrayList<Integer> auxFavoritosId = new ArrayList<Integer>()
+//		this.favoritos.forEach[ f | AgregarFavoritoId(f.id) ]
+//	}
+//	
+//	def void AgregarFavoritoId(Integer id)
+//	{
+//		this.favoritosId.add(id)
+//	}
 	
 	public new() {
 		

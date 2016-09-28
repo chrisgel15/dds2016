@@ -31,7 +31,10 @@ function BuscadorPois($stateParams, $state, PoiService, $rootScope, UsuariosServ
 				self.hayResultados = true;
 				console.log(response.data); 
 				self.listaPois = _.map(response.data, transformarAPoi);
-				console.log(self.listaPois); } ,
+				console.log(self.listaPois);
+				_.map(self.listaPois , MarcarFavoritos);
+				console.log(self.listaPois);
+				 } ,
 			function(response) { 
 				self.hayResultados = false;
 				self.mensajeError = response.data;
@@ -53,6 +56,11 @@ function BuscadorPois($stateParams, $state, PoiService, $rootScope, UsuariosServ
 
   function transformarAPoi(jsonPoi) {
 		return Poi.asPoi(jsonPoi);
+	}
+
+	function MarcarFavoritos(poi)
+	{
+		poi.marcarFavorito(UsuariosService.favoritosId);
 	}
 
 	$rootScope.$on("$stateChangeError", function () {

@@ -14,12 +14,16 @@ poiApp.controller('detalleComunCtrl', function($stateParams, $state , DetallePoi
 	self.reviewOk = "";
 	self.reviewError = "";
 	self.mensaje = "";
+<<<<<<< HEAD
+	self.listaReviews = self.addReview;
+=======
 	self.listaReviews = _.map(self.DetallePoiComun.reviews, transformarAReview);
 
 	// Marca el Poi como favorito o no.
 	self.DetallePoiComunObject.marcarFavorito(UsuariosService.favoritosId);
 
 	self.valueFavorito = self.DetallePoiComunObject.esFavorito;
+>>>>>>> entrega5
 
 	self.addReview = function(){
 		ReviewService.addReview( angular.toJson(new Review(UsuariosService.idUsuarioLogueado, self.opinion,
@@ -31,14 +35,23 @@ poiApp.controller('detalleComunCtrl', function($stateParams, $state , DetallePoi
 				self.listaReviews = _.map(response.data, transformarAReview);
 				console.log(self.listaReviews);
 			},	 
-			function() {
+<<<<<<< HEAD
+			function(response) {
+				//alert(response.data);
 				self.reviewError = true;
 				self.reviewOk = false;
+=======
+			function() {
+				self.reviewOk = "";
+>>>>>>> entrega5
 				self.mensaje = "Solo puede enviar una review para este POI"; 
 			}
 				);
 	};
 
+<<<<<<< HEAD
+	
+=======
 	self.favorito = function() {
 		FavoritoService.favorito( { 'idUsuario':UsuariosService.idUsuarioLogueado, 
 			'idPoi':self.DetallePoiComun.id },
@@ -48,6 +61,7 @@ poiApp.controller('detalleComunCtrl', function($stateParams, $state , DetallePoi
 			function() { alert('error'); } );
 
 	};
+>>>>>>> entrega5
 
 	function transformarAReview(jsonReview) {
 		return Review.asReview(jsonReview);
