@@ -114,16 +114,22 @@ class RepositorioPoi extends CollectionBasedRepo<Poi> {
 		var cgp1 = new CGP(pointFactory.puntoCgp, "CGP Barrio caballito", comunaFactory.comuna13)
 		cgp1.direccion = "Chacabuco 678"
 		cgp1.imagenUrl = "imagenes/cgp_1.jpg"
+		cgp1.AgregaServicio(servicioFactory.servicioCGP1)
 		this.create(cgp1)
 		
 		var cgp2 = new CGP(pointFactory.puntoCgp, "CGP balvanera", comunaFactory.comunaAlmagro)
 		cgp2.direccion = "Castelli 0000"
 		cgp2.imagenUrl = "imagenes/cgp_1.jpg"
+		cgp2.AgregaServicio(servicioFactory.servicioCGP2)
+		cgp2.AgregaServicio(servicioFactory.servicioCGP4)
+		cgp2.AgregaServicio(servicioFactory.servicioCGP5)
 		this.create(cgp2)
 		
 		var cgp3 = new CGP(pointFactory.puntoCgp, "CGP flores 32", comunaFactory.comuna13)
 		cgp3.direccion = "Pueyrredon 3467"
 		cgp3.imagenUrl = "imagenes/cgp_1.jpg"
+		cgp3.AgregaServicio(servicioFactory.servicioCGP3)
+		cgp3.AgregaServicio(servicioFactory.servicioCGP4)
 		this.create(cgp3)
 		
 		var colectivo1 = new ParadaColectivo(pointFactory.puntoCero, "Colectivo linea 132")

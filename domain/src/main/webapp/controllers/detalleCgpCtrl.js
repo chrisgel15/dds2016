@@ -1,17 +1,18 @@
-function DetalleCgp($stateParams , $state, PoiService){
+poiApp.controller('detalleCgpCtrl', function($stateParams, $state, DetallePoi) {
 
-	//this.Poi = PoiService.poiService.getPoiById($stateParams.id);
+var self = this;
 
-//	this.Poi = PoiService.poiService.getPoi();
+self.DetalleCgp = transformarACgp(DetallePoi.data);
 
-	if (!this.Poi){
-		$state.go("home");
-		return;
+	self.zona = self.DetalleCgp.comuna.nombre;
+
+function transformarACgp(jsonCgp) {
+		return CGP.asCgp(jsonCgp);
 	}
 
-	this.comuna = this.Poi.comuna;
+//	this.comuna = this.Poi.comuna;
 
-}
+});
 
 
 
