@@ -20,6 +20,7 @@ poiApp.controller('detalleComunCtrl', function($stateParams, $state , DetallePoi
 				//alert('ok'); },
 			function(response){
 				self.reviewOk = true;
+				self.reviewError = false;
 				self.mensaje = "Review enviada con exito";
 				self.listaReviews = _.map(response.data, transformarAReview);
 				console.log(self.listaReviews);
@@ -27,6 +28,7 @@ poiApp.controller('detalleComunCtrl', function($stateParams, $state , DetallePoi
 			function(response) {
 				//alert(response.data);
 				self.reviewError = true;
+				self.reviewOk = false;
 				self.mensaje = "Solo puede enviar una review para este POI"; 
 			}
 				);
