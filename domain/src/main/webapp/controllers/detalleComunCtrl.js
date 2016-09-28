@@ -40,8 +40,6 @@ poiApp.controller('detalleComunCtrl', function($stateParams, $state , DetallePoi
 		FavoritoService.favorito( { 'idUsuario':UsuariosService.idUsuarioLogueado, 
 			'idPoi':self.DetallePoiComun.id },
 			function() { 
-				alert('ok');
-				//self.DetallePoiComunObject.marcarFavorito(UsuariosService.favoritosId);
 				UsuariosService.usuarioObject.marcarFavorito(self.DetallePoiComun.id);
 			 },
 			function() { alert('error'); } );
