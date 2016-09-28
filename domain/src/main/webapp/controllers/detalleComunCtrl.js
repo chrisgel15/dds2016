@@ -14,9 +14,8 @@ poiApp.controller('detalleComunCtrl', function($stateParams, $state , DetallePoi
 	self.listaReviews = _.map(self.DetallePoiComun.reviews, transformarAReview);
 
 	self.addReview = function(){
-		ReviewService.addReview( angular.toJson(new Review(UsuariosService.idUsuarioLogueado, self.opinion,self.puntaje)), $stateParams ,
-			//function() { 
-				//alert('ok'); },
+		ReviewService.addReview( angular.toJson(new Review(UsuariosService.idUsuarioLogueado, self.opinion,
+									self.puntaje, UsuariosService.usuarioLogueado)), $stateParams ,
 			function(response){
 				self.reviewOk = true;
 				self.mensaje = "Review enviada con exito";
@@ -24,7 +23,6 @@ poiApp.controller('detalleComunCtrl', function($stateParams, $state , DetallePoi
 				console.log(self.listaReviews);
 			},	 
 			function() {
-				//alert(response.data);
 				self.reviewOk = "";
 				self.mensaje = "Solo puede enviar una review para este POI"; 
 			}

@@ -5,14 +5,16 @@ function Usuario(nombre , password, id)
 	this.id = id;
 }
 
-function Review(idUsuario, comentario, puntaje)
+function Review(idUsuario, comentario, puntaje, nombre)
 {
 	this.idUsuario = idUsuario;
 	this.comentario = comentario;
 	this.puntaje = puntaje;
+	this.nombre = nombre;
 
 }
 
 Review.asReview = function (jsonReview) {
-  return angular.extend(new Review(jsonReview.usuario.id,jsonReview.comentario, jsonReview.puntaje), jsonReview);
+  return angular.extend(new Review(jsonReview.usuario.id,jsonReview.comentario, jsonReview.puntaje, 
+  							jsonReview.usuario.nombre), jsonReview);
 };
