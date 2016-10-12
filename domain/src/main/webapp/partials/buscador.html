@@ -46,7 +46,8 @@
             <tr>
               <td>{{n.nombre}}</td>
               <td>{{n.direccion}}</td>
-              <td>{{n.esFavorito}}</td>
+              <td ng-show="n.esFavorito"><h4><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></h4></td>
+            <td ng-show="!n.esFavorito"><h4><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></h4></span></td>
               <td>
                <button type="button" class="btn btn-info" ng-click="buscadorCtrl.buscadorPois.VerDetalle(n)"> Ver detalle... </button>
               </td>
