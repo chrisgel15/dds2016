@@ -1,10 +1,12 @@
 package poi
 
-import org.apache.commons.collections15.Predicate
-import org.uqbar.commons.model.CollectionBasedRepo
+//import org.apache.commons.collections15.Predicate
+//import org.uqbar.commons.model.CollectionBasedRepo
 import java.util.List
+import org.hibernate.Criteria
+import org.hibernate.criterion.Restrictions
 
-class RepositorioUsuarios extends CollectionBasedRepo<Usuario> {
+class RepositorioUsuarios extends /*CollectionBasedRepo*/RepoDefault<Usuario> {
 	
 	/* Singleton */
 	static RepositorioUsuarios repoUsuarios
@@ -29,9 +31,9 @@ class RepositorioUsuarios extends CollectionBasedRepo<Usuario> {
 		this.create(new Usuario("kenchi@gmail.com", "abc123"))
 	}
 
-	override protected Predicate<Usuario> getCriterio(Usuario example) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
+//	override protected Predicate<Usuario> getCriterio(Usuario example) {
+//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+//	}
 
 	override getEntityType() {
 		typeof(Usuario)
@@ -41,9 +43,9 @@ class RepositorioUsuarios extends CollectionBasedRepo<Usuario> {
 		allInstances.findFirst[usu|usu.BusquedaPorNombreYPass(nombre, pass)]
 	}
 	
-	override createExample() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
+//	override createExample() {
+//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+//	}
 	
 	def List<Usuario> BuscarPorTexto(String texto)
 	{
@@ -53,6 +55,26 @@ class RepositorioUsuarios extends CollectionBasedRepo<Usuario> {
 	def AgregarPoi(Usuario usu)
 	{
 		this.create(usu);
+	}
+	
+	override addQueryByExample(Criteria criteria, Usuario usuario) {
+		if (usuario.nombre != null) {
+			criteria.add(Restrictions.eq("nombre", usuario.nombre))
+		}
+	}
+	
+	override addQueryByIdUser(Criteria criteria, Integer id, Usuario user) {
+		if (user.nombre != null) {
+			criteria.add(Restrictions.eq("Identificador", user.id))
+		}
+	}
+	
+	override addQueryByCriterio(Criteria criteria, List<String> criterios, Poi p) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	override addQueryByIdPoi(Criteria criteria, Integer id, Poi p) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 }

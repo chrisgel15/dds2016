@@ -38,7 +38,7 @@ class ProcesoDosTestSuite {
 
 		Assert.assertTrue(aux.length > 0)
 
-		proceso2.EliminaPoi(bajaPoi)
+		//proceso2.EliminaPoi(bajaPoi)
 
 		aux = repository.BuscarPorTexto(bajaPoi.valorDeBusqueda)
 

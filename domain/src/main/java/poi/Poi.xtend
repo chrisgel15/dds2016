@@ -7,19 +7,39 @@ import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 import org.uqbar.geodds.Point
+import javax.persistence.Entity
+import javax.persistence.Column
+import javax.persistence.Id
+import javax.persistence.GeneratedValue
+import javax.persistence.OneToMany
+import javax.persistence.FetchType
 
 @JsonIgnoreProperties("localizacionPropia", "etiquetas")
 @Observable
+@Entity
 @Accessors
 class Poi extends PuntoBase {
 
 	// Referencia 5 cuadras (0.5 kilometros)
 	static double DISTANCIA_MINIMA_GENERAL = 0.5
 	
-	String direccion	
+	@Id
+	@GeneratedValue
+	private Long id
+	
+	@Column(length=150)
+	String direccion
+		
 	String imagenUrl
 	List<String> etiquetas
+	
+	@Column(length=150)
 	String tipo // Se utiliza para que viaje el tipo por JSON. TODO: Utilizar annotations
+	
+	@Column
+	Integer Identificador
+	
+	@OneToMany(fetch=FetchType.LAZY)
 	List<Review> reviews
 
 	def setEtiqueta(String etiqueta) {

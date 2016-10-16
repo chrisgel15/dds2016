@@ -3,18 +3,35 @@ package poi
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import java.util.ArrayList
-import org.uqbar.commons.model.Entity
+//import org.uqbar.commons.model.Entity
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import javax.persistence.Entity
+import javax.persistence.Id
+import javax.persistence.GeneratedValue
+import javax.persistence.Column
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Accessors
-class Usuario extends Entity {
+@Entity
+
+class Usuario /*extends Entity*/ {
+	
+	@Id
+	@GeneratedValue
+	private Long id
+	
+	@Column(length=50)
 	String direccionDeMail
+	
+	@Column(length=50)
 	String nombre
+	
+	@Column(length=50)
 	String password
+	
 	List<Mail> casilla
 	//List<Poi> favoritos
-	List<Integer> favoritosId	
+	List<Long> favoritosId	
 	
 	new(String unaDireccion) {
 		this.direccionDeMail = unaDireccion
@@ -25,7 +42,7 @@ class Usuario extends Entity {
 		this.nombre = nombre
 		this.password = pass
 	//	this.favoritos = new ArrayList<Poi>()
-		this.favoritosId = new ArrayList<Integer>()
+		this.favoritosId = new ArrayList<Long>()
 	}
 	
 	def void AgregarFavorito(Poi p)

@@ -2,7 +2,9 @@ package poi
 
 import org.uqbar.geodds.Point
 import org.eclipse.xtend.lib.annotations.Accessors
+import javax.persistence.Entity
 
+@Entity
 @Accessors
 class ParadaColectivo extends Poi {
 

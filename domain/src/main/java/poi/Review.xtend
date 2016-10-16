@@ -1,11 +1,26 @@
 package poi
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import javax.persistence.Entity
+import javax.persistence.Id
+import javax.persistence.GeneratedValue
+import javax.persistence.Column
+import javax.persistence.OneToOne
 
 @Accessors
+@Entity
 class Review {
+	@Id
+	@GeneratedValue
+	private Long id
+	
+	@Column(length=250)
 	String comentario
+	
+	@Column
 	Integer puntaje
+	
+	@OneToOne
 	Usuario usuario
 
 	new(Usuario usuario, Integer puntaje, String comentario) {

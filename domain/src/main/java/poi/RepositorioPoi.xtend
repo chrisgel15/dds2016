@@ -1,16 +1,18 @@
 package poi
 
-import java.util.ArrayList
-import java.util.HashSet
+//import java.util.ArrayList
+//import java.util.HashSet
 import java.util.List
-import java.util.Set
-import org.apache.commons.collections15.Predicate
-import org.uqbar.commons.model.CollectionBasedRepo
+//import java.util.Set
+//import org.apache.commons.collections15.Predicate
+//import org.uqbar.commons.model.CollectionBasedRepo
 import poi.Factories.ComunaFactory
 import poi.Factories.PointFactory
 import poi.Factories.ServiciosFactory
+import org.hibernate.Criteria
+import org.hibernate.criterion.Restrictions
 
-class RepositorioPoi extends CollectionBasedRepo<Poi> {
+class RepositorioPoi extends /*CollectionBasedRepo*/RepoDefault<Poi> {
 	
 	
 	PointFactory pointFactory
@@ -35,9 +37,9 @@ class RepositorioPoi extends CollectionBasedRepo<Poi> {
 		
 	}
 
-	override protected Predicate<Poi> getCriterio(Poi example) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
+//	override protected Predicate<Poi> getCriterio(Poi example) {
+//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+//	}
 
 	override getEntityType() {
 		typeof(Poi)
@@ -47,25 +49,27 @@ class RepositorioPoi extends CollectionBasedRepo<Poi> {
 		allInstances.filter[poi|poi.BusquedaPorTexto(texto)].toList
 	}
 	
-	override createExample() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
+//	override createExample() {
+//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+//	}
 	
 	def List<Poi> BuscarPorTexto(String texto)
 	{
 		this.search(texto)
 	}
 	
-	def List<Poi> BuscarPorCriterios(List<String> criterios)
-	{
-		val List<Poi> pois = new ArrayList<Poi>()
-		criterios.forEach[ criterio | pois.addAll(BuscarPorTexto(criterio)) ]
-		val Set<Poi> sinRepetidos = new HashSet<Poi>();
-		sinRepetidos.addAll(pois);
-		pois.clear();
-		pois.addAll(sinRepetidos);
-		pois
-	}
+//	def List<Poi> BuscarPorCriterios(List<String> criterios)
+//	{
+//		val List<Poi> pois = new ArrayList<Poi>()
+//		criterios.forEach[ criterio | pois.addAll(BuscarPorTexto(criterio)) ]
+//		val Set<Poi> sinRepetidos = new HashSet<Poi>();
+//		sinRepetidos.addAll(pois);
+//		pois.clear();
+//		pois.addAll(sinRepetidos);
+//		pois
+//	}
+
+	
 	
 	def AgregarPoi(Poi poi)
 	{
@@ -147,6 +151,28 @@ class RepositorioPoi extends CollectionBasedRepo<Poi> {
 		colectivo3.imagenUrl = "imagenes/linea132.jpg"
 		this.create(colectivo3)
 	}
+	
+	override addQueryByExample(Criteria criteria, Poi p) {
+		if (p.nombre != null) {
+			criteria.add(Restrictions.eq("nombre", p.nombre))
+		}
+	}
+	
+	override addQueryByIdPoi(Criteria criteria, Integer id, Poi p) {
+		if (p.nombre != null) {
+			criteria.add(Restrictions.eq("Identificador", p.identificador))
+		}
+	}
+	
+	override addQueryByCriterio(Criteria criteria, List<String> criterios, Poi p){
+		criterios.forEach[c | criteria.add(Restrictions.eq(c,p.nombre))]
+	}
+	
+	override addQueryByIdUser(Criteria criteria, Integer id, Usuario user) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	
 	
 	
 	

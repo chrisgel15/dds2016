@@ -19,7 +19,7 @@ class ProcesoDos extends Proceso implements IProceso {
 		try {
 			// Manejamos el nombre de usuario?
 			this.IniciarProceso(nombreProceso, "")
-			this.EjecutarProcesoDos()
+			//this.EjecutarProcesoDos()
 			this.ActualizarEstadoOK()
 		} catch (ProcesoDosServicioGCBAException ex) {
 			this.ActualizarEstadoError(ex.message)
@@ -32,30 +32,30 @@ class ProcesoDos extends Proceso implements IProceso {
 		}
 	}
 
-	def void EjecutarProcesoDos() {
-		var List<BajaPois> listaBaja
-		try {
-			listaBaja = this.getServicio().EjecutarServicioGCBA()
-		} catch (Exception ex) {
-			throw new ProcesoDosServicioGCBAException("Error al ejecutar el servicio GCBA")
-		}
+//	def void EjecutarProcesoDos() {
+//		var List<BajaPois> listaBaja
+//		try {
+//			listaBaja = this.getServicio().EjecutarServicioGCBA()
+//		} catch (Exception ex) {
+//			throw new ProcesoDosServicioGCBAException("Error al ejecutar el servicio GCBA")
+//		}
+//
+//		listaBaja.forEach[baja|EliminaPoi(baja)]
+//	}
 
-		listaBaja.forEach[baja|EliminaPoi(baja)]
-	}
+//	def EliminaPoi(BajaPois pois) {
+//		var List<Poi> lista;
+//		try {
+//			lista = this.getPoiRepository().BuscarPorTexto(pois.valorDeBusqueda)
+//		} catch (Exception ex) {
+//			throw new ProcesoDosBuscarPorTextoException("Error al Buscar en el repositorio de Pois")
+//		}
+//		lista.forEach[poi|EliminaPoi(poi)]
+//	}
 
-	def EliminaPoi(BajaPois pois) {
-		var List<Poi> lista;
-		try {
-			lista = this.getPoiRepository().BuscarPorTexto(pois.valorDeBusqueda)
-		} catch (Exception ex) {
-			throw new ProcesoDosBuscarPorTextoException("Error al Buscar en el repositorio de Pois")
-		}
-		lista.forEach[poi|EliminaPoi(poi)]
-	}
-
-	def EliminaPoi(Poi poi) {
-		this.getPoiRepository().delete(poi)
-	}
+//	def EliminaPoi(Poi poi) {
+//		this.getPoiRepository().delete(poi)
+//	}
 
 }
 
