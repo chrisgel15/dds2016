@@ -13,6 +13,7 @@ import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.OneToMany
 import javax.persistence.FetchType
+import javax.persistence.ElementCollection
 
 @JsonIgnoreProperties("localizacionPropia", "etiquetas")
 @Observable
@@ -30,7 +31,10 @@ class Poi extends PuntoBase {
 	@Column(length=150)
 	String direccion
 		
+	@Column(length=250)
 	String imagenUrl
+	
+	@ElementCollection
 	List<String> etiquetas
 	
 	@Column(length=150)
@@ -49,10 +53,16 @@ class Poi extends PuntoBase {
 		etiquetas.forEach[etiqueta | this.setEtiqueta(etiqueta) ]
 	}
 	new(Point p, String nom) {
-		super(p, nom)
+		//super(p, nom)
+		this.localizacionPropia = p
+		this.nombre = nom
 		this.etiquetas = new ArrayList()
 		this.direccion = ""
 		this.reviews = new ArrayList()
+	}
+	
+	new(){
+		
 	}
 
 	def ConsultaCercania(PuntoBase destino) {

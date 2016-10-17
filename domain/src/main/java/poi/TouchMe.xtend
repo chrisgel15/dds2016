@@ -12,7 +12,9 @@ class TouchMe extends PuntoBase {
 	List<IAccionCommand> listCommads
 
 	new(Point point, String nom) {
-		super(point, nom)
+		//super(point, nom)
+		this.localizacionPropia = point
+		this.nombre = nom
 		listCommads = new ArrayList<IAccionCommand>()
 	}
 

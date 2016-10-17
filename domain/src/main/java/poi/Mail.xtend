@@ -1,12 +1,24 @@
 package poi
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import javax.persistence.Entity
+import javax.persistence.Column
+import javax.persistence.Id
+import javax.persistence.GeneratedValue
 
+@Entity
 @Accessors
 class Mail {
+	@Id
+	@GeneratedValue
+	private Long id
+	@Column(length=50)
 	String from
+	@Column(length=50)
 	String to
+	@Column(length=250)
 	String message
+	@Column(length=50)
 	String asunto
 
 	new(String de, String para, String mensaje, String asuntoMail){
@@ -14,5 +26,9 @@ class Mail {
 		to = para
 		message = mensaje
 		asunto = asuntoMail		
+	}
+	
+	new(){
+		
 	}
 }

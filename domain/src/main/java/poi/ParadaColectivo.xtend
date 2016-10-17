@@ -15,6 +15,10 @@ class ParadaColectivo extends Poi {
 		super(p, nom)
 		this.tipo = "colectivo"
 	}
+	
+	new(){
+		
+	}
 
 // El servicio de colectivos siempre esta disponible
 	override boolean ConsultaDisponibilidad(ServicioYHorario servicioYHorario) {

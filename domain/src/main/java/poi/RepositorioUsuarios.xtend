@@ -5,6 +5,7 @@ package poi
 import java.util.List
 import org.hibernate.Criteria
 import org.hibernate.criterion.Restrictions
+import org.hibernate.HibernateException
 
 class RepositorioUsuarios extends /*CollectionBasedRepo*/RepoDefault<Usuario> {
 	
@@ -18,18 +19,18 @@ class RepositorioUsuarios extends /*CollectionBasedRepo*/RepoDefault<Usuario> {
 		repoUsuarios
 	}
 	
-	new()
-	{
-		val Usuario usu1 = new Usuario("christiangelman@gmail.com", "abc123")
-		usu1.AgregarFavorito(RepositorioPoi.instance.allInstances.get(0))
-		usu1.AgregarFavorito(RepositorioPoi.instance.allInstances.get(1)) 
-		this.create(usu1)
-		this.create(new Usuario("chrisgel15@hotmail.com", "abc123"))
-		this.create(new Usuario("rominacuadra@gmail.com", "abc123"))
-		this.create(new Usuario("federicomandri@hotmail.com", "abc123"))
-		this.create(new Usuario("juanpabloferreira@gmail.com", "abc123"))
-		this.create(new Usuario("kenchi@gmail.com", "abc123"))
-	}
+//	new()
+//	{
+//		val Usuario usu1 = new Usuario("christiangelman@gmail.com", "abc123")
+//		usu1.AgregarFavorito(RepositorioPoi.instance.allInstances.get(0))
+//		usu1.AgregarFavorito(RepositorioPoi.instance.allInstances.get(1)) 
+//		this.create(usu1)
+//		this.create(new Usuario("chrisgel15@hotmail.com", "abc123"))
+//		this.create(new Usuario("rominacuadra@gmail.com", "abc123"))
+//		this.create(new Usuario("federicomandri@hotmail.com", "abc123"))
+//		this.create(new Usuario("juanpabloferreira@gmail.com", "abc123"))
+//		this.create(new Usuario("kenchi@gmail.com", "abc123"))
+//	}
 
 //	override protected Predicate<Usuario> getCriterio(Usuario example) {
 //		throw new UnsupportedOperationException("TODO: auto-generated method stub")
@@ -60,21 +61,39 @@ class RepositorioUsuarios extends /*CollectionBasedRepo*/RepoDefault<Usuario> {
 	override addQueryByExample(Criteria criteria, Usuario usuario) {
 		if (usuario.nombre != null) {
 			criteria.add(Restrictions.eq("nombre", usuario.nombre))
+			criteria.add(Restrictions.eq("password", usuario.password))
 		}
 	}
 	
-	override addQueryByIdUser(Criteria criteria, Integer id, Usuario user) {
-		if (user.nombre != null) {
-			criteria.add(Restrictions.eq("Identificador", user.id))
+	def Usuario searchByNamePass(String nom, String pass) {
+		val session = openSession
+		//var Usuario user
+		try {
+			 session.createCriteria(Usuario)
+			 	
+				.add(Restrictions.eq("nombre",nom))
+				.add(Restrictions.eq("password",pass))
+				.uniqueResult as Usuario
+				
+		} catch (HibernateException e) {
+			throw new RuntimeException(e)
+		} finally {
+			session.close
 		}
 	}
+	
+//	override addQueryByIdUser(Criteria criteria, Integer id, Usuario user) {
+//		if (user.nombre != null) {
+//			criteria.add(Restrictions.eq("Identificador", user.id))
+//		}
+//	}
 	
 	override addQueryByCriterio(Criteria criteria, List<String> criterios, Poi p) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
-	override addQueryByIdPoi(Criteria criteria, Integer id, Poi p) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
+//	override addQueryByIdPoi(Criteria criteria, Integer id, Poi p) {
+//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+//	}
 	
 }

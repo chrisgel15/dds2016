@@ -11,23 +11,27 @@ import javax.persistence.Column
 import javax.persistence.Id
 import javax.persistence.GeneratedValue
 
-@Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+//@Entity
+//@Inheritance(strategy=InheritanceType.JOINED)
 @Accessors
 abstract class PuntoBase /*extends Entity*/ {
 	
-	@Id
-	@GeneratedValue
-	private Long id
-	
 	public Point localizacionPropia
 	
-	@Column(length=100)
+//	@Id
+//	@GeneratedValue
+//	private Long id
+	
+	//@Column(length=100)
 	public String nombre
 	
-	new(Point point, String nom) {
-		this.localizacionPropia = point
-		this.nombre = nom
-	}	
+//	new(Point point, String nom) {
+//		this.localizacionPropia = point
+//		this.nombre = nom
+//	}	
+//	
+//	new(){
+//		
+//	}
 
 }

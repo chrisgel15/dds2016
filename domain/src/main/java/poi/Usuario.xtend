@@ -9,6 +9,9 @@ import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.Column
+import javax.persistence.OneToMany
+import javax.persistence.FetchType
+import javax.persistence.ElementCollection
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Accessors
@@ -29,8 +32,11 @@ class Usuario /*extends Entity*/ {
 	@Column(length=50)
 	String password
 	
+	@OneToMany
 	List<Mail> casilla
+	
 	//List<Poi> favoritos
+	@ElementCollection
 	List<Long> favoritosId	
 	
 	new(String unaDireccion) {
@@ -44,6 +50,8 @@ class Usuario /*extends Entity*/ {
 	//	this.favoritos = new ArrayList<Poi>()
 		this.favoritosId = new ArrayList<Long>()
 	}
+	
+	
 	
 	def void AgregarFavorito(Poi p)
 	{

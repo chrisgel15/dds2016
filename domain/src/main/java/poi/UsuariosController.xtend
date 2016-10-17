@@ -28,7 +28,8 @@ class UsuariosController {
 		var Usuario user = null
 		
 		try {
-			user = RepositorioUsuarios.instance.search(nombre, pass)
+			//user = RepositorioUsuarios.instance.search(nombre, pass)
+			user = RepositorioUsuarios.instance.searchByNamePass(nombre, pass)
 		}
 		catch (Exception e)
 		{
@@ -74,8 +75,8 @@ class UsuariosController {
 		var Poi poi = null
 		
 		try{
-			//poi = RepositorioPoi.instance.searchById(Integer.parseInt(id))
-			poi = RepositorioPoi.instance.searchByIdPoi(Integer.parseInt(id))
+			poi = RepositorioPoi.instance.searchById(Integer.parseInt(id))
+			//poi = RepositorioPoi.instance.searchByIdPoi(Integer.parseInt(id))
 			
 		}
 		catch(Exception e)
@@ -91,12 +92,12 @@ class UsuariosController {
 	@Post("/addReview/:id")
 	def Result addReview(@Body String body){
 		val idPoi = Integer.parseInt(id)
-		//val poi = RepositorioPoi.instance.searchById(idPoi)
-		val poi = RepositorioPoi.instance.searchByIdPoi(idPoi)
+		val poi = RepositorioPoi.instance.searchById(idPoi)
+		//val poi = RepositorioPoi.instance.searchByIdPoi(idPoi)
 		
 		val idUsuario = body.getPropertyValue("idUsuario") as String
-		//val usuario = RepositorioUsuarios.instance.searchById(Integer.parseInt(idUsuario))
-		val usuario = RepositorioUsuarios.instance.searchByIdUser(Integer.parseInt(idUsuario))
+		val usuario = RepositorioUsuarios.instance.searchById(Integer.parseInt(idUsuario))
+		//val usuario = RepositorioUsuarios.instance.searchByIdUser(Integer.parseInt(idUsuario))
 		
 		val review = new Review(usuario, 
 			Integer.parseInt(body.getPropertyValue("puntaje") as String), body.getPropertyValue("comentario") as String) 
@@ -121,10 +122,10 @@ class UsuariosController {
 		val idPoi = body.getPropertyValue("idPoi") as String
 	//	val agregar = body.getPropertyValue("agregar") as Boolean
 		
-		//val poi = RepositorioPoi.instance.searchById(Integer.parseInt(idPoi))
-		val poi = RepositorioPoi.instance.searchByIdPoi(Integer.parseInt(idPoi))
-		//val usuario = RepositorioUsuarios.instance.searchById(Integer.parseInt(idUsuario))
-		val usuario = RepositorioUsuarios.instance.searchByIdUser(Integer.parseInt(idUsuario))
+		val poi = RepositorioPoi.instance.searchById(Integer.parseInt(idPoi))
+		//val poi = RepositorioPoi.instance.searchByIdPoi(Integer.parseInt(idPoi))
+		val usuario = RepositorioUsuarios.instance.searchById(Integer.parseInt(idUsuario))
+		//val usuario = RepositorioUsuarios.instance.searchByIdUser(Integer.parseInt(idUsuario))
 			
 			try {
 				usuario.AgregarFavorito(poi)
