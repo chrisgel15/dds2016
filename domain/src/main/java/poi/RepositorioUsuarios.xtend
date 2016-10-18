@@ -6,6 +6,7 @@ import java.util.List
 import org.hibernate.Criteria
 import org.hibernate.criterion.Restrictions
 import org.hibernate.HibernateException
+import org.hibernate.FetchMode
 
 class RepositorioUsuarios extends /*CollectionBasedRepo*/RepoDefault<Usuario> {
 	
@@ -19,18 +20,18 @@ class RepositorioUsuarios extends /*CollectionBasedRepo*/RepoDefault<Usuario> {
 		repoUsuarios
 	}
 	
-//	new()
-//	{
-//		val Usuario usu1 = new Usuario("christiangelman@gmail.com", "abc123")
-//		usu1.AgregarFavorito(RepositorioPoi.instance.allInstances.get(0))
-//		usu1.AgregarFavorito(RepositorioPoi.instance.allInstances.get(1)) 
-//		this.create(usu1)
-//		this.create(new Usuario("chrisgel15@hotmail.com", "abc123"))
-//		this.create(new Usuario("rominacuadra@gmail.com", "abc123"))
-//		this.create(new Usuario("federicomandri@hotmail.com", "abc123"))
-//		this.create(new Usuario("juanpabloferreira@gmail.com", "abc123"))
-//		this.create(new Usuario("kenchi@gmail.com", "abc123"))
-//	}
+	new()
+	{
+		val Usuario usu1 = new Usuario("christiangelman@gmail.com", "abc123")
+		//usu1.AgregarFavorito(RepositorioPoi.instance.allInstances.get(0))
+		//usu1.AgregarFavorito(RepositorioPoi.instance.allInstances.get(1)) 
+		this.create(usu1)
+		this.create(new Usuario("chrisgel15@hotmail.com", "abc123"))
+		this.create(new Usuario("rominacuadra@gmail.com", "abc123"))
+		this.create(new Usuario("federicomandri@hotmail.com", "abc123"))
+		this.create(new Usuario("juanpabloferreira@gmail.com", "abc123"))
+		this.create(new Usuario("kenchi@gmail.com", "abc123"))
+	}
 
 //	override protected Predicate<Usuario> getCriterio(Usuario example) {
 //		throw new UnsupportedOperationException("TODO: auto-generated method stub")
@@ -73,6 +74,7 @@ class RepositorioUsuarios extends /*CollectionBasedRepo*/RepoDefault<Usuario> {
 			 	
 				.add(Restrictions.eq("nombre",nom))
 				.add(Restrictions.eq("password",pass))
+				.setFetchMode("favoritosId",FetchMode.JOIN)
 				.uniqueResult as Usuario
 				
 		} catch (HibernateException e) {

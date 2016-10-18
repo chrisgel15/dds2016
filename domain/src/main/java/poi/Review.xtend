@@ -6,6 +6,7 @@ import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.Column
 import javax.persistence.OneToOne
+import javax.persistence.ManyToOne
 
 @Accessors
 @Entity
@@ -14,13 +15,13 @@ class Review {
 	@GeneratedValue
 	private Long id
 	
-	@Column(length=250)
+	@Column
 	String comentario
 	
 	@Column
 	Integer puntaje
 	
-	@OneToOne
+	@ManyToOne
 	Usuario usuario
 
 	new(Usuario usuario, Integer puntaje, String comentario) {

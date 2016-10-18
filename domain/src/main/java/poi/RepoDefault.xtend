@@ -14,8 +14,9 @@ abstract class RepoDefault<T> {
 		.addAnnotatedClass(Poi)
 		.addAnnotatedClass(ParadaColectivo)
 		.addAnnotatedClass(Review)
+		//.addAnnotatedClass(Mail)
 		.addAnnotatedClass(Usuario)
-		.addAnnotatedClass(Mail)
+		
 		
 		.buildSessionFactory()
 		

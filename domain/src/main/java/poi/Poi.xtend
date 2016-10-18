@@ -14,10 +14,12 @@ import javax.persistence.GeneratedValue
 import javax.persistence.OneToMany
 import javax.persistence.FetchType
 import javax.persistence.ElementCollection
+import javax.persistence.Inheritance
 
 @JsonIgnoreProperties("localizacionPropia", "etiquetas")
 @Observable
 @Entity
+@Inheritance(strategy=SINGLE_TABLE)
 @Accessors
 class Poi extends PuntoBase {
 
@@ -31,7 +33,7 @@ class Poi extends PuntoBase {
 	@Column(length=150)
 	String direccion
 		
-	@Column(length=250)
+	@Column
 	String imagenUrl
 	
 	@ElementCollection
@@ -40,8 +42,8 @@ class Poi extends PuntoBase {
 	@Column(length=150)
 	String tipo // Se utiliza para que viaje el tipo por JSON. TODO: Utilizar annotations
 	
-	@Column
-	Integer Identificador
+//	@Column
+//	Integer Identificador
 	
 	@OneToMany(fetch=FetchType.LAZY)
 	List<Review> reviews

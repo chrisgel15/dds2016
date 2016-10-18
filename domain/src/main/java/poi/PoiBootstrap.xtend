@@ -6,9 +6,9 @@ import poi.Factories.ServiciosFactory
 
 class PoiBootstrap {
 	
-	PointFactory pointFactory = new PointFactory
-	ComunaFactory comunaFactory = new ComunaFactory
-	ServiciosFactory servicioFactory = new ServiciosFactory
+	PointFactory pointFactory// = new PointFactory
+	ComunaFactory comunaFactory// = new ComunaFactory
+	ServiciosFactory servicioFactory// = new ServiciosFactory
 	
 	
 	def void initBancos(){
@@ -176,6 +176,9 @@ class PoiBootstrap {
 	}
 	
 	new(){
+		pointFactory = new PointFactory
+		comunaFactory = new ComunaFactory
+		servicioFactory = new ServiciosFactory
 		initBancos()
 		initCgps()
 		initColectivos()
@@ -183,4 +186,6 @@ class PoiBootstrap {
 	}
 	
 	
-	}
+}
+
+ 
