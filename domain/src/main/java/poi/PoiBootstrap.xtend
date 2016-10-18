@@ -1,8 +1,8 @@
 package poi
 
-import poi.Factories.PointFactory
-import poi.Factories.ComunaFactory
-import poi.Factories.ServiciosFactory
+//import poi.Factories.PointFactory
+//import poi.Factories.ComunaFactory
+//import poi.Factories.ServiciosFactory
 
 class PoiBootstrap {
 	

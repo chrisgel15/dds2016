@@ -6,9 +6,9 @@ import java.util.List
 //import java.util.Set
 //import org.apache.commons.collections15.Predicate
 //import org.uqbar.commons.model.CollectionBasedRepo
-import poi.Factories.ComunaFactory
-import poi.Factories.PointFactory
-import poi.Factories.ServiciosFactory
+//import poi.Factories.ComunaFactory
+//import poi.Factories.PointFactory
+//import poi.Factories.ServiciosFactory
 import org.hibernate.Criteria
 import org.hibernate.criterion.Restrictions
 

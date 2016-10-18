@@ -18,6 +18,8 @@ class CGP extends Poi {
 		this.servicios = new ArrayList<Servicio>()
 		this.tipo = "cgp"
 	}
+	
+	new(){}
 
 	def void AgregaServicio(Servicio s) {
 		this.servicios.add(s)

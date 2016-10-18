@@ -4,11 +4,19 @@ import java.util.ArrayList
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.geodds.Point
+import javax.persistence.Entity
+import javax.persistence.Column
+import javax.persistence.OneToMany
+import javax.persistence.FetchType
+import javax.persistence.CascadeType
 
+@Entity
 @Accessors
 class Banco extends Poi {
 	
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	List<Servicio> servicios
+	@Column(length = 100)
 	String zona
 	
 
@@ -18,6 +26,8 @@ class Banco extends Poi {
 		this.tipo = "banco"
 		this.zona = ""
 	}
+	
+	new(){}
 
 	def void AgregaServicio(Servicio s) {
 		this.servicios.add(s)

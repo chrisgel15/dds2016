@@ -4,12 +4,27 @@ import java.util.ArrayList
 import java.util.List
 import org.joda.time.DateTime
 import org.eclipse.xtend.lib.annotations.Accessors
+import javax.persistence.Entity
+import javax.persistence.Column
+import javax.persistence.Id
+import javax.persistence.GeneratedValue
+import javax.persistence.OneToMany
+import javax.persistence.FetchType
+import javax.persistence.CascadeType
 
+@Entity
 @Accessors
 class Servicio {
 
+	@Id
+	@GeneratedValue
+	private Long id
+	@Column(length=50)
 	public String nombre
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	List<HorarioDeAtencion> horarios
+	
+	new(){}
 
 	new(String nom, int dia, int horaInicio, int horaFin) {
 		this.nombre = nom

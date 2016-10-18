@@ -14,10 +14,11 @@ abstract class RepoDefault<T> {
 		.addAnnotatedClass(Poi)
 		.addAnnotatedClass(ParadaColectivo)
 		.addAnnotatedClass(Review)
-		//.addAnnotatedClass(Mail)
+		.addAnnotatedClass(Banco)
 		.addAnnotatedClass(Usuario)
-		
-		
+		.addAnnotatedClass(Servicio)
+		.addAnnotatedClass(HorarioDeAtencion)
+		.addAnnotatedClass(CGP)
 		.buildSessionFactory()
 		
 		def abstract Class<T> getEntityType()
