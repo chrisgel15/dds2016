@@ -11,6 +11,8 @@ import java.util.List
 //import poi.Factories.ServiciosFactory
 import org.hibernate.Criteria
 import org.hibernate.criterion.Restrictions
+import org.hibernate.HibernateException
+import org.hibernate.FetchMode
 
 class RepositorioPoi extends /*CollectionBasedRepo*/RepoDefault<Poi> {
 	
@@ -174,18 +176,34 @@ class RepositorioPoi extends /*CollectionBasedRepo*/RepoDefault<Poi> {
 //		}
 //	}
 	
-	override addQueryByCriterio(Criteria criteria, List<String> criterios, Poi p){
-		//criterios.forEach[c | criteria.add(Restrictions.eq(c,p.nombre))]
-		criterios.forEach[c | 
-			criteria.add(Restrictions.disjunction
-				.add(Restrictions.in(p.nombre,c))
-			)
-		]
+	def addQueryByCriterio(Criteria criteria, List<String> criterios, String nombre){
+		criterios.forEach[c | criteria.add(Restrictions.eq(c,nombre))]
+//		criterios.forEach[c | 
+//			criteria.add(Restrictions.disjunction
+//				.add(Restrictions.in(nombre,c))
+//			).setFetchMode("servicios",FetchMode.JOIN)
+//		]
 	}
 	
 //	override addQueryByIdUser(Criteria criteria, Integer id, Usuario user) {
 //		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 //	}
+
+def List<Poi> searchByCriterio(List<String> criterios) {
+		var Poi p
+		val session = openSession
+		try {
+			val criteria = session.createCriteria(Poi)
+			this.addQueryByCriterio(criteria, criterios, p.nombre)
+			return criteria.list()
+		} catch (HibernateException e) {
+			throw new RuntimeException(e)
+		} finally {
+			session.close
+		}
+	}
+	
+
 	
 	
 	

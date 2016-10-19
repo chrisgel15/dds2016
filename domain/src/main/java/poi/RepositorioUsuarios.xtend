@@ -90,9 +90,9 @@ class RepositorioUsuarios extends /*CollectionBasedRepo*/RepoDefault<Usuario> {
 //		}
 //	}
 	
-	override addQueryByCriterio(Criteria criteria, List<String> criterios, Poi p) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
+//	override addQueryByCriterio(Criteria criteria, List<String> criterios, Poi p) {
+//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+//	}
 	
 //	override addQueryByIdPoi(Criteria criteria, Integer id, Poi p) {
 //		throw new UnsupportedOperationException("TODO: auto-generated method stub")

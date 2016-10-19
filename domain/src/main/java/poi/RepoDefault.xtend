@@ -24,7 +24,7 @@ abstract class RepoDefault<T> {
 		def abstract Class<T> getEntityType()
 	
 		def abstract void addQueryByExample(Criteria criteria, T t)
-		def abstract void addQueryByCriterio(Criteria criteria, List<String> criterios, Poi p)
+		//def abstract void addQueryByCriterio(Criteria criteria, List<String> criterios, Poi p)
 		//def abstract void addQueryByIdPoi(Criteria criteria, Integer id, Poi p)
 		//def abstract void addQueryByIdUser(Criteria criteria, Integer id, Usuario user)
 		
@@ -54,19 +54,19 @@ abstract class RepoDefault<T> {
 		}
 	}
 	
-	def List<T> searchByCriterio(List<String> criterios) {
-		var Poi p
-		val session = sessionFactory.openSession
-		try {
-			val criteria = session.createCriteria(getEntityType)
-			this.addQueryByCriterio(criteria, criterios,p)
-			return criteria.list()
-		} catch (HibernateException e) {
-			throw new RuntimeException(e)
-		} finally {
-			session.close
-		}
-	}
+//	def List<T> searchByCriterio(List<String> criterios) {
+//		var Poi p
+//		val session = sessionFactory.openSession
+//		try {
+//			val criteria = session.createCriteria(getEntityType)
+//			this.addQueryByCriterio(criteria, criterios,p)
+//			return criteria.list()
+//		} catch (HibernateException e) {
+//			throw new RuntimeException(e)
+//		} finally {
+//			session.close
+//		}
+//	}
 	
 //	def T searchByIdPoi(Integer id) {
 //		var Poi p
