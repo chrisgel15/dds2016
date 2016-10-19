@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.OneToMany
 import javax.persistence.FetchType
 import javax.persistence.CascadeType
+import javax.persistence.ManyToOne
 
 @Entity
 @Accessors
@@ -19,10 +20,14 @@ class Servicio {
 	@Id
 	@GeneratedValue
 	private Long id
+	
 	@Column(length=50)
 	public String nombre
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, fetch = FetchType.LAZY)
 	List<HorarioDeAtencion> horarios
+	
+	
 	
 	new(){}
 

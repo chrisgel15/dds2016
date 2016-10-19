@@ -6,6 +6,7 @@ import javax.persistence.Entity
 import javax.persistence.Column
 import javax.persistence.Id
 import javax.persistence.GeneratedValue
+import javax.persistence.ManyToOne
 
 @Entity
 @Accessors
@@ -19,6 +20,7 @@ class HorarioDeAtencion {
 	int horaInicio
 	@Column
 	int horaFin
+	
 
 	new(int dia, int horaInicio, int horaFin) {
 		this.dia = dia

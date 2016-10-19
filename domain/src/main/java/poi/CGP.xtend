@@ -5,10 +5,16 @@ import org.joda.time.DateTime
 import java.util.ArrayList
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
+import javax.persistence.Entity
+import javax.persistence.OneToOne
+import javax.persistence.OneToMany
+
 
 @Accessors
 class CGP extends Poi {
+	
 	Comuna comuna
+	
 	List<Servicio> servicios
 
 // Un CGP tiene una referencia a su comuna

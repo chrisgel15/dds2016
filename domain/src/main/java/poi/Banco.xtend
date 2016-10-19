@@ -14,7 +14,7 @@ import javax.persistence.CascadeType
 @Accessors
 class Banco extends Poi {
 	
-	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, fetch = FetchType.LAZY)
 	List<Servicio> servicios
 	@Column(length = 100)
 	String zona

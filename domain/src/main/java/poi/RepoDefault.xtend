@@ -18,7 +18,7 @@ abstract class RepoDefault<T> {
 		.addAnnotatedClass(Usuario)
 		.addAnnotatedClass(Servicio)
 		.addAnnotatedClass(HorarioDeAtencion)
-		.addAnnotatedClass(CGP)
+		//.addAnnotatedClass(CGP)
 		.buildSessionFactory()
 		
 		def abstract Class<T> getEntityType()
@@ -118,7 +118,7 @@ abstract class RepoDefault<T> {
 		val session = sessionFactory.openSession
 		try {
 			session.beginTransaction
-			session.save(t)
+			session.saveOrUpdate(t)
 			session.getTransaction.commit
 		} catch (HibernateException e) {
 			session.getTransaction.rollback
