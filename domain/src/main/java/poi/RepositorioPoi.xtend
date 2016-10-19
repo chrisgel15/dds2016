@@ -86,7 +86,7 @@ class RepositorioPoi extends /*CollectionBasedRepo*/RepoDefault<Poi> {
 		//this.create(banco1)
 		
 		var banco2 = new Banco(pointFactory.puntoBancoSantander, "Banco Frances")
-		banco2.AgregaServicio(servicioFactory.servicioBanco1)
+		//banco2.AgregaServicio(servicioFactory.servicioBanco1)
 		banco2.AgregaServicio(servicioFactory.servicioBanco2)
 		banco2.direccion = "Lavalle 4321"
 		banco2.imagenUrl = "imagenes/banco_frances.jpg"
@@ -94,8 +94,8 @@ class RepositorioPoi extends /*CollectionBasedRepo*/RepoDefault<Poi> {
 		//this.create(banco2)
 		
 		var banco3 = new Banco(pointFactory.puntoBancoSantander, "Banco Galicia")
-		banco3.AgregaServicio(servicioFactory.servicioBanco1)
-		banco3.AgregaServicio(servicioFactory.servicioBanco2)
+		//banco3.AgregaServicio(servicioFactory.servicioBanco1)
+		//banco3.AgregaServicio(servicioFactory.servicioBanco2)
 		banco3.AgregaServicio(servicioFactory.servicioBanco3)
 		banco3.direccion = "Cordoba 2222"
 		banco3.imagenUrl = "imagenes/banco_galicia.jpg"
