@@ -12,6 +12,8 @@ import javax.persistence.OneToMany
 import javax.persistence.FetchType
 import javax.persistence.CascadeType
 import javax.persistence.ManyToOne
+import java.util.Set
+import java.util.HashSet
 
 @Entity
 @Accessors
@@ -24,8 +26,8 @@ class Servicio {
 	@Column(length=50)
 	public String nombre
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, fetch = FetchType.LAZY)
-	List<HorarioDeAtencion> horarios
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, fetch = FetchType.EAGER)
+	Set<HorarioDeAtencion> horarios
 	
 	
 	
@@ -33,7 +35,7 @@ class Servicio {
 
 	new(String nom, int dia, int horaInicio, int horaFin) {
 		this.nombre = nom
-		horarios = new ArrayList<HorarioDeAtencion>()
+		horarios = new HashSet<HorarioDeAtencion>()
 		this.AgregarHorario(dia, horaInicio, horaFin)
 	}
 	
@@ -50,7 +52,7 @@ class Servicio {
 	new(String nom, List<List<Integer>> rangos)
 	{
 		this(nom)
-		horarios = new ArrayList<HorarioDeAtencion>()
+		horarios = new HashSet<HorarioDeAtencion>()
 		rangos.forEach[ rango | this.AgregarHorario(rango.get(0),rango.get(1),rango.get(2)) ]
 	}
 

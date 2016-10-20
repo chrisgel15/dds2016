@@ -29,6 +29,11 @@ class Review {
 		this.puntaje = puntaje
 		this.comentario = comentario
 	}
+	
+	new()
+	{
+		
+	}
 
 	override equals(Object arg0) {
 		try {

@@ -10,19 +10,21 @@ import javax.persistence.InheritanceType
 import javax.persistence.Column
 import javax.persistence.Id
 import javax.persistence.GeneratedValue
+import javax.persistence.Transient
 
-//@Entity
+@Entity
 //@Inheritance(strategy=InheritanceType.JOINED)
 @Accessors
 abstract class PuntoBase /*extends Entity*/ {
 	
+	@Transient
 	public Point localizacionPropia
 	
-//	@Id
-//	@GeneratedValue
-//	private Long id
+	@Id
+	@GeneratedValue
+	private Long id
 	
-	//@Column(length=100)
+	@Column(length=100)
 	public String nombre
 	
 //	new(Point point, String nom) {
@@ -30,8 +32,8 @@ abstract class PuntoBase /*extends Entity*/ {
 //		this.nombre = nom
 //	}	
 //	
-//	new(){
-//		
-//	}
+	new(){
+		
+	}
 
 }

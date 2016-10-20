@@ -2,27 +2,29 @@ package poi
 
 import java.util.ArrayList
 import java.util.List
+import javax.persistence.CascadeType
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.FetchType
+import javax.persistence.OneToMany
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.geodds.Point
-import javax.persistence.Entity
-import javax.persistence.Column
-import javax.persistence.OneToMany
-import javax.persistence.FetchType
-import javax.persistence.CascadeType
+import java.util.HashSet
+import java.util.Set
 
 @Entity
 @Accessors
 class Banco extends Poi {
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, fetch = FetchType.LAZY)
-	List<Servicio> servicios
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, fetch = FetchType.EAGER)
+	Set<Servicio> servicios
 	@Column(length = 100)
 	String zona
 	
 
 	new(Point p, String nom) {
 		super(p, nom)
-		this.servicios = new ArrayList<Servicio>()
+		this.servicios = new HashSet<Servicio>()
 		this.tipo = "banco"
 		this.zona = ""
 	}

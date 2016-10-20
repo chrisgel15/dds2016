@@ -15,6 +15,8 @@ import javax.persistence.OneToMany
 import javax.persistence.FetchType
 import javax.persistence.ElementCollection
 import javax.persistence.Inheritance
+import java.util.HashSet
+import java.util.Set
 
 @JsonIgnoreProperties("localizacionPropia", "etiquetas")
 @Observable
@@ -45,8 +47,8 @@ class Poi extends PuntoBase {
 //	@Column
 //	Integer Identificador
 	
-	@OneToMany(fetch=FetchType.LAZY)
-	List<Review> reviews
+	@OneToMany(fetch=FetchType.EAGER)
+	Set<Review> reviews
 
 	def setEtiqueta(String etiqueta) {
 		this.etiquetas.add(etiqueta)
@@ -60,7 +62,7 @@ class Poi extends PuntoBase {
 		this.nombre = nom
 		this.etiquetas = new ArrayList()
 		this.direccion = ""
-		this.reviews = new ArrayList()
+		this.reviews = new HashSet()
 	}
 	
 	new(){

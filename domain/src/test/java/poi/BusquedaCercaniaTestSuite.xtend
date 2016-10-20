@@ -4,9 +4,9 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.Assert
 import org.uqbar.geodds.Point
-import poi.Factories.PointFactory
+//import poi.Factories.PointFactory
 import poi.Factories.PoiFactory
-import poi.Factories.ComunaFactory
+//import poi.Factories.ComunaFactory
 
 class BusquedaCercaniaTestSuite {
 

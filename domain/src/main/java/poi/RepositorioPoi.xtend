@@ -159,9 +159,9 @@ class RepositorioPoi extends /*CollectionBasedRepo*/RepoDefault<Poi> {
 		this.create(banco3)
 		this.create(banco2)
 		this.create(banco1)
-		this.create(cgp3)
-		this.create(cgp2)
-		this.create(cgp1)
+		//this.create(cgp3)
+		//this.create(cgp2)
+		//this.create(cgp1)
 	}
 	
 	override addQueryByExample(Criteria criteria, Poi p) {
@@ -176,8 +176,8 @@ class RepositorioPoi extends /*CollectionBasedRepo*/RepoDefault<Poi> {
 //		}
 //	}
 	
-	def addQueryByCriterio(Criteria criteria, List<String> criterios, String nombre){
-		criterios.forEach[c | criteria.add(Restrictions.eq(c,nombre))]
+	def addQueryByCriterio(Criteria criteria, List<String> criterios){
+		criterios.forEach[c | criteria.add(Restrictions.eq("tipo",c))]
 //		criterios.forEach[c | 
 //			criteria.add(Restrictions.disjunction
 //				.add(Restrictions.in(nombre,c))
@@ -194,7 +194,7 @@ def List<Poi> searchByCriterio(List<String> criterios) {
 		val session = openSession
 		try {
 			val criteria = session.createCriteria(Poi)
-			this.addQueryByCriterio(criteria, criterios, p.nombre)
+			this.addQueryByCriterio(criteria, criterios)
 			return criteria.list()
 		} catch (HibernateException e) {
 			throw new RuntimeException(e)
