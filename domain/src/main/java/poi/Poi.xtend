@@ -18,6 +18,7 @@ import javax.persistence.Inheritance
 import java.util.HashSet
 import java.util.Set
 
+
 @JsonIgnoreProperties("localizacionPropia", "etiquetas")
 @Observable
 @Entity

@@ -6,6 +6,7 @@ import org.hibernate.Criteria
 import java.util.List
 import org.hibernate.HibernateException
 import org.hibernate.criterion.Restrictions
+import org.hibernate.type.LongType
 
 abstract class RepoDefault<T> {
 	
@@ -97,7 +98,7 @@ abstract class RepoDefault<T> {
 //	}
 	
 	
-	def T searchById(Integer id) {
+	def T searchById(Long id) {
 		val session = openSession
 		try {
 			session.createCriteria(getEntityType)

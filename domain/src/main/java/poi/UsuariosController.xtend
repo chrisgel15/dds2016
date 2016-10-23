@@ -75,7 +75,7 @@ class UsuariosController {
 		var Poi poi = null
 		
 		try{
-			poi = RepositorioPoi.instance.searchById(Integer.parseInt(id))
+			poi = RepositorioPoi.instance.searchById(Long.parseLong(id))
 			//poi = RepositorioPoi.instance.searchByIdPoi(Integer.parseInt(id))
 			
 		}
@@ -91,12 +91,12 @@ class UsuariosController {
 	
 	@Post("/addReview/:id")
 	def Result addReview(@Body String body){
-		val idPoi = Integer.parseInt(id)
+		val idPoi = Long.parseLong(id)
 		val poi = RepositorioPoi.instance.searchById(idPoi)
 		//val poi = RepositorioPoi.instance.searchByIdPoi(idPoi)
 		
 		val idUsuario = body.getPropertyValue("idUsuario") as String
-		val usuario = RepositorioUsuarios.instance.searchById(Integer.parseInt(idUsuario))
+		val usuario = RepositorioUsuarios.instance.searchById(Long.parseLong(idUsuario))
 		//val usuario = RepositorioUsuarios.instance.searchByIdUser(Integer.parseInt(idUsuario))
 		
 		val review = new Review(usuario, 
@@ -105,6 +105,7 @@ class UsuariosController {
 		try
 		{
 			poi.AgregarReview(review)
+			//RepositorioPoi.instance.create(review)
 		}
 		catch (Exception ex)
 		{
@@ -122,9 +123,9 @@ class UsuariosController {
 		val idPoi = body.getPropertyValue("idPoi") as String
 	//	val agregar = body.getPropertyValue("agregar") as Boolean
 		
-		val poi = RepositorioPoi.instance.searchById(Integer.parseInt(idPoi))
+		val poi = RepositorioPoi.instance.searchById(Long.parseLong(idPoi))
 		//val poi = RepositorioPoi.instance.searchByIdPoi(Integer.parseInt(idPoi))
-		val usuario = RepositorioUsuarios.instance.searchById(Integer.parseInt(idUsuario))
+		val usuario = RepositorioUsuarios.instance.searchById(Long.parseLong(idUsuario))
 		//val usuario = RepositorioUsuarios.instance.searchByIdUser(Integer.parseInt(idUsuario))
 			
 			try {
