@@ -7,6 +7,7 @@ import java.util.List
 import org.hibernate.HibernateException
 import org.hibernate.criterion.Restrictions
 import org.hibernate.type.LongType
+import org.hibernate.FetchMode
 
 abstract class RepoDefault<T> {
 	
@@ -55,54 +56,18 @@ abstract class RepoDefault<T> {
 		}
 	}
 	
-//	def List<T> searchByCriterio(List<String> criterios) {
-//		var Poi p
-//		val session = sessionFactory.openSession
-//		try {
-//			val criteria = session.createCriteria(getEntityType)
-//			this.addQueryByCriterio(criteria, criterios,p)
-//			return criteria.list()
-//		} catch (HibernateException e) {
-//			throw new RuntimeException(e)
-//		} finally {
-//			session.close
-//		}
-//	}
+
 	
-//	def T searchByIdPoi(Integer id) {
-//		var Poi p
-//		val session = sessionFactory.openSession
-//		try {
-//			val criteria = session.createCriteria(getEntityType)
-//			this.addQueryByIdPoi(criteria, id ,p)
-//			return criteria as T
-//		} catch (HibernateException e) {
-//			throw new RuntimeException(e)
-//		} finally {
-//			session.close
-//		}
-//	}
+
 	
-//	def T searchByIdUser(Integer id) {
-//		var Usuario u
-//		val session = sessionFactory.openSession
-//		try {
-//			val criteria = session.createCriteria(getEntityType)
-//			this.addQueryByIdUser(criteria, id ,u)
-//			return criteria as T
-//		} catch (HibernateException e) {
-//			throw new RuntimeException(e)
-//		} finally {
-//			session.close
-//		}
-//	}
+
 	
 	
 	def T searchById(Long id) {
 		val session = openSession
 		try {
 			session.createCriteria(getEntityType)
-				//.setFetchMode("candidatos", FetchMode.JOIN)
+				//.setFetchMode("reviews", FetchMode.JOIN)
 				.add(Restrictions.eq("id", id))
 				.uniqueResult as T
 		} catch (HibernateException e) {

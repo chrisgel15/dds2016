@@ -17,7 +17,7 @@ import javax.persistence.ElementCollection
 import javax.persistence.Inheritance
 import java.util.HashSet
 import java.util.Set
-
+import javax.persistence.CascadeType
 
 @JsonIgnoreProperties("localizacionPropia", "etiquetas")
 @Observable
@@ -48,7 +48,7 @@ class Poi extends PuntoBase {
 //	@Column
 //	Integer Identificador
 	
-	@OneToMany(fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
 	Set<Review> reviews
 
 	def setEtiqueta(String etiqueta) {

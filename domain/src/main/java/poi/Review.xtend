@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Column
 import javax.persistence.OneToOne
 import javax.persistence.ManyToOne
+import javax.persistence.CascadeType
 
 @Accessors
 @Entity
@@ -23,6 +24,9 @@ class Review {
 	
 	@ManyToOne
 	Usuario usuario
+	
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	Poi poi
 
 	new(Usuario usuario, Integer puntaje, String comentario) {
 		this.usuario = usuario
