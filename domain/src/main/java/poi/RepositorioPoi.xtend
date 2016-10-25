@@ -205,6 +205,8 @@ def List<Poi> searchByCriterio(List<String> criterios) {
 	
 
 	
+
+	
 	
 	
 	

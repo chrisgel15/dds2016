@@ -105,6 +105,7 @@ class UsuariosController {
 		try
 		{
 			poi.AgregarReview(review)
+			RepositorioPoi.instance.CrearReview(review)
 			//RepositorioPoi.instance.create(review)
 		}
 		catch (Exception ex)
