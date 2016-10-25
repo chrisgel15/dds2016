@@ -13,9 +13,9 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Transient
 
 @Entity
-//@Inheritance(strategy=InheritanceType.JOINED)
+//@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @Accessors
-abstract class PuntoBase /*extends Entity*/ {
+abstract class PuntoBase{
 	
 	@Transient
 	public Point localizacionPropia

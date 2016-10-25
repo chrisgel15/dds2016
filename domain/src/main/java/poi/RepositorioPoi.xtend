@@ -13,8 +13,9 @@ import org.hibernate.Criteria
 import org.hibernate.criterion.Restrictions
 import org.hibernate.HibernateException
 import org.hibernate.FetchMode
+import org.hibernate.criterion.MatchMode
 
-class RepositorioPoi extends /*CollectionBasedRepo*/RepoDefault<Poi> {
+class RepositorioPoi extends RepoDefault<Poi> {
 	
 	
 	PointFactory pointFactory
@@ -34,14 +35,13 @@ class RepositorioPoi extends /*CollectionBasedRepo*/RepoDefault<Poi> {
 	{
 		pointFactory = new PointFactory()
 		comunaFactory = new ComunaFactory()
-		servicioFactory = new ServiciosFactory()		
-		this.CrearRepositorio()	
+		servicioFactory = new ServiciosFactory()	
+		if(allInstances.isEmpty)	
+			this.CrearRepositorio()	
 		
 	}
 
-//	override protected Predicate<Poi> getCriterio(Poi example) {
-//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-//	}
+
 
 	override getEntityType() {
 		typeof(Poi)
@@ -51,9 +51,7 @@ class RepositorioPoi extends /*CollectionBasedRepo*/RepoDefault<Poi> {
 		allInstances.filter[poi|poi.BusquedaPorTexto(texto)].toList
 	}
 	
-//	override createExample() {
-//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-//	}
+
 	
 	def List<Poi> BuscarPorTexto(String texto)
 	{
@@ -170,14 +168,17 @@ class RepositorioPoi extends /*CollectionBasedRepo*/RepoDefault<Poi> {
 		}
 	}
 	
-//	override addQueryByIdPoi(Criteria criteria, Integer id, Poi p) {
-//		if (p.nombre != null) {
-//			criteria.add(Restrictions.eq("Identificador", p.identificador))
-//		}
-//	}
+
 	
 	def addQueryByCriterio(Criteria criteria, List<String> criterios){
-		criterios.forEach[c | criteria.add(Restrictions.eq("tipo",c))]
+		
+		//criterios.forEach[c | criteria.add(Restrictions.eq("tipo",c))]
+		
+		//Esto no está bien - ver de crear un restriction para cada elemento de la lista de criterios
+		criteria.add(Restrictions.disjunction
+			.add(Restrictions.ilike("tipo",criterios.get(0),MatchMode.ANYWHERE))
+			.add(Restrictions.ilike("tipo",criterios.get(1),MatchMode.ANYWHERE))
+		)
 //		criterios.forEach[c | 
 //			criteria.add(Restrictions.disjunction
 //				.add(Restrictions.in(nombre,c))
@@ -185,18 +186,33 @@ class RepositorioPoi extends /*CollectionBasedRepo*/RepoDefault<Poi> {
 //		]
 	}
 	
-//	override addQueryByIdUser(Criteria criteria, Integer id, Usuario user) {
-//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-//	}
+
 
 def List<Poi> searchByCriterio(List<String> criterios) {
-		var Poi p
+		
 		val session = openSession
 		try {
 			val criteria = session.createCriteria(Poi)
 			this.addQueryByCriterio(criteria, criterios)
 			return criteria.list()
 		} catch (HibernateException e) {
+			throw new RuntimeException(e)
+		} finally {
+			session.close
+		}
+	}
+	
+def agregarReview(Review rev) {
+		val session = openSession
+	
+		
+		try {
+			
+			session.beginTransaction
+			session.saveOrUpdate(rev)
+			session.getTransaction.commit
+		} catch (HibernateException e) {
+			session.getTransaction.rollback
 			throw new RuntimeException(e)
 		} finally {
 			session.close

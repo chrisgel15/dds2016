@@ -21,7 +21,7 @@ import javax.persistence.ManyToMany
 @Accessors
 @Entity
 
-class Usuario /*extends Entity*/ {
+class Usuario{
 	
 	@Id
 	@GeneratedValue

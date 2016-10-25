@@ -52,7 +52,7 @@ class UsuariosController {
 		
 				
 		try {
-			//pois = RepositorioPoi.instance.BuscarPorCriterios(criterios)
+			
 			pois = RepositorioPoi.instance.searchByCriterio(criterios)
 			
 		}
@@ -76,7 +76,7 @@ class UsuariosController {
 		
 		try{
 			poi = RepositorioPoi.instance.searchById(Long.parseLong(id))
-			//poi = RepositorioPoi.instance.searchByIdPoi(Integer.parseInt(id))
+			
 			
 		}
 		catch(Exception e)
@@ -93,19 +93,19 @@ class UsuariosController {
 	def Result addReview(@Body String body){
 		val idPoi = Long.parseLong(id)
 		val poi = RepositorioPoi.instance.searchById(idPoi)
-		//val poi = RepositorioPoi.instance.searchByIdPoi(idPoi)
+		
 		
 		val idUsuario = body.getPropertyValue("idUsuario") as String
 		val usuario = RepositorioUsuarios.instance.searchById(Long.parseLong(idUsuario))
-		//val usuario = RepositorioUsuarios.instance.searchByIdUser(Integer.parseInt(idUsuario))
+		
 		
 		val review = new Review(usuario, 
 			Integer.parseInt(body.getPropertyValue("puntaje") as String), body.getPropertyValue("comentario") as String) 
 		
 		try
 		{
-			poi.AgregarReview(review)
-			//RepositorioPoi.instance.create(review)
+			//poi.AgregarReview(review)
+			RepositorioPoi.instance.agregarReview(review)
 		}
 		catch (Exception ex)
 		{
