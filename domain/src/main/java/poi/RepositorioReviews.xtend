@@ -3,8 +3,12 @@ package poi
 import org.hibernate.Criteria
 import org.hibernate.criterion.Restrictions
 import org.hibernate.HibernateException
+import java.util.ArrayList
 
 class RepositorioReviews extends RepoDefault<Review> {
+	
+	/* Singleton */
+	static RepositorioReviews repoReview
 	
 	def static RepositorioReviews getInstance() {
 		if (repoReview == null) {
@@ -26,8 +30,8 @@ class RepositorioReviews extends RepoDefault<Review> {
 		//var Usuario user
 		try {
 			 session.createCriteria(Review)			 	
-				.add(Restrictions.eq("idUser",idUser)) // Chequear el nombre!
-				.add(Restrictions.eq("idPoi",idPoi)) // Chequear el nombre!
+				.add(Restrictions.eq("usuario.id",idUser)) // Chequear el nombre!
+				.add(Restrictions.eq("poi.id",idPoi))
 				.uniqueResult as Review				
 		} catch (HibernateException e) {
 			throw new RuntimeException(e)
@@ -36,9 +40,26 @@ class RepositorioReviews extends RepoDefault<Review> {
 		}
 	}
 	
-	def CrearReview(Review review) {
-		if (searchByIdPoiAndIdUser(review.usuario.id, review.id) != null)
-			this.create(review)
+	def searchByPoiId(long l) {
+		val session = openSession
+		//var Usuario user
+		try {
+			 session.createCriteria(Review)	 	
+				.add(Restrictions.eq("poi.id",l))	
+				.list	
+		} catch (HibernateException e) {
+			throw new RuntimeException(e)
+		} finally {
+			session.close
+		}
 	}
 	
+}
+
+class YaExisteReviewException extends RuntimeException
+{
+	new(String msg)
+	{
+		super(msg)
+	}
 }

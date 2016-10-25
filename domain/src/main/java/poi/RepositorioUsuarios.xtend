@@ -22,15 +22,15 @@ class RepositorioUsuarios extends /*CollectionBasedRepo*/RepoDefault<Usuario> {
 	
 	new()
 	{
-		val Usuario usu1 = new Usuario("christiangelman@gmail.com", "abc123")
-		//usu1.AgregarFavorito(RepositorioPoi.instance.allInstances.get(0))
-		//usu1.AgregarFavorito(RepositorioPoi.instance.allInstances.get(1)) 
+		if (allInstances.isEmpty) {
+		val Usuario usu1 = new Usuario("christiangelman@gmail.com", "abc123") 
 		this.create(usu1)
 		this.create(new Usuario("chrisgel15@hotmail.com", "abc123"))
 		this.create(new Usuario("rominacuadra@gmail.com", "abc123"))
 		this.create(new Usuario("federicomandri@hotmail.com", "abc123"))
 		this.create(new Usuario("juanpabloferreira@gmail.com", "abc123"))
 		this.create(new Usuario("kenchi@gmail.com", "abc123"))
+		}
 	}
 
 //	override protected Predicate<Usuario> getCriterio(Usuario example) {

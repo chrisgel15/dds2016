@@ -1,13 +1,12 @@
 package poi
 
-import org.eclipse.xtend.lib.annotations.Accessors
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.GeneratedValue
 import javax.persistence.Column
-import javax.persistence.OneToOne
+import javax.persistence.Entity
+import javax.persistence.FetchType
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 import javax.persistence.ManyToOne
-import javax.persistence.CascadeType
+import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
 @Entity
@@ -22,11 +21,8 @@ class Review {
 	@Column
 	Integer puntaje
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	Usuario usuario
-	
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	Poi poi
 
 	new(Usuario usuario, Integer puntaje, String comentario) {
 		this.usuario = usuario

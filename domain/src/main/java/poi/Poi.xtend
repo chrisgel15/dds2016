@@ -48,7 +48,7 @@ class Poi extends PuntoBase {
 //	@Column
 //	Integer Identificador
 	
-	@OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	Set<Review> reviews
 
 	def setEtiqueta(String etiqueta) {
@@ -63,7 +63,7 @@ class Poi extends PuntoBase {
 		this.nombre = nom
 		this.etiquetas = new ArrayList()
 		this.direccion = ""
-		this.reviews = new HashSet()
+		this.reviews = new HashSet<Review>()
 	}
 	
 	new(){
@@ -119,12 +119,13 @@ class Poi extends PuntoBase {
 		throw new UnsupportedOperationException("No implementado en la clase base. Debe redefinirse")
 	}
 	
+	// TODO: Ver si eliminando estas lineas sigue funcionando con el otro repo...
 	def void AgregarReview(Review rev)
 	{
-		if (!this.reviews.exists[ r | r.equals(rev) ])
+	//	if (!this.reviews.exists[ r | r.equals(rev) ])
 			this.reviews.add(rev)
-		else
-			throw(new Exception("El usuario ya ha agregado comentarios."))
+	//	else
+		//	throw(new Exception("El usuario ya ha agregado comentarios."))
 	}
 
 }

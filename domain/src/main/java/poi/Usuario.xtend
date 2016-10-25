@@ -40,7 +40,7 @@ class Usuario{
 //	List<Mail> casilla
 	
 	//List<Poi> favoritos
-	@ElementCollection
+	@ElementCollection(fetch=FetchType.EAGER)
 	List<Long> favoritosId	
 	
 //	new(String unaDireccion) {

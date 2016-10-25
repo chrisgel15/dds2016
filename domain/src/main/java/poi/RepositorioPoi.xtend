@@ -177,7 +177,7 @@ class RepositorioPoi extends RepoDefault<Poi> {
 		//Esto no está bien - ver de crear un restriction para cada elemento de la lista de criterios
 		criteria.add(Restrictions.disjunction
 			.add(Restrictions.ilike("tipo",criterios.get(0),MatchMode.ANYWHERE))
-			.add(Restrictions.ilike("tipo",criterios.get(1),MatchMode.ANYWHERE))
+		//	.add(Restrictions.ilike("tipo",criterios.get(1),MatchMode.ANYWHERE))
 		)
 //		criterios.forEach[c | 
 //			criteria.add(Restrictions.disjunction

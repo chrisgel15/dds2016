@@ -92,29 +92,41 @@ class UsuariosController {
 	@Post("/addReview/:id")
 	def Result addReview(@Body String body){
 		val idPoi = Long.parseLong(id)
-		val poi = RepositorioPoi.instance.searchById(idPoi)
-		
+		val poi = RepositorioPoi.instance.searchById(idPoi)		
 		
 		val idUsuario = body.getPropertyValue("idUsuario") as String
-		val usuario = RepositorioUsuarios.instance.searchById(Long.parseLong(idUsuario))
-		
+		val usuario = RepositorioUsuarios.instance.searchById(Long.parseLong(idUsuario))		
 		
 		val review = new Review(usuario, 
-			Integer.parseInt(body.getPropertyValue("puntaje") as String), body.getPropertyValue("comentario") as String) 
-		
+			Integer.parseInt(body.getPropertyValue("puntaje") as String), body.getPropertyValue("comentario") as String)
+			
+		// TODO: Que tire la excepcion cuando no lo puede agregar...
 		try
 		{
-			poi.AgregarReview(review)
-			RepositorioPoi.instance.CrearReview(review)
-			//RepositorioPoi.instance.create(review)
+				val p = RepositorioPoi.instance.searchById(idPoi)
+				if (!p.reviews.exists[ r | r.usuario.id.toString == idUsuario ])
+				{
+					poi.AgregarReview(review)
+					RepositorioPoi.instance.update(poi)
+				}
+				
+		}
+		catch (YaExisteReviewException ex)
+		{
+			return badRequest(ex.message)
 		}
 		catch (Exception ex)
 		{
-			return badRequest(ex.message)	
-		}		
+			// loguear la exception
+			return badRequest("Ocurrio un error, contacte al administrador.")	
+		}	
+		
+		//val poiR = RepositorioPoi.instance.searchById(idPoi)
+//		var review2 = RepositorioReviews.instance.searchByPoiId(idPoi)	
 		
 		response.contentType = ContentType.APPLICATION_JSON
-		ok(poi.reviews.toJson)
+		ok(RepositorioPoi.instance.searchById(idPoi).reviews.toJson)
+		//ok(review2.toJson)
 	}
 	
 	@Post("/favorito")
