@@ -137,12 +137,13 @@ class UsuariosController {
 	//	val agregar = body.getPropertyValue("agregar") as Boolean
 		
 		val poi = RepositorioPoi.instance.searchById(Long.parseLong(idPoi))
-		//val poi = RepositorioPoi.instance.searchByIdPoi(Integer.parseInt(idPoi))
+		
 		val usuario = RepositorioUsuarios.instance.searchById(Long.parseLong(idUsuario))
-		//val usuario = RepositorioUsuarios.instance.searchByIdUser(Integer.parseInt(idUsuario))
+		
 			
 			try {
 				usuario.AgregarFavorito(poi)
+				RepositorioUsuarios.instance.update(usuario)
 			}
 			catch(Exception ex)
 			{

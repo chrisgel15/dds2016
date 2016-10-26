@@ -26,9 +26,7 @@ abstract class RepoDefault<T> {
 		def abstract Class<T> getEntityType()
 	
 		def abstract void addQueryByExample(Criteria criteria, T t)
-		//def abstract void addQueryByCriterio(Criteria criteria, List<String> criterios, Poi p)
-		//def abstract void addQueryByIdPoi(Criteria criteria, Integer id, Poi p)
-		//def abstract void addQueryByIdUser(Criteria criteria, Integer id, Usuario user)
+		
 		
 		def openSession() {
 			sessionFactory.openSession
@@ -57,12 +55,6 @@ abstract class RepoDefault<T> {
 	}
 	
 
-	
-
-	
-
-	
-	
 	def T searchById(Long id) {
 		val session = openSession
 		try {

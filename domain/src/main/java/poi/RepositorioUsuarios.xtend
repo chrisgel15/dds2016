@@ -33,9 +33,7 @@ class RepositorioUsuarios extends /*CollectionBasedRepo*/RepoDefault<Usuario> {
 		}
 	}
 
-//	override protected Predicate<Usuario> getCriterio(Usuario example) {
-//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-//	}
+
 
 	override getEntityType() {
 		typeof(Usuario)
@@ -45,9 +43,7 @@ class RepositorioUsuarios extends /*CollectionBasedRepo*/RepoDefault<Usuario> {
 		allInstances.findFirst[usu|usu.BusquedaPorNombreYPass(nombre, pass)]
 	}
 	
-//	override createExample() {
-//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-//	}
+
 	
 	def List<Usuario> BuscarPorTexto(String texto)
 	{
@@ -84,18 +80,6 @@ class RepositorioUsuarios extends /*CollectionBasedRepo*/RepoDefault<Usuario> {
 		}
 	}
 	
-//	override addQueryByIdUser(Criteria criteria, Integer id, Usuario user) {
-//		if (user.nombre != null) {
-//			criteria.add(Restrictions.eq("Identificador", user.id))
-//		}
-//	}
 	
-//	override addQueryByCriterio(Criteria criteria, List<String> criterios, Poi p) {
-//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-//	}
-	
-//	override addQueryByIdPoi(Criteria criteria, Integer id, Poi p) {
-//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-//	}
 	
 }
