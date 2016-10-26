@@ -100,11 +100,14 @@ class UsuariosController {
 		try
 		{
 				val p = RepositorioPoi.instance.searchById(idPoi)
-				if (!p.reviews.exists[ r | r.usuario.id.toString == idUsuario ])
-				{
-					poi.AgregarReview(review)
-					RepositorioPoi.instance.update(poi)
-				}
+				p.AgregarReview(review, idUsuario)
+				
+				
+//				if (!p.reviews.exists[ r | r.usuario.id.toString == idUsuario ])
+//				{
+//					poi.AgregarReview(review)
+//					RepositorioPoi.instance.update(poi)
+//				}
 				
 		}
 		catch (YaExisteReviewException ex)

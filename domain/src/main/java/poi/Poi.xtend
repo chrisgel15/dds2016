@@ -122,10 +122,21 @@ class Poi extends PuntoBase {
 	// TODO: Ver si eliminando estas lineas sigue funcionando con el otro repo...
 	def void AgregarReview(Review rev)
 	{
-	//	if (!this.reviews.exists[ r | r.equals(rev) ])
+		if (!this.reviews.exists[ r | r.equals(rev) ])
 			this.reviews.add(rev)
-	//	else
-		//	throw(new Exception("El usuario ya ha agregado comentarios."))
+		else
+			throw(new Exception("El usuario ya ha agregado comentarios."))
+	}
+	
+	def void AgregarReview(Review rev, String idUsuario)
+	{
+		if (!this.reviews.exists[ r | r.usuario.id.toString == idUsuario ])
+		{
+			this.reviews.add(rev)
+			RepositorioPoi.instance.update(this)
+		}	
+		else
+			throw(new Exception("El usuario ya ha agregado comentarios."))
 	}
 
 }
