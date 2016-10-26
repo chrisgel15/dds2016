@@ -14,6 +14,9 @@ import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.annotation.Post
 import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
+import com.fasterxml.jackson.databind.ser.FilterProvider
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter
 
 @Controller
 class UsuariosController {
@@ -28,7 +31,6 @@ class UsuariosController {
 		var Usuario user = null
 		
 		try {
-			//user = RepositorioUsuarios.instance.search(nombre, pass)
 			user = RepositorioUsuarios.instance.searchByNamePass(nombre, pass)
 		}
 		catch (Exception e)
@@ -41,31 +43,27 @@ class UsuariosController {
 			return badRequest("Usuario o contraseña incorrectos. Intente nuevamente.");
 		
 		response.contentType = ContentType.APPLICATION_JSON	
-		//user.generarFavoritosId()
 		ok(user.toJson)
 	}
 	
 	@Post("/home")
 	def Result getPois(@Body String body) {
 		val criterios = body.fromJson(ArrayList)		
-		var List<Poi> pois = new ArrayList<Poi>()
-		
+		var List<Poi> pois = new ArrayList<Poi>()	
 				
-		try {
-			
-			pois = RepositorioPoi.instance.searchByCriterio(criterios)
-			
+		try {			
+			pois = RepositorioPoi.instance.searchByCriterio(criterios)			
 		}
 		catch (Exception e)
-		{
-			// TODO: loguear e.message
+		{			// TODO: loguear e.message
 			return internalServerError("Ha ocurrido un error. Contacte al administrador.");
 		}
 		
 		if (pois.empty)
 			return badRequest("No se encontraron resultados.")
 		
-		response.contentType = ContentType.APPLICATION_JSON		
+		response.contentType = ContentType.APPLICATION_JSON	
+		
 		ok(pois.toJson)
 	}
 	
@@ -75,9 +73,7 @@ class UsuariosController {
 		var Poi poi = null
 		
 		try{
-			poi = RepositorioPoi.instance.searchById(Long.parseLong(id))
-			
-			
+			poi = RepositorioPoi.instance.searchById(Long.parseLong(id))		
 		}
 		catch(Exception e)
 		{
@@ -121,12 +117,8 @@ class UsuariosController {
 			return badRequest("Ocurrio un error, contacte al administrador.")	
 		}	
 		
-		//val poiR = RepositorioPoi.instance.searchById(idPoi)
-//		var review2 = RepositorioReviews.instance.searchByPoiId(idPoi)	
-		
 		response.contentType = ContentType.APPLICATION_JSON
 		ok(RepositorioPoi.instance.searchById(idPoi).reviews.toJson)
-		//ok(review2.toJson)
 	}
 	
 	@Post("/favorito")
