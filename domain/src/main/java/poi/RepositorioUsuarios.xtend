@@ -8,7 +8,7 @@ import org.hibernate.criterion.Restrictions
 import org.hibernate.HibernateException
 import org.hibernate.FetchMode
 
-class RepositorioUsuarios extends /*CollectionBasedRepo*/RepoDefault<Usuario> {
+class RepositorioUsuarios extends RepoDefault<Usuario> {
 	
 	/* Singleton */
 	static RepositorioUsuarios repoUsuarios

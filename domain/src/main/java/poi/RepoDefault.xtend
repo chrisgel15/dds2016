@@ -9,9 +9,16 @@ import org.hibernate.criterion.Restrictions
 
 abstract class RepoDefault<T> {
 
-	private static final SessionFactory sessionFactory = new Configuration().configure().addAnnotatedClass(Poi).
-		addAnnotatedClass(ParadaColectivo).addAnnotatedClass(Review).addAnnotatedClass(Banco).
-		addAnnotatedClass(Usuario).addAnnotatedClass(Servicio).addAnnotatedClass(HorarioDeAtencion)// .addAnnotatedClass(CGP)
+	private static final SessionFactory sessionFactory = new Configuration().configure()
+		.addAnnotatedClass(Poi)
+		.addAnnotatedClass(ParadaColectivo)
+		.addAnnotatedClass(Review)
+		.addAnnotatedClass(Banco)
+		.addAnnotatedClass(Usuario)
+		.addAnnotatedClass(Servicio)
+		.addAnnotatedClass(HorarioDeAtencion)
+		.addAnnotatedClass(Comuna)
+		.addAnnotatedClass(CGP)
 		.buildSessionFactory()
 
 	def abstract Class<T> getEntityType()

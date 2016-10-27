@@ -56,7 +56,8 @@ class UsuariosController {
 		}
 		catch (Exception e)
 		{			// TODO: loguear e.message
-			return internalServerError("Ha ocurrido un error. Contacte al administrador.");
+			//return internalServerError("Ha ocurrido un error. Contacte al administrador.");
+			return internalServerError(e.message);
 		}
 		
 		if (pois.empty)
@@ -87,8 +88,7 @@ class UsuariosController {
 	
 	@Post("/addReview/:id")
 	def Result addReview(@Body String body){
-		val idPoi = Long.parseLong(id)
-		val poi = RepositorioPoi.instance.searchById(idPoi)		
+		val idPoi = Long.parseLong(id)		
 		
 		val idUsuario = body.getPropertyValue("idUsuario") as String
 		val usuario = RepositorioUsuarios.instance.searchById(Long.parseLong(idUsuario))		
@@ -96,19 +96,10 @@ class UsuariosController {
 		val review = new Review(usuario, 
 			Integer.parseInt(body.getPropertyValue("puntaje") as String), body.getPropertyValue("comentario") as String)
 			
-		// TODO: Que tire la excepcion cuando no lo puede agregar...
 		try
 		{
 				val p = RepositorioPoi.instance.searchById(idPoi)
-				p.AgregarReview(review, idUsuario)
-				
-				
-//				if (!p.reviews.exists[ r | r.usuario.id.toString == idUsuario ])
-//				{
-//					poi.AgregarReview(review)
-//					RepositorioPoi.instance.update(poi)
-//				}
-				
+				p.AgregarReview(review, idUsuario)				
 		}
 		catch (YaExisteReviewException ex)
 		{

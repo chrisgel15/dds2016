@@ -2,22 +2,16 @@ package poi
 
 //import java.util.ArrayList
 //import java.util.HashSet
-import java.util.List
-//import java.util.Set
-//import org.apache.commons.collections15.Predicate
-//import org.uqbar.commons.model.CollectionBasedRepo
-//import poi.Factories.ComunaFactory
-//import poi.Factories.PointFactory
-//import poi.Factories.ServiciosFactory
-import org.hibernate.Criteria
-import org.hibernate.criterion.Restrictions
-import org.hibernate.HibernateException
-import org.hibernate.FetchMode
-import org.hibernate.criterion.MatchMode
+
 import java.util.ArrayList
+import java.util.List
+import org.hibernate.Criteria
+import org.hibernate.HibernateException
+import org.hibernate.criterion.CriteriaSpecification
 import org.hibernate.criterion.Criterion
 import org.hibernate.criterion.Junction
-import org.hibernate.criterion.CriteriaSpecification
+import org.hibernate.criterion.MatchMode
+import org.hibernate.criterion.Restrictions
 
 class RepositorioPoi extends RepoDefault<Poi> {
 
@@ -92,7 +86,6 @@ class RepositorioPoi extends RepoDefault<Poi> {
 		cgp2.direccion = "Castelli 0000"
 		cgp2.imagenUrl = "imagenes/cgp_1.jpg"
 		cgp2.AgregaServicio(servicioFactory.servicioCGP2)
-		cgp2.AgregaServicio(servicioFactory.servicioCGP4)
 		cgp2.AgregaServicio(servicioFactory.servicioCGP5)
 		var cgp3 = new CGP(pointFactory.puntoCgp, "CGP flores 32", comunaFactory.comuna13)
 		cgp3.direccion = "Pueyrredon 3467"
@@ -116,9 +109,9 @@ class RepositorioPoi extends RepoDefault<Poi> {
 		this.create(banco3)
 		this.create(banco2)
 		this.create(banco1)
-	// this.create(cgp3)
-	// this.create(cgp2)
-	// this.create(cgp1)
+		this.create(cgp3)
+	    this.create(cgp2)
+	    this.create(cgp1)
 	}
 
 	override addQueryByExample(Criteria criteria, Poi p) {

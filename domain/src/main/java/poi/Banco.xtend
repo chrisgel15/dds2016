@@ -1,7 +1,7 @@
 package poi
 
-import java.util.ArrayList
-import java.util.List
+import java.util.HashSet
+import java.util.Set
 import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -9,14 +9,14 @@ import javax.persistence.FetchType
 import javax.persistence.OneToMany
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.geodds.Point
-import java.util.HashSet
-import java.util.Set
+import javax.persistence.JoinTable
 
 @Entity
 @Accessors
 class Banco extends Poi {
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, fetch = FetchType.EAGER)
+	@JoinTable(name = "banco_servicios")
 	Set<Servicio> servicios
 	@Column(length = 100)
 	String zona

@@ -8,20 +8,27 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import javax.persistence.Entity
 import javax.persistence.OneToOne
 import javax.persistence.OneToMany
+import javax.persistence.FetchType
+import javax.persistence.ManyToOne
+import javax.persistence.CascadeType
+import java.util.Set
+import java.util.HashSet
+import javax.persistence.JoinTable
 
-
+@Entity
 @Accessors
 class CGP extends Poi {
-	
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	Comuna comuna
-	
-	List<Servicio> servicios
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, fetch = FetchType.EAGER)
+	@JoinTable(name = "cgp_servicios")
+	Set<Servicio> servicios
 
 // Un CGP tiene una referencia a su comuna
 	new(Point p, String nombre, Comuna comuna) {
 		super(p, nombre)
 		this.comuna = comuna
-		this.servicios = new ArrayList<Servicio>()
+		this.servicios = new HashSet<Servicio>()
 		this.tipo = "cgp"
 	}
 	

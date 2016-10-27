@@ -136,7 +136,7 @@ class Poi extends PuntoBase {
 			RepositorioPoi.instance.update(this)
 		}	
 		else
-			throw(new Exception("El usuario ya ha agregado comentarios."))
+			throw(new YaExisteReviewException("El usuario ya ha agregado comentarios."))
 	}
 
 }

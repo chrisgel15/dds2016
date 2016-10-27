@@ -15,9 +15,7 @@
 		<property name="hibernate.connection.username">
 			root
 		</property>
-		<property name="hibernate.connection.password">
-			00Fede201601
-		</property>
+		<property name="hibernate.connection.password">Ikiikoh01!</property>
 
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
