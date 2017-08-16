@@ -21,11 +21,11 @@ import javax.persistence.ManyToMany
 @Accessors
 @Entity
 
-class Usuario{
+class Usuario extends org.uqbar.commons.model.Entity{
 	
 	@Id
 	@GeneratedValue
-	private Long id
+	private Long id_persistencia
 	
 //	@Column(length=50)
 //	String direccionDeMail

@@ -1,28 +1,24 @@
 
 package poi
 
-import org.uqbar.geodds.Point
-//import org.uqbar.commons.model.Entity
-import org.eclipse.xtend.lib.annotations.Accessors
-import javax.persistence.Entity
-import javax.persistence.Inheritance
-import javax.persistence.InheritanceType
 import javax.persistence.Column
-import javax.persistence.Id
 import javax.persistence.GeneratedValue
+import javax.persistence.Id
 import javax.persistence.Transient
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.geodds.Point
+import javax.persistence.Entity
 
 @Entity
-//@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @Accessors
-abstract class PuntoBase{
+abstract class PuntoBase extends org.uqbar.commons.model.Entity{
 	
 	@Transient
 	public Point localizacionPropia
 	
 	@Id
 	@GeneratedValue
-	private Long id
+	private Long id_persistencia
 	
 	@Column(length=100)
 	public String nombre

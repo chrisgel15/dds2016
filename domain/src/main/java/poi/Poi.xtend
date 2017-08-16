@@ -31,7 +31,7 @@ class Poi extends PuntoBase {
 	
 	@Id
 	@GeneratedValue
-	private Long id
+	private Long id_persistencia
 	
 	@Column(length=150)
 	String direccion
